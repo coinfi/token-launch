@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript">var _rollbarConfig = {"accessToken":"e096d72e2c6442ac924a369ae40065c0","captureUncaught":true,"hostWhiteList":["staging.coinfi.com","www.coinfi.com","sale.coinfi.com"],"payload":{"environment":"production","person":{"id":84937,"username":null,"email":"yiboumiza@gmail.com"}}};</script>
+<script type="text/javascript">!function(r){function o(e){if(n[e])return n[e].exports;var t=n[e]={exports:{},id:e,loaded:!1};return r[e].call(t.exports,t,t.exports,o),t.loaded=!0,t.exports}var n={};return o.m=r,o.c=n,o.p="",o(0)}([function(r,o,n){"use strict";var e=n(1),t=n(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.0.4/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=e.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=e.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,o,n){"use strict";function e(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}function t(r,o){this.options=r,this._rollbarOldOnError=null;var n=s++;this.shimId=function(){return n},window&&window._rollbarShims&&(window._rollbarShims[n]={handler:o,messages:[]})}function a(r,o){var n=o.globalAlias||"Rollbar";if("object"==typeof r[n])return r[n];r._rollbarShims={},r._rollbarWrappedError=null;var t=new d(o);return e(function(){return o.captureUncaught&&(t._rollbarOldOnError=r.onerror,i.captureUncaughtExceptions(r,t,!0),i.wrapGlobals(r,t,!0)),o.captureUnhandledRejections&&i.captureUnhandledRejections(r,t,!0),r[n]=t,t})()}function l(r){return e(function(){var o=this,n=Array.prototype.slice.call(arguments,0),e={shim:o,method:r,args:n,ts:new Date};window._rollbarShims[this.shimId()].messages.push(e)})}var i=n(2),s=0,c=n(3),p=function(r,o){return new t(r,o)},d=c.bind(null,p);t.prototype.loadFull=function(r,o,n,t,a){var l=function(){var o;if(void 0===r._rollbarDidLoad){o=new Error("rollbar.js did not load");for(var n,e,t,l,i=0;n=r._rollbarShims[i++];)for(n=n.messages||[];e=n.shift();)for(t=e.args||[],i=0;i<t.length;++i)if(l=t[i],"function"==typeof l){l(o);break}}"function"==typeof a&&a(o)},i=!1,s=o.createElement("script"),c=o.getElementsByTagName("script")[0],p=c.parentNode;s.crossOrigin="",s.src=t.rollbarJsUrl,n||(s.async=!0),s.onload=s.onreadystatechange=e(function(){if(!(i||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{p.removeChild(s)}catch(r){}i=!0,l()}}),p.insertBefore(s,c)},t.prototype.wrap=function(r,o){try{var n;if(n="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._wrapped&&(r._wrapped=function(){try{return r.apply(this,arguments)}catch(e){var o=e;throw"string"==typeof o&&(o=new String(o)),o._rollbarContext=n()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o,o}},r._wrapped._isWrap=!0,r.hasOwnProperty))for(var e in r)r.hasOwnProperty(e)&&(r._wrapped[e]=r[e]);return r._wrapped}catch(o){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection".split(","),f=0;f<u.length;++f)t.prototype[u[f]]=l(u[f]);r.exports={setupShim:a,Rollbar:d}},function(r,o){"use strict";function n(r,o,n){if(r){var t;"function"==typeof o._rollbarOldOnError?t=o._rollbarOldOnError:r.onerror&&!r.onerror.belongsToShim&&(t=r.onerror,o._rollbarOldOnError=t);var a=function(){var n=Array.prototype.slice.call(arguments,0);e(r,o,t,n)};a.belongsToShim=n,r.onerror=a}}function e(r,o,n,e){r._rollbarWrappedError&&(e[4]||(e[4]=r._rollbarWrappedError),e[5]||(e[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),o.handleUncaughtException.apply(o,e),n&&n.apply(r,e)}function t(r,o,n){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var e=function(r){var n=r.reason,e=r.promise,t=r.detail;!n&&t&&(n=t.reason,e=t.promise),o&&o.handleUnhandledRejection&&o.handleUnhandledRejection(n,e)};e.belongsToShim=n,r._rollbarURH=e,r.addEventListener("unhandledrejection",e)}}function a(r,o,n){if(r){var e,t,a="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(e=0;e<a.length;++e)t=a[e],r[t]&&r[t].prototype&&l(o,r[t].prototype,n)}}function l(r,o,n){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){for(var e=o.addEventListener;e._rollbarOldAdd&&e.belongsToShim;)e=e._rollbarOldAdd;var t=function(o,n,t){e.call(this,o,r.wrap(n),t)};t._rollbarOldAdd=e,t.belongsToShim=n,o.addEventListener=t;for(var a=o.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,o,n){a.call(this,r,o&&o._wrapped||o,n)};l._rollbarOldRemove=a,l.belongsToShim=n,o.removeEventListener=l}}r.exports={captureUncaughtExceptions:n,captureUnhandledRejections:t,wrapGlobals:a}},function(r,o){"use strict";function n(r,o){this.impl=r(o,this),this.options=o,e(n.prototype)}function e(r){for(var o=function(r){return function(){var o=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,o)}},n="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId".split(","),e=0;e<n.length;e++)r[n[e]]=o(n[e])}n.prototype._swapAndProcessMessages=function(r,o){this.impl=r(this.options);for(var n,e,t;n=o.shift();)e=n.method,t=n.args,this[e]&&"function"==typeof this[e]&&this[e].apply(this,t);return this},r.exports=n},function(r,o){"use strict";r.exports=function(r){return function(o){if(!o&&!window._rollbarInitialized){r=r||{};for(var n,e,t=r.globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;n=window._rollbarShims[i++];)e||(e=n.handler),n.handler._swapAndProcessMessages(l,n.messages);window[t]=e,window._rollbarInitialized=!0}}}}]);</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>CoinFi</title>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="/landing/css/thesaas.css" rel="stylesheet">
+<link href="/landing/css/style.css" rel="stylesheet">
+
+<link rel="apple-touch-icon" href="/landing/img/apple-touch-icon.png">
+<link rel="icon" href="/landing/img/favicon.png">
+
+<meta property="og:title" content="CoinFi">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta name="twitter:card" content="">
+<script>
+    var _rollbarConfig = {
+        accessToken: "e096d72e2c6442ac924a369ae40065c0",
+        captureUncaught: true,
+        captureUnhandledRejections: true,
+        payload: {
+            environment: "production"
+        }
+    };
+    // Rollbar Snippet
+    !function(r){function o(n){if(e[n])return e[n].exports;var t=e[n]={exports:{},id:n,loaded:!1};return r[n].call(t.exports,t,t.exports,o),t.loaded=!0,t.exports}var e={};return o.m=r,o.c=e,o.p="",o(0)}([function(r,o,e){"use strict";var n=e(1),t=e(4);_rollbarConfig=_rollbarConfig||{},_rollbarConfig.rollbarJsUrl=_rollbarConfig.rollbarJsUrl||"https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.2.10/rollbar.min.js",_rollbarConfig.async=void 0===_rollbarConfig.async||_rollbarConfig.async;var a=n.setupShim(window,_rollbarConfig),l=t(_rollbarConfig);window.rollbar=n.Rollbar,a.loadFull(window,document,!_rollbarConfig.async,_rollbarConfig,l)},function(r,o,e){"use strict";function n(r){return function(){try{return r.apply(this,arguments)}catch(r){try{console.error("[Rollbar]: Internal error",r)}catch(r){}}}}function t(r,o){this.options=r,this._rollbarOldOnError=null;var e=s++;this.shimId=function(){return e},window&&window._rollbarShims&&(window._rollbarShims[e]={handler:o,messages:[]})}function a(r,o){var e=o.globalAlias||"Rollbar";if("object"==typeof r[e])return r[e];r._rollbarShims={},r._rollbarWrappedError=null;var t=new p(o);return n(function(){o.captureUncaught&&(t._rollbarOldOnError=r.onerror,i.captureUncaughtExceptions(r,t,!0),i.wrapGlobals(r,t,!0)),o.captureUnhandledRejections&&i.captureUnhandledRejections(r,t,!0);var n=o.autoInstrument;return o.enabled!==!1&&(void 0===n||n===!0||"object"==typeof n&&n.network)&&r.addEventListener&&(r.addEventListener("load",t.captureLoad.bind(t)),r.addEventListener("DOMContentLoaded",t.captureDomContentLoaded.bind(t))),r[e]=t,t})()}function l(r){return n(function(){var o=this,e=Array.prototype.slice.call(arguments,0),n={shim:o,method:r,args:e,ts:new Date};window._rollbarShims[this.shimId()].messages.push(n)})}var i=e(2),s=0,d=e(3),c=function(r,o){return new t(r,o)},p=d.bind(null,c);t.prototype.loadFull=function(r,o,e,t,a){var l=function(){var o;if(void 0===r._rollbarDidLoad){o=new Error("rollbar.js did not load");for(var e,n,t,l,i=0;e=r._rollbarShims[i++];)for(e=e.messages||[];n=e.shift();)for(t=n.args||[],i=0;i<t.length;++i)if(l=t[i],"function"==typeof l){l(o);break}}"function"==typeof a&&a(o)},i=!1,s=o.createElement("script"),d=o.getElementsByTagName("script")[0],c=d.parentNode;s.crossOrigin="",s.src=t.rollbarJsUrl,e||(s.async=!0),s.onload=s.onreadystatechange=n(function(){if(!(i||this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState)){s.onload=s.onreadystatechange=null;try{c.removeChild(s)}catch(r){}i=!0,l()}}),c.insertBefore(s,d)},t.prototype.wrap=function(r,o,e){try{var n;if(n="function"==typeof o?o:function(){return o||{}},"function"!=typeof r)return r;if(r._isWrap)return r;if(!r._rollbar_wrapped&&(r._rollbar_wrapped=function(){e&&"function"==typeof e&&e.apply(this,arguments);try{return r.apply(this,arguments)}catch(e){var o=e;throw"string"==typeof o&&(o=new String(o)),o._rollbarContext=n()||{},o._rollbarContext._wrappedSource=r.toString(),window._rollbarWrappedError=o,o}},r._rollbar_wrapped._isWrap=!0,r.hasOwnProperty))for(var t in r)r.hasOwnProperty(t)&&(r._rollbar_wrapped[t]=r[t]);return r._rollbar_wrapped}catch(o){return r}};for(var u="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","),f=0;f<u.length;++f)t.prototype[u[f]]=l(u[f]);r.exports={setupShim:a,Rollbar:p}},function(r,o){"use strict";function e(r,o,e){if(r){var t;"function"==typeof o._rollbarOldOnError?t=o._rollbarOldOnError:r.onerror&&!r.onerror.belongsToShim&&(t=r.onerror,o._rollbarOldOnError=t);var a=function(){var e=Array.prototype.slice.call(arguments,0);n(r,o,t,e)};a.belongsToShim=e,r.onerror=a}}function n(r,o,e,n){r._rollbarWrappedError&&(n[4]||(n[4]=r._rollbarWrappedError),n[5]||(n[5]=r._rollbarWrappedError._rollbarContext),r._rollbarWrappedError=null),o.handleUncaughtException.apply(o,n),e&&e.apply(r,n)}function t(r,o,e){if(r){"function"==typeof r._rollbarURH&&r._rollbarURH.belongsToShim&&r.removeEventListener("unhandledrejection",r._rollbarURH);var n=function(r){var e=r.reason,n=r.promise,t=r.detail;!e&&t&&(e=t.reason,n=t.promise),o&&o.handleUnhandledRejection&&o.handleUnhandledRejection(e,n)};n.belongsToShim=e,r._rollbarURH=n,r.addEventListener("unhandledrejection",n)}}function a(r,o,e){if(r){var n,t,a="EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(",");for(n=0;n<a.length;++n)t=a[n],r[t]&&r[t].prototype&&l(o,r[t].prototype,e)}}function l(r,o,e){if(o.hasOwnProperty&&o.hasOwnProperty("addEventListener")){for(var n=o.addEventListener;n._rollbarOldAdd&&n.belongsToShim;)n=n._rollbarOldAdd;var t=function(o,e,t){n.call(this,o,r.wrap(e),t)};t._rollbarOldAdd=n,t.belongsToShim=e,o.addEventListener=t;for(var a=o.removeEventListener;a._rollbarOldRemove&&a.belongsToShim;)a=a._rollbarOldRemove;var l=function(r,o,e){a.call(this,r,o&&o._rollbar_wrapped||o,e)};l._rollbarOldRemove=a,l.belongsToShim=e,o.removeEventListener=l}}r.exports={captureUncaughtExceptions:e,captureUnhandledRejections:t,wrapGlobals:a}},function(r,o){"use strict";function e(r,o){this.impl=r(o,this),this.options=o,n(e.prototype)}function n(r){for(var o=function(r){return function(){var o=Array.prototype.slice.call(arguments,0);if(this.impl[r])return this.impl[r].apply(this.impl,o)}},e="log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","),n=0;n<e.length;n++)r[e[n]]=o(e[n])}e.prototype._swapAndProcessMessages=function(r,o){this.impl=r(this.options);for(var e,n,t;e=o.shift();)n=e.method,t=e.args,this[n]&&"function"==typeof this[n]&&("captureDomContentLoaded"===n||"captureLoad"===n?this[n].apply(this,[t[0],e.ts]):this[n].apply(this,t));return this},r.exports=e},function(r,o){"use strict";r.exports=function(r){return function(o){if(!o&&!window._rollbarInitialized){r=r||{};for(var e,n,t=r.globalAlias||"Rollbar",a=window.rollbar,l=function(r){return new a(r)},i=0;e=window._rollbarShims[i++];)n||(n=e.handler),e.handler._swapAndProcessMessages(l,e.messages);window[t]=n,window._rollbarInitialized=!0}}}}]);
+    // End Rollbar Snippet
+    </script>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-105378428-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 995933950;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+    </script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+<noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995933950/?guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-1064039393"></script>
+<script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-1064039393');
+    </script>
+
+<script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '175229079700938'); // Insert your pixel ID here.
+      fbq('track', 'PageView');
+    </script>
+<noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=175229079700938&ev=PageView&noscript=1"
+    /></noscript>
+
+
+
+<script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','nyhv6');
+    twq('track','PageView');
+    </script>
+
+
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:691132,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+<script type="text/javascript">
+      window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+      heap.load("3291221357");
+    </script>
+
+<script type='text/javascript'>
+    var _vwo_code=(function(){
+    var account_id=323413,
+    settings_tolerance=2000,
+    library_tolerance=2500,
+    use_existing_jquery=false,
+    /* DO NOT EDIT BELOW THIS LINE */
+    f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+    </script>
+
+<script src="/landing/js/core.min.js"></script>
+<script src="/assets/js/ahoy.js"></script>
+<script>ahoy.trackAll();</script>
+<link rel="manifest" href="/manifest.json">
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+<script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(["init", {
+        appId: "91b756ae-dfc8-45ab-b96e-93aa1bf9d474",
+        allowLocalhostAsSecureOrigin: true,
+        autoRegister: true,
+        notifyButton: {
+          enable: false /* Set to false to hide */
+        }
+      }]);
+    </script>
+<script src="/assets/site-996ff63b62e8f5b98955aad60f9776141059f826f3142ec3ffa5dd6dc4b500a9.js"></script>
+</head>
+<body>
+
+<nav class="topbar topbar-expand-md topbar-sticky">
+<div class="container">
+<div class="topbar-left">
+<button class="topbar-toggler">&#9776;</button>
+<a class="topbar-brand mr-64" href="/" style="font-size: 1.25rem">
+<strong>CoinFi</strong>
+</a>
+</div>
+<div class="topbar-right">
+<ul class="topbar-nav nav">
+<li class="nav-item"><a class="nav-link" href="/prototype">框架</a></li>
+<li class="nav-item">
+<a class="nav-link" href="#timeline" data-scrollto=timeline>时间节点</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#ecosystem" data-scrollto="ecosystem">生态系统</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#team" data-scrollto=team>团队</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#token" data-scrollto=token>代币</a>
+</li>
+<li class="nav-item hidden-md-up"><a class="nav-link" href="#contact" data-scrollto="contact">联系我们</a></li>
+<li class="nav-item"><a class="nav-link" href="https://blog.coinfi.com">博客</a></li>
+<li class="nav-item hidden-sm-up"><a class="nav-link" target="_blank" href="https://docs.google.com/document/d/1p6xaFl4nPv1CuJv6F2fkZ6qBq2lBS6ePyFna8QZt1KM/edit">白皮书</a></li>
+<li class="nav-item"><a class="nav-link" href="/">English</a></li>
+</ul>
+<div class="d-inline-flex ml-30">
+&nbsp;
+<a href="https://docs.google.com/document/d/1p6xaFl4nPv1CuJv6F2fkZ6qBq2lBS6ePyFna8QZt1KM/edit" target="_blank" class="btn btn-small btn-outline btn-default hidden-sm-down">
+白皮书
+</a>
+&nbsp;
+<a class="btn btn-small btn-success" href="/register?locale=cn">Join Whitelist</a>
+</div>
+</div>
+</div>
+</nav>
+
+<main class="main-content">
+<div class="container"></div>
+
+<header class="header fadeout header-inverse pb-0 h-fullscreen" style="background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);">
+<canvas class="constellation"></canvas>
+<div class="container">
+<div class="row h-full">
+<div class="col-12 text-center align-self-center">
+<h1 class="fs-48 fw-600 lh-15 hidden-sm-down">最 <span class="text-primary" data-type="先设立的去中心化市场智能平台,民主化的华尔街,强劲的加密货币分析工具"></span></h1>
+<h1 class="fs-35 fw-600 lh-15 hidden-md-up">最 <span class="text-primary" data-type="先设立的去中心化市场智能平台,民主化的华尔街,强劲的加密货币分析工具"></span></h1>
+<br>
+<p class="fs-20 hidden-sm-down">CoinFi提供众包及专业策划研究、分折、交易信号、交易算法及市场动态的消息，让加密货币操盘手得到实时市场智慧去占尽优势。</p>
+<p class="fs-16 hidden-md-up">CoinFi提供众包及专业策划研究、分折、交易信号、交易算法及市场动态的消息，让加密货币操盘手得到实时市场智慧去占尽优势。</p>
+<a class="btn btn-xl btn-round btn-warning fs-20 fw-500 shadow-3 hidden-sm-down" style="color: #000; text-transform: none" href="/register?locale=cn">加入白名单</a>
+<a class="btn btn-lg btn-round btn-warning shadow-3 hidden-md-up" style="color: #000; text-transform: none" href="/register?locale=cn">Join Presale</a>
+<br>
+<br>
+<br>
+<p>距离代币预售的开始时间还剩：</p>
+<div class="col-12 col-md-6 offset-md-3">
+<div id="countdown" class="countdown countdown-uppercase" data-countdown="2018-01-15 00:00:00"></div>
+</div>
+</div>
+<div class="col-12 align-self-end text-center pb-70">
+<a class="scroll-down-2 scroll-down-inverse" href="#overview" data-scrollto="overview"><span></span></a>
+</div>
+</div>
+</div>
+</header>
+
+
+<main class="main-content">
+<a id="press" name="press"></a><div class="container"><br /><br /><div class="row text-center"><div class="col-lg-4 pb-12"><div class="social social-color-brand"><a class="social-telegram text-info" href="https://t.me/coinfi" target="_blank"><div class="fs-30"><i class="fa fa-telegram"></i>&nbsp;Telegram</div></a></div><h3>20172+ <small>members</small></h3></div><div class="col-lg-4 pb-12"><div class="social social-color-brand"><a class="social-facebook" href="https://www.facebook.com/CoinFiProject/" target="_blank"><div class="fs-30"><i class="fa fa-facebook"></i>&nbsp;Facebook</div></a></div><h3>14023+ <small>followers</small></h3></div><div class="col-lg-4 pb-12"><div class="social social-color-brand"><a class="social-reddit" href="https://www.reddit.com/r/CoinFi/" target="_blank"><div class="fs-30"><i class="fa fa-reddit"></i>&nbsp;Reddit</div></a></div><h3>1681+ <small>subscribers</small></h3></div></div><div class="row text-center"><div class="col-lg-6"><p class="lead">ICO Bench Rating: &nbsp;
+<a href="https://icobench.com/ico/coinfi" target="_blank" rel="nofollow" title="CoinFi on ICObench"><img border="0" src="https://icobench.com/rated/coinfi?shape=horizontal&size=s" height="60px" alt="CoinFi ICO rating" /></a></p></div><div class="col-lg-6"><p class="lead">Track ICO Rating: &nbsp;
+<a href="https://www.trackico.io/ico/coinfi/" target="_blank" rel="nofollow" title="CoinFi on TrackICO"><img border="0" src="https://www.trackico.io/widget/horizontal/coinfi/500.png" height="60px" alt="CoinFi TrackICO rating"></a></p></div></div><br /><br /></div>
+<a id="timeline" name="timeline"></a><section class="section bg-gray"><div class="container"><header class="section-header"><small>预期的</small><h2>时间表</h2></header><div class="row gap-y"><div class="col-12 col-md-5"><br /><ul class="timeline"><li class="event" data-date="Nov 1">发表白皮书</li><li class="event" data-date="Nov 10">开始代币销售登记</li><li class="event" data-date="Jan 15">开始预售</li><li class="event" data-date="Feb 8">开始众筹销售</li><li class="event" data-date="Feb 28">代币分配</li><li class="event" data-date="Apr 6">推出Public Beta版</li></ul></div><div class="col-12 col-md-7"><table class="table"><tr><th>总代币供应</th><td class="text-right"><span class="text-info fs-40">~300,000,000</span></td></tr><tr><th>首次发售价格 <br><small>(以太币的价格根据市场变动调整)</small></th><td class="text-right"><div class="text-info fs-40">1 <small class="text-info">ETH</small> = 7500 <small class="text-info">COFI</small></div></td></tr><tr><th>软顶</th><td class="text-right"><span class="text-info fs-40">$3M <small class="text-info">USD</small></span></td></tr><tr><th>硬顶</th><td class="text-right"><span class="text-info fs-40">$15M <small class="text-info">USD</small></span></td></tr><tr><th>接受货币</th><td class="text-right"><span class="text-info fs-40">以太坊</span></td></tr><tr><th>最低供款额<br>[仅限于预售]<br><small>(仅限于预售，众筹时不设最低供款额)</small></th><td class="text-right"><span class="text-info fs-40">1 ETH</span></td></tr><tr><th>最大供款额<br>[仅限于众筹]<br><small>(仅限于众筹，预售时不设最大供款额；<br>作为蓝鲸保护机制)</small></th><td class="text-right"><span class="text-info fs-40">25 ETH</span></td></tr></table></div></div><br /><br /><br /><header class="section-header"><small>先行者奖励</small><h2>分红机制</h2></header><div class="row gap-y"><div class="col-12 col-lg-3"><div class="card card-bordered card-hover-shadow"><div class="card-block"><h5 class="card-title">第1阶段预售<div class="pull-right" style="color: #0e97ff">1月15日至21日</div></h5><p class="card-text"><div class="lead text-center text-success">20%分红</div><br /><canvas id="presale1"></canvas><script>$(function() {
+  var presale1 = document.getElementById("presale1");
+  var presaleChart1 = new Chart(presale1, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: [20, 80],
+        backgroundColor: ['#46da60']
+      }]
+    },
+    options: {
+      legend: { display: false },
+      tooltips: { enabled: false }
+    }
+  });
+});</script></p></div></div></div><div class="col-12 col-lg-3"><div class="card card-bordered card-hover-shadow"><div class="card-block"><h5 class="card-title">第2阶段预售<div class="pull-right" style="color: #0e97ff">1月22日至28日</div></h5><p class="card-text"><div class="lead text-center text-success">15%分红</div><br /><canvas id="presale2"></canvas><script>$(function() {
+  var presale2 = document.getElementById("presale2");
+  var presaleChart2 = new Chart(presale2, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: [15, 85],
+        backgroundColor: ['#46da60']
+      }]
+    },
+    options: {
+      legend: { display: false },
+      tooltips: { enabled: false }
+    }
+  });
+});</script></p></div></div></div><div class="col-12 col-lg-3"><div class="card card-bordered card-hover-shadow"><div class="card-block"><h5 class="card-title">第3阶段预售<div class="pull-right" style="color: #0e97ff">1月29日至2月4日</div></h5><p class="card-text"><div class="lead text-center text-success">10%分红</div><br /><canvas id="presale3"></canvas><script>$(function() {
+  var presale3 = document.getElementById("presale3");
+  var presaleChart3 = new Chart(presale3, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: [10, 90],
+        backgroundColor: ['#46da60']
+      }]
+    },
+    options: {
+      legend: { display: false },
+      tooltips: { enabled: false }
+    }
+  });
+});</script></p></div></div></div><div class="col-12 col-lg-3"><div class="card card-bordered card-hover-shadow"><div class="card-block"><h5 class="card-title">众筹销售<div class="pull-right" style="color: #0e97ff">2月8日至22日</div></h5><p class="card-text text-center" style="line-height: 1.7"><div class="lead text-center text-success">于首1小时内认购可获5%分红</div><div class="text-center text-muted"><small>于首1小时每人最多可买5 ETH</small></div><br /><canvas id="crowdsale"></canvas><script>$(function() {
+  var crowdsale = document.getElementById("crowdsale");
+  var crowdsaleChart = new Chart(crowdsale, {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: [5, 95],
+        backgroundColor: ['#46da60']
+      }],
+      labels: [
+        'Bonus',
+        ''
+      ]
+    },
+    options: {
+      legend: { display: false },
+      tooltips: { enabled: false }
+    }
+  });
+});</script></p></div></div></div></div></div></section>
+<a id="ecosystem" name="ecosystem"></a><section class="section section-inverse overflow-hidden" style="background-color: #293e50"><div class="container"><header class="section-header"><small>平台构成</small><h2>CoinFi生态系统的运作流程</h2><p class="lead">将等同于华尔街智能交易水平的技术带入区块链</p><hr /></header><div class="row"><div class="col text-center"><p><img src="/landing/img/coinfi-ecosystem-transparent.png" /></p><blockquote class="blockquote" style="color: #ffffff">CoinFi是第一个加密货币分权市场智能平台， 这一切从CoinFi代币开始。<br /><br />作为CoinFi代币持有者，您将有权使用CoinFi用最尖端技术开发的加密货币财务智能平台：<strong>财务媒体</strong>和<strong>交易技术</strong>。</blockquote></div></div><br /><br /><div class="row gap-y"><div class="col-md-8"><h4>加密货币财务媒体 <br /><small>调研，分析和市场走势新闻</small></h4><p>CoinFi平台的媒体部分提供加密货币调研、分析以及市场走势新闻。主要造成价格波动的相关信息都直接显示在货币实时价格表的各个节点上，供点击阅读。</p><p>尽管所有加密货币调研、分析和市场新闻在互联网上都已经存在，但至今市场上还没有一个像彭博终端那样的典范——能够向交易者提供其所需的所有相关市场知识、可以查阅和分析实时加密货币市场数据，以便进行加密货币交易的技术。</p><p>基本价值不体现在表面。不是每一个投资人都有时间浏览Twitter，Reddit，论坛，聊天群和谷歌等，从而挖掘出潜在的，与交易相关的隐藏趋势。通过深入的研究，投资者和交易人通常能挖掘出极其有价值的信息，但是这非常花时间。</p><p>我们的技术系统聚集所有的信息，之后由我们的内部编辑团队收集并过滤这些新闻资源，以确保只有最重要的新闻才显示在我们的平台上，从而优化信噪比，省下您大量的调研时间和精力。</p><p>另外，CoinFi鼓励社区分析师发掘和发布经过CoinFi的众包事实检查系统以及内部监控人员检查过的有用信息。作为生态系统的一部分，这些分析师将受到代币奖励。</p></div><div class="col-md-4"><img src="/landing/img/coinfi-price-charts.png" /></div></div><br /><br /><div class="row gap-y"><div class="col-md-4"><img src="/landing/img/coinfi-subscription-tier.png" /></div><div class="col-md-8"><h4>交易技术 <br /><small>交易信号，运算法则和机器人</small></h4><p>CoinFi平台的技术部分不仅将华尔街的尖端工具带入加密货币市场，而且向普通加密货币投资者开放使用。</p><p>目前，加密货币市场上的交易信号和工具都非常有限。事实上，CoinFi的第一个交易信号的形成是当联合创始人Timothy Tam开始进行加密货币交易时，他意识到他根本没法使用任何他在任职对冲基金经理时使用的工具。</p><p>CoinFi的技术平台提供交易信号，交易运算法则，自动交易机器人以及数据信息。该平台包括前华尔街技术人员开发的内部软件以及一个提供众包交易信号的市场。所有贡献交易信号的用户都将收到与社区估值相对应的CoinFi代币。</p><p>在我们的视频里包括CoinFi开发的交易信号示例，请观看。</p></div></div><div class="row"><div class="col-md-4"><p><script src="https://fast.wistia.com/embed/medias/r26oz3e5vb.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><span class="wistia_embed wistia_async_r26oz3e5vb popover=true popoverAnimateThumbnail=true videoFoam=true" style="display:inline-block;height:100%;width:100%">&nbsp;</span></div></div><a href="https://blog.coinfi.com/how-you-can-make-risk-free-money-by-arbitraging-crypto/" target="_blank"><strong>检测交易平台套利机遇，以获取无风险收益</strong></a></p></div><div class="col-md-4"><p><script src="https://fast.wistia.com/embed/medias/47g3uf7zbi.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><span class="wistia_embed wistia_async_47g3uf7zbi popover=true popoverAnimateThumbnail=true videoFoam=true" style="display:inline-block;height:100%;width:100%">&nbsp;</span></div></div><a href="https://blog.coinfi.com/detecting-abnormal-trading-volume/" target="_blank"><strong>不寻常的交易量如何来帮助预测加密货币的价格走势</strong></a></p></div><div class="col-md-4"><p><script src="https://fast.wistia.com/embed/medias/20ul2epoy2.jsonp" async></script><script src="https://fast.wistia.com/assets/external/e-v1.js" async></script><div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><span class="wistia_embed wistia_async_20ul2epoy2 popover=true popoveranimatethumbnail=true videofoam=true" style="display:inline-block;height:100%;width:100%">&nbsp;</span></div></div><a href="https://blog.coinfi.com/how-you-can-make-50-profit-in-12-hours-trading-neo/" target="_blank"><strong>真实交易量检测案例：交易NEO，在12个小时内收益50%</strong></a></p></div></div></div></section><style type="text/css">.section-inverse .card .card-block p,
+.section-inverse .card .card-block span,
+.section-inverse .card .card-block ul,
+.section-inverse .card .card-block h2 {
+  color: #333;
+}</style><section class="section section-inverse overflow-hidden" style="background-color: #333"><div class="container"><header class="section-header"><h2>CoinFi代币在这个生态系统中起什么作用？</h2><hr /><p>CoinFi代币（COFI）有两个主要效用功能。它不仅用于开启CoinFi市场智能平台的大门，对于社区贡献者向CoinFi的生态系统贡献他们的调研成果、分析、新提示以及交易信号，CoinFi代币也用于对这些贡献者的奖励。 </p></header><div class="row gap-y"><div class="col-12"><h4>代币可用于访问3层CoinFi市场智能平台：</h4></div></div><div class="row gap-y"><div class="col-12 col-lg-4 col-md-6"><div class="card card-bordered"><div class="card-block"><h2 class="card-title"><img src="https://png.icons8.com/color/48/heart-balloon.png" />基础访问层</h2><div class="card-text"><p class="lead">用户投入1万COFI代币。<sup>*</sup></p><p>要求代币保持投入，以帮助奖励代币持有者并减少价格波动。</p><ul><li>市场走势信息</li><li>大部分调研和分析</li><li>基本交易信号</li><li>高级投资组合管理工具</li></ul><span><small class="pull-right" style="line-height: 1.6em">* 可调整。此代币投入最低额度对代币销售参与者不适用。 </small></span></div></div></div></div><div class="col-12 col-lg-4 col-md-6"><div class="card card-bordered"><div class="card-block"><h2 class="card-title"><img src="https://png.icons8.com/color/48/party-baloons.png" />高级访问层</h2><div class="card-text"><p class="lead" style="line-height: 1.65em">使用者用COFI代币付订阅费，并投入基础层所要求的代币额度。</p><span>包含所有基础层功能，外加：</span><ul><li>额外研究和分析</li><li>以邮件和短信方式发送实时分析信息</li><li>运算法则（例如：最佳交易价格）</li><li>情绪分析</li><li>高级数据信息</li></ul></div></div></div></div><div class="col-12 col-lg-4 col-md-6"><div class="card card-bordered"><div class="card-block"><h2 class="card-title"><img src="https://png.icons8.com/color/48/hot-air-balloon.png" />拍卖 <small>独家访问层</small></h2><div class="card-text"><p class="lead">拍卖出价要求使用COFI代币。</p><p style="line-height: 1.7em">某些平台功能的价值会随用户人数的增加而衰减。为了保持这些功能的价值，访问权将以拍卖形式授予，从而决定市场价格。</p><ul><li>高级交易信号</li><li>套利机器人</li><li>敬请期待更多功能！</li></ul></div></div></div></div><div class="col"><p>除上述收费访问层之外，CoinFi平台也提供免费访问层。</p><div class="card card-bordered"><div class="card-block"><h2 class="card-title"><img src="https://png.icons8.com/color/48/party-baloon.png" />免费访问层</h2><div class="card-text"><p class="lead">任何用户可随时访问CoinFi的基本财务媒体平台。</p><p>我们向加密货币社区免费提供基本财务媒体平台功能。与谷歌财务和雅虎财务相似，该访问层的用户可在主要的加密货币基本价格表的各个节点上点击阅读造成加密货币价格波动的相关新闻，外加一个基本投资组合管理工具供用户免费使用。</p></div></div></div></div></div><br /><br /><br /><div class="row gap-y"><div class="col-sm-2"><img src="https://png.icons8.com/color/96/community-grants.png" /></div><div class="col-sm-10"><h4>社区贡献着 <small>群众智慧</small></h4><p>CoinFi有一群了不起的贡献者，我们用CoinFi代币来奖励他们。这些社区会员持续提供众包智慧和信息，促进CoinFi平台不断强大。</p><p>从媒体这方面看，贡献者积极地提供调研、分析、实时提示以及事实检查服务。</p><p>从技术这方面看，贡献者提供交易信号以及在CoinFi市场上拍卖而取得的信息。</p></div></div><div class="row gap-y"><div class="col-sm-2"><img src="https://png.icons8.com/color/96/detective.png" /></div><div class="col-sm-10"><h4>质量保证</h4><p>CoinFi是如何保证奖励的公平分配，且确保品质的？</p><p>无论是调研、分析、一个新闻提示、或者是一个交易信号，贡献者提供的任何信息都经过多层过滤，以确保用户在获取群众智慧的同时不被嘈杂声干扰。</p></div></div><br /><br /><div class="row gap-y"><div class="col-md-6"><h5>众包事实检测</h5><p>首先，所有贡献者所提供的信息都通过众包事实检测和同行评审。</p><h5>内部检测和编辑团队</h5><p>在CoinFi的生态系统中，CoinFi的内部检测人员对所有信息进行最终过滤。他们监控平台的不良行为者、诈骗以及试图玩弄系统而获取代币奖励。</p><p>最终的结果是一个提供高水准调研分析和实时市场走势新闻的平台。该平台更促进尖端交易工具的开发，这些工具对每一位交易者、资金管理人和加密货币投资者都至关重要。</p></div><div class="col-md-6"><h5>同行评审</h5><p>所有在CoinFi生态系统中的用户都有权赞同和不赞同。而且，每个用户的身份都通过区块链的校验以防止Sybil攻击（或被认为是马甲）。根据行为表现，每个用户在平台上都有一个信用分。</p><p>CoinFi的信用分运算法则确保所显示的信息质量，同时拒绝错误信息。</p><p>自动质量保证过滤器包含：</p><ul><li>通过区块链进行身份校验</li><li>设立黑名单</li><li>拼写以及语法检查</li><li>机器学习垃圾信息监测运算法则</li></ul></div></div></div></section>
+
+<a id="team" name="team"></a>
+<section class="section overflow-hidden">
+<div class="container">
+<header class="section-header">
+<small>创始人</small>
+<h2>团队</h2>
+<hr>
+</header>
+<div class="row gap-y">
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="/landing/img/team/timothytam.jpg" width="256" alt="Timothy Tam">
+<h5>Timothy Tam</h5>
+<small>联合创始人</small>
+<p>10年以上股权交易和对冲基金经验。职业生涯从高盛亚洲开始，其后在两家分别管理10亿美元以上资产的亚洲对冲基金担任高级交易员。他最近的职务是一家专注于事件交易的亚洲多空策略对冲基金的联合创始人。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/ttam-0190212/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="/landing/img/team/hanchang.jpg" width="256" alt="Han Chang">
+<h5>Han Chang</h5>
+<small>联合创始人</small>
+<p>波士顿大学电脑科学硕士。早期比特币投资者，曾创立过一家中国比特币交易平台。之前在MIT林肯实验室、OkCupid实验室和Lime经纪公司任职。拥有8年以上开发网页应用程序和黑盒股权交易算法的专业经验，他开发的产品至今有1000万以上的用户使用。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/hanchang0/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="/landing/img/team/natetsang.jpg" width="256" alt="Nate Tsang">
+<h5>Nate Tsang</h5>
+<small>联合创始人</small>
+<p>拥有阿尔伯塔大学法学院法学博士学位。7年以上在媒体新创公司作为成长骇客和开发多个从零发展至累计1000万以上网页访问量的网路资产的经验。联合创始了一个面向网络市场营销人员的关键字智能平台，该平台于2016年被收购。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/nate-tsang-3a493a153/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+<br>
+<div class="row gap-y">
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/jon-myers.jpg" width="256" alt="Jon Myers">
+<h5>Jon Myers</h5>
+<small>产品和设计</small>
+<p>5家以上新创公司的创始人。综合心理学、经济学和商业策略，运用产品设计，使之转化为经济价值。多个ICO的顾问，包括<a href="https://www.astronaut.capital/" target="_blank">Astronaut Capital</a>和<a href="https://selfkey.org" target="_blank">SelfKey</a>。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/jonmy/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/glen.jpg" width="256" alt="Glen Thomson">
+<h5>Glen Thomson</h5>
+<small>运营总监</small>
+<p>老练的企业家，拥有成功的退出记录，搜索引擎优化机构CiteWorks的创始人和CEO，热心的早期电子加密货币投资者，获过奖的摄影师。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/glenthom/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/dom.jpg" width="256" alt="Dominic Wells">
+<h5>Dominic Wells</h5>
+<small>内容总监</small>
+<p>自2012任在线生意业主，在2017年获得1百万以上美元的营收，20几位员工遍布全球，被Entrepreneur.com几次专题报道，digital entrepreneurs的会议发言人。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/dominic-wells-55946b91/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAF_AAAAJGFjZGJkMGMzLWYwNTItNGEzNy1hZDU5LWMyNmQyODg0ZDYzNg.jpg" width="256" alt="Nav Aulakh">
+<h5>Nav Aulakh</h5>
+<small>社区经理</small>
+<p>程序化数字媒体计划师，转行至客户方面，以社区管理和市场营销来帮助科技SaaS新创公司。经验丰富的电子加密货币投资者，拥有数学风险管理（科学学士）和金融工程学（科学硕士）的背景。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/navneet-aulakh-73161826"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAScAAAAJGJiOTkxMWY5LTgyMzEtNGJkZi05Mzg3LTQwMjM2YmIyNDI2Ng.jpg" width="256" alt="Duc Tran">
+<h5>Duc Tran</h5>
+<small>研究分析师</small>
+<p>经验丰富的研究分析师，在金融服务行业有调查财政和政府政策对市场走势影响的深度咨询经验。在使用STATA、R和Excel的统计方法上有经验。拥有普林斯顿大学硕士学位。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/duc-tran-05b4242a/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAOKAAAAJGU5NzI4OTQ1LTJhZWEtNDAzYS1iMTg5LWE3NjFkZjdiNTU1NQ.jpg" width="256" alt="Prachi Kanvinde">
+<h5>Prachi Kanvinde</h5>
+<small>研究分析师</small>
+<p>拥有在富达投资、UBS‘、雷曼兄弟和花旗银行的15年银行业经验，是覆盖固定收入证券、股市、外汇交易、商品资产类别的金融分析师。拥有伦敦商学院的EMBA学位、电脑科学的工程学位。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/prachikanvinde/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://media.licdn.com/media/p/2/005/021/148/237db9a.jpg" width="256" alt="David Danzeiser">
+<h5>David Danzeiser</h5>
+<small>PPC市场营销经理</small>
+<p>Thrive Themes的有偿市场经理。这家公司为领先的WordPress主题开发提供商，专注于转化的优化：经常负责6位数的点击付费广告活动，是吸引Facebook社区交互的专家。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/david-danzeiser-20b0b717/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAe0AAAAJDU5MTY2NDA1LWQxYjUtNDRkYi1iOGFjLTZlOGNkZWZjZTAyNw.jpg" width="256" alt="Sam Peacey">
+<h5>Sam Peacey</h5>
+<small>全栈网站工程师</small>
+<p>经验丰富的全栈网站设计师（Ruby on Rails、JavaScript，包括ES6、jQuery、React、Babel），业已推出多个面向几百万用户的生产网站应用。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/sam-peacey-2b016b121/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+<p>
+<br>
+</p>
+<header class="section-header">
+<h3>顾问团</h3>
+<hr>
+</header>
+<div class="row gap-y">
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/media/AAIABADGAAAAAQAAAAAAAApjAAAAJDYxMjhhN2ViLTU5ZTgtNGU5OS04ZDlmLTUyMTFhMjdjYjg5Yg.jpg" width="256" alt="Roger Lim">
+<h5>Roger Lim</h5>
+<small>顾问</small>
+<p>
+资深天使投资人及区块链投资人，Qlink Foundation董事，<a href="https://bluzelle.com/" target="_blank">Bluzelle</a>、<a href="https://selfkey.org/" target="_blank">SelfKey</a>及<a href="https://www.thekey.vip/" target="_blank">TheKey</a>顾问，且任专注于中国科技产业投资的风险投资基金合伙人。他同时还是个成功的企业家，创办了主营云主机业务的WebVisions集团，现有超过200名员工及26000多个客户。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/limroger/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/media/p/8/000/28f/15c/012ba94.jpg" width="256" alt="Deven Soni">
+<h5>Deven Soni</h5>
+<small>顾问</small>
+<p>前高盛、Lazard和Highland Capital的投资银行家，负责部署3亿美元资金的主要投资者。目前是Wired Investors负责数字资产和加密电子货币隐私权益策略的总合伙人。许多成功ICO的策略顾问，包括<a href="https://polymath.network/" target="_blank">Polymath</a>和<a href="https://vyral.network/" target="_blank">Vyral</a>。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/dsoni/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/media/AAEAAQAAAAAAAAhbAAAAJGQ3ODVjMGE1LTc5OWYtNDQ3NS04ZWZlLWIxZTRjMjIzYWExMg.jpg" width="256" alt="Tom Howard">
+<h5>Tom Howard</h5>
+<small>顾问</small>
+<p>区块链投资者，<a href="http://blockrepublic.io/" target="_blank">Block Republic</a>创始人。这家公司投资于为加密电子货币的投资者和创始人提供研究、教育、工具和建立行业联系的社区，运营着第一家加密电子货币职位公告板。是坐落于旧金山的快速原型软件开发工作室 - Digital Engine的前创始人和CEO。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/thowar2/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/032/0ce/1b50187.jpg" width="256" alt="Erika Evasdottir">
+<h5>Erika Evasdottir</h5>
+<small>顾问</small>
+<p>哈佛大学毕业，12年以上在纽约和亚洲的法律经验。曾为华尔街公司M&amp;A美国和香港公司，任公司和证券法顾问。110亿美元对冲基金 - Pine River Capital的法律主管、公司顾问、首席合规官。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/erikaevasdottir/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/media/p/3/000/074/20e/0851145.jpg" width="256" alt="Alexander Svanevik">
+<h5>Alexander Svanevik</h5>
+<small>顾问</small>
+<p>Schibsted媒体集团的数据科学经理。8年以上经验，目前领导一个有7名数据科学家的小组从数据中创建商业价值。曾任BearingPoint管理顾问，Codeus人工智能联合创始人。经验丰富的加密电子货币交易者，运营 <a href="http://icowhitelists.com/">ICO Whitelists</a>。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/alexander-svanevik-152198a/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/media/AAEAAQAAAAAAAAiVAAAAJGMwY2YwNzRmLWFjNzUtNDRmZS04YWRmLWZmNGRhODcyYjE2OA.jpg" width="256" alt="Nate Ginsburg">
+<h5>Nate Ginsburg</h5>
+<small>顾问</small>
+<p>有7位数退出记录的企业家、投资者、国际演讲者。Nate为加密电子货币先行者，热心于去中心化科技、分布式团队和瑜伽。Nate也管理7位数的自投资加密电子货币投资组合。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/nathanielginsburg/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://blog.coinfi.com/wp-content/uploads/2017/12/zachary-pardes.jpg" width="256" alt="Zachary Pardes">
+<h5>Zachary Pardes</h5>
+<small>顾问</small>
+<p>综合通讯专业人士，在为Virgin、E*TRADE、B2R Finance、Citi和Investing.com领导盈利媒体广告活动方面有10年经验。为纽约市/硅谷的新创公司管理1百万美元以上的数字策略。西北大学硕士。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/zpardes/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://pbs.twimg.com/profile_images/772526598054551552/FwKV2lO3_400x400.jpg" width="256" alt="Bernard Huang">
+<h5>Bernard Huang</h5>
+<small>顾问</small>
+<p>硅谷种子基金500 Startups的常驻发行黑客。这家基金是诸如Twilio、Credit Karma和Grab这些公司的早期投资商。曾任42Floors增长市场营销主管。目前运营一家拥有内容表现优化SaaS产品的公司<a href="https://www.clearscope.io">Clearscope</a>。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/bernardjhuang"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/media/AAIA_wDGAAAAAQAAAAAAAA2QAAAAJDY4Mjg0YjBjLWQzMDYtNGUzOC05MGJkLTM2YWI0MGMyNmY3OA.jpg" width="256" alt="Julia Kastner">
+<h5>Julia Kastner</h5>
+<small>顾问</small>
+<p>哈佛商学院毕业，曾在一家总计已经筹集了1亿2千万美元的新创教育公司 - General Assembly任高级产品经理。目前在一家510亿规模、基于数据科学做出决策的投资公司 - Two Sigma。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/juliakastner/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+<div class="col-12 col-md-4 team-2">
+<img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAwDGAAwAAQAAAAAAAA3YAAAAJDIyZWNhOGYwLWM1MWYtNDMxZi1hYzZmLWYzMGQ4ODI2MjdmYg.jpg" width="256" alt="Tommy Griffith">
+<h5>Tommy Griffith</h5>
+<small>顾问</small>
+<p>曾任Paypal和AirBnB的搜索引擎优化（SEO）经理，市场营销教育公司Clickminded的创始人：负责为几个多国公司吸引呈指数型有机增长的在线流量。</p>
+<div class="social social-boxed social-rounded social-gray">
+<a class="social-linkedin" href="https://www.linkedin.com/in/tommygriffith/"><i class="fa fa-linkedin"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="section bg-gray"><div class="container"><header class="section-header"><small>预计</small><h2>路线图</h2><p class="text-muted" style="font-size: 12px;">下面概述的路线图可能根据用户反馈、市场条件和竞争格局而修改：它的目的仅在于解释CoinFi计划在平台上所实施功能的概览。</p></header><div class="accordion" id="roadmap"><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q1">2018Q1：平台基础</a></h5><div class="in collapse" id="roadmap2018Q1"><div class="card-block"><ul><li>覆盖每个电子加密货币价格图表的资讯和内容聚合</li><li>获得加密电子货币的分钟级历史价格数据和市场数据资讯</li><li>开发编辑程序，开始针对现有电子加密货币的资讯聚合进行内部汇编</li><li>搜索和过滤功能</li><li>用户验证和授权</li><li>包括赞/踩和分享的社交功能</li><li>内容分级、质量控制和欺诈探测的机器学习算法的原型</li><li>已发行平台的公开测试版</li></ul></div></div></div><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q2">2018Q2：个人化</a></h5><div class="in collapse" id="roadmap2018Q2"><div class="card-block"><ul><li>定制化加密电子货币投资组合仪表盘</li><li>定制化资讯递送/观察清单</li><li>特定加密电子货币资讯递送的定制化电子邮件订阅</li><li>允许用户跟从其他投资组合</li><li>交易信号的初始测试版本（见下）</li></ul></div></div></div><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q3">2018Q3：高级订阅</a></h5><div class="in collapse" id="roadmap2018Q3"><div class="card-block"><ul><li>为高级功能和高级订阅，接受权益累积的代币</li><li>每个电子加密货币实时资讯数据的情感分析</li><li>接受社区内容贡献</li></ul></div></div></div><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q4">2018Q4：交易信号</a></h5><div class="in collapse" id="roadmap2018Q4"><div class="card-block"><ul><li>异常波动率探测</li><li>异常价格走势探测</li><li>异常成交量探测</li><li>社交媒体被提及次数增加探测</li><li>最佳价格交易所识别</li><li>最佳币种对识别</li><li>源代码发布探测</li><li>启动针对交易信号的高级订阅</li><li>接受由社区贡献的交易信号</li></ul></div></div></div><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2019Q1">2019Q1：交易算法</a></h5><div class="in collapse" id="roadmap2019Q1"><div class="card-block"><ul><li>VWAP （成交量加权平均价）</li><li>TWAP （时间加权平均价）</li><li>BWAP （块加权平均价）</li><li>狙击手</li><li>成交量百分比</li><li>目标关闭（Target Close）</li><li>滑点</li><li>启动交易算法的高级订阅</li><li>接受由社区贡献的交易算法</li></ul></div></div></div><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2019Q2">2019Q2：拍卖框架</a></h5><div class="in collapse" id="roadmap2019Q2"><div class="card-block"><ul><li>开发拍卖平台</li><li>隐私性的拍卖</li><li>荷兰拍卖</li><li>逆向拍卖</li><li>开发给卖家留评论的功能</li><li>拍卖支付的第三方保管服务</li></ul></div></div></div><div class="card"><h5 class="card-title"><a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2019Q3">2019Q3：组合和定制信号</a></h5><div class="in collapse" id="roadmap2019Q3"><div class="card-block"><ul><li>适于定制信号的平台架构</li><li>适于定制信号的用户界面/用户体验</li><li>组合信号时的拖放能力</li><li>定制警报</li></ul></div></div></div></div></div></section>
+
+<a id="overview" name="overview"></a>
+<section class="section section-inverse" style="background: #040707">
+<div class="container-fluid">
+<header class="section-header">
+<small>概览</small>
+<h2>CoinFi如何把华尔街水平的交易情报带到区块链</h2>
+</header>
+<div class="row gap-y">
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon">
+<img src="/landing/img/Trading Signals Polygon@2x.png" width="256" alt="Trading Signals">
+</div>
+<div class="feature-description">
+<h5>对冲基金口径交易信号</h5>
+<p>使用经过验证的对冲基金模型所开发的内部专有和众包交易信号，确保交易者在竞争中的优势。</p>
+<a class="btn btn-outline btn-primary no-shadow" href="#trading-signals" data-scrollto="trading-signals">阅读更多</a>
+</div>
+</div>
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon">
+<img src="/landing/img/Real Time News Polygon@2x.png" width="256" alt="Real Time News">
+</div>
+<div class="feature-description">
+<h5>实时信息优势</h5>
+<p>针对有规划、相关和市场走势的资讯和事件，众包打造为每个交易者量身定做的实时警报，帮助他们更明智地投资。</p>
+<a class="btn btn-outline btn-primary no-shadow" href="#real-time-news" data-scrollto="real-time-news">阅读更多</a>
+</div>
+</div>
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon">
+<img src="/landing/img/Financial Analysis Polygon@2x.png" width="256" alt="Trading Signals">
+</div>
+<div class="feature-description">
+<h5>使用华尔街科技开发的交易算法</h5>
+<p>算法由华尔街专业人士，使用统计套利模型和其他先进科技设计，<strong>保证</strong>交易者总是得到“最佳成交”价格。</p>
+<a class="btn btn-outline btn-primary no-shadow" href="#trading-algorithms" data-scrollto="trading-algorithms">阅读更多</a>
+</div>
+</div>
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon">
+<img src="/landing/img/Decentralization Polygon@2x.png" width="256" alt="Trading Signals">
+</div>
+<div class="feature-description">
+<h5>华尔街的去中心化</h5>
+<p>停止华尔街集权，加入能够智能运用群体智慧的代币经济，提供新闻、研究、分析、金融模型和交易信号。</p>
+<a class="btn btn-outline btn-primary no-shadow" href="#financial-analysis" data-scrollto="financial-analysis">阅读更多</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<a id="platform" name="platform"></a>
+<section class="section bg-gray">
+<div class="container">
+<header class="section-header">
+<small>能力</small>
+<h2>平台</h2>
+</header>
+<a id="trading-signals" name="trading-signals"></a>
+<div class="card card-shadowed">
+<div class="card-block">
+<div class="row gap-y align-items-center">
+<div class="col-12 col-md-5 text-center">
+<img src="/landing/img/Trading Signals Simple@2x.png" alt="Trading Signals" class="w-half">
+</div>
+<div class="col-12 col-md-7">
+<h4>对冲基金口径交易信号</h4>
+<p>
+市场输入，例如价格、成交量、社会信号和资讯，将被提供给内部和用户贡献的、以机器学习算法覆盖的模型，输出智能交易信号。
+</p>
+<p>
+这些信号能以短信、电子邮件、推送通知或API网络钩手的方式，生成关于市场条件变动的实时警报，通知交易者。
+</p>
+<p>使用这些信号来探测异常走势的交易者，可以迅速利用信息，先拔头筹，赢得交易。</p>
+</div>
+</div>
+<br>
+<div class="row no-gap text-center">
+<div class="col-12 col-md-6 p-20">
+<div class="card card-bordered">
+<div class="card-block">
+<p><img src="/landing/img/price-movement.png"></p>
+<h6>识别大庄家价格操纵</h6>
+<p class="small">使用许多高频对冲基金在股市使用的同样定量模型，CoinFi能够容易地探测大庄家的市场操纵和异常价格行动。</p>
+<a class="btn btn-sm btn-primary" target="_blank" href="/identify-whale-price-manipulation">了解更多</a>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 p-20">
+<div class="card card-bordered">
+<div class="card-block">
+<p><img src="/landing/img/about-to-moon.jpg" style="margin-top: 10px"></p>
+<h6>探测即将暴涨的币种</h6>
+<p class="small">CoinFi的算法接受输入，例如价格、成交量和波动率，通过历经实践检验的华尔街黑盒定量和统计模型进行处理，为即将到来的异常价格走势发出<strong>早期警报</strong>。</p>
+<a class="btn btn-sm btn-primary" target="_blank" href="/detect-coins-about-to-moon">了解更多</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+<a id="real-time-news" name="real-time-news"></a>
+<div class="card card-shadowed">
+<div class="card-block">
+<div class="row gap-y align-items-center">
+<div class="col-12 col-md-7">
+<h4>实时信息优势</h4>
+<p>现在，尝试发现紧急交易资讯、警报和异常价格走势，无异于大海捞针。信息被诸如Slack、Telegram、Twitter和Reddit等多个渠道分散。</p>
+对于如下交易者每天都要反复询问的问题，没有速成或容易的答案：
+<ul>
+<li>在最近的24小时内，哪些币种有异常价格和成交量？</li>
+<li>我可以用来赶上行情的、这个币种在历史上的市场走势是什么？</li>
+<li>对这个特定的币种，哪里有高质量的研究性内幕报道？</li>
+</ul>
+<p>CoinFi数据库将以现有工具无法做到的方式，使得用户监测和分析实时加密电子货币市场资讯。众包和机器学习算法成为最优质和最相关的金融分析的铺路石。</p>
+</div>
+<div class="col-12 col-md-5 text-center">
+<img src="/landing/img/Real Time News Simple@2x.png" alt="Real Time News" class="w-half">
+</div>
+</div>
+<br>
+<div class="row no-gap text-center">
+<div class="col-12 col-md-6 p-20">
+<div class="card card-bordered">
+<div class="card-block">
+<p><img src="/landing/img/neo-news.png" style="padding: 16px 0"></p>
+<h6>发现所有可以使得NEO暴涨的相关资讯</h6>
+<p class="small">凭借通过机器学习进行策略性管理、覆盖历史价格数据的相关最新资讯，快速跟上任何币种的历史。</p>
+<a class="btn btn-sm btn-primary disabled" target="_blank" href="#">敬请期待</a>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 p-20">
+<div class="card card-bordered">
+<div class="card-block">
+<p><img src="/landing/img/omg-research.png"></p>
+<h6>显示所有关于OmiseGo（OMG）的深度内幕研究性报道</h6>
+<p class="small">来自思想领袖的高质量金融分析信手可得，使交易者能够获得洞察力，以快速熟悉一个新币种。</p>
+<a class="btn btn-sm btn-primary disabled" target="_blank" href="#">敬请期待</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+<a id="trading-algorithms" name="trading-algorithms"></a>
+<div class="card card-shadowed">
+<div class="card-block">
+<div class="row gap-y align-items-center">
+<div class="col-12 col-md-4 text-center">
+<img src="/landing/img/Financial Analysis Simple@2x.png" alt="Trading Algorithms" class="w-half">
+</div>
+<div class="col-12 col-md-8">
+<h4>使用华尔街科技开发的交易算法</h4>
+<p>由华尔街专业人士设计的CoinFi算法，使用统计套利模型，保证交易者总是获得“最佳成交”价格。</p>
+<p>“最佳成交”价格包括在最经济的交易所买入和/或买入最经济的币对，外加防止其他交易者在您前面下订单的保护性措施。</p>
+<p>CoinFi内部模型显示，对平均每天进行一次交易的交易者来说，<em>每次交易平均省下0.5%</em>，积累下来就是<strong>额外的每年182%的ROI</strong>。</p>
+</div>
+</div>
+<br>
+<div class="row no-gap text-center">
+<div class="col-12 col-md-6 p-20">
+<div class="card card-bordered">
+<div class="card-block">
+<p><img src="/landing/img/markus-spiske-109588.jpg" style="width: 300px"></p>
+<h6>隐匿交易和尽量不要领跑</h6>
+<p class="small">CoinFi移植了对冲基金管理公司采用的同样交易算法，例如VWAP、狙击手、冰山和滑点算法，并且符合<strong>隐匿和强化</strong>您交易行为的原则，以赢得您订单成交的优势。</p>
+
+<a class="btn btn-sm btn-primary disabled" target="_blank" href="#">敬请期待</a>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 p-20">
+<div class="card card-bordered">
+<div class="card-block">
+<p><img src="/landing/img/nasa-53884.jpg" style="width: 300px"></p>
+<h6>始终如一地识别最佳价格的交易所</h6>
+<p class="small">快速和轻易地确定，那个交易所可以在考虑币对价格、波动率和流动性的的情况下给您“最佳成交”价格，以压出本来会流失的额外利润。</p>
+
+<a class="btn btn-sm btn-primary disabled" target="_blank" href="#">敬请期待</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+<a id="financial-analysis" name="financial-analysis"></a>
+<div class="card card-shadowed">
+<div class="card-block">
+<div class="row gap-y align-items-center">
+<div class="col-12 col-md-7">
+<h4>给华尔街去中心化</h4>
+<p>现在，仅有每年花费巨款的精英们，才有高盛公司股市研究报告、专有交易模型和秘密算法的访问权限。当华尔街快速转移至加密电子货币领域时，一个去中心化的、可以同整个社区分享资讯、信号、金融模型、交易信号和算法的平台的存在，就显得史无前例地迫在眉睫了。</p>
+<p>CoinFi代币经济是可持续的生态系统，它激励研究人员、分析师、管理者和开发人员做出贡献。它为根据贡献的质量而智能化地奖励用户而设计。</p>
+<p>科学证据始终如一地证明，一个聪明的投资者群体提供更好的洞察力和更好的预测。CoinFi代币为这些群体赋能。<a href="https://t.me/coinfi">加入我们</a>，我们能够比年收入1百万美元的高盛分析师做出更好的预测。</p>
+</div>
+<div class="col-12 col-md-5 text-center">
+<img src="/landing/img/Decentralization Simple@2x.png" alt="Decentralization of Wall Street" class="w-half">
+</div>
+</div>
+<br>
+<div class="row gap-y">
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon"><i class="fa fa-search"></i></div>
+<div class="feature-description">
+<h6>奖励对不良行为者的曝光</h6>
+<p>社区的调查成员，能够因为进入“垃圾代币”中实施尽职调查，并曝光电子加密货币生态系统中的不良行为者，“在CoinFi赢得金融和社会双方面的奖励。</p>
+</div>
+</div>
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon"><i class="fa fa-newspaper-o"></i></div>
+<div class="feature-description">
+<h6>深度和广泛的山寨币报道</h6>
+<p>CoinFi有激励性的结构，鼓励更多在新兴山寨币方面的研究和发布。因为缺少市场规模，它们通常不被主流所报道。</p>
+</div>
+</div>
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon"><i class="fa fa-globe"></i></div>
+<div class="feature-description">
+<h6>多样的观点</h6>
+<p>作为一个独立平台，CoinFi支持更广泛多样的观点：目前，许多金融记者仅被鼓励发布正面的研究结果，这种做法对这个行业有损害。</p>
+</div>
+</div>
+<div class="col-12 col-md-6 feature-3">
+<div class="feature-icon"><i class="fa fa-group"></i></div>
+<div class="feature-description">
+<h6>群体的包容和智慧</h6>
+<p>凭借强大社区，CoinFi能够运用群体，召集专家通力合作，开发优于华尔街的交易科技，使得人人可用。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<a id="token" name="token"></a>
+<section class="section section-inverse bg-primary">
+<div class="container">
+<header class="section-header">
+<small>代币</small>
+<h2>理解CoinFi代币</h2>
+<hr>
+</header>
+<div class="row">
+<div class="col-md-8 mr-auto ml-auto">
+<p>CoinFi代币（COFI）将为ERC-20兼容代币，在以利坊区块链上开发，由一种开源智能合约定义，用于在CoinFi平台上的交易。</p>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+<div class="col-md-6">
+<h5>锁定、进行权益累积，以获得高级功能</h5>
+<p>为了获得在CoinFi平台上的高级功能的访问权限，例如定制化资讯递送、仪表盘、警报和优质交易信号和算法，用户将需要锁定CoinFi代币和进行CoinFi代币权益累积。</p>
+<p>权益累积鼓励代币的长期持有，因此减少投机和价格波动。</p>
+</div>
+<div class="col-md-6">
+<h5>对社区内容贡献的补偿</h5>
+<p>众包内容提供者，根据由衡量内容受欢迎程度的指标所确定的各自所贡献材料的质量，接受COFI。在白皮书上有进一步的详细信息。</p>
+<p>对早期采用者内容播种的补偿，将来自CoinFi基金。这个基金将在创始时，保留20%的代币，用于向社区贡献者发放。</p>
+</div>
+<div class="col-md-6">
+<h5>在独家内容的拍卖中，作为价值单位存在</h5>
+<p>一旦被访问其价值将下降的高度独家内容，将需要一个拍卖机制，以控制分发和确定此内容的市场价格。</p>
+<p>这些拍卖将仅接受COFI作为竞价单位，以确保CoinFi社区成员有访问此类有价值内容的特权。</p>
+</div>
+<div class="col-md-6">
+<h5>在代币生态系统中的长期增值</h5>
+<p>众包内容的成本，较用户为内容愿意以COFI支付的累计价格要低。结果，COFI的买方需求（需要COFI以访问内容的用户）将超过COFI的卖方需求（以优质内容换取COFI的内容贡献者），因此产生长期COFI代币需求。</p>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="row gap-y align-items-center">
+<div class="col-12 col-md-6">
+<canvas id="tokenDistribution"></canvas>
+<script>
+          $(function() {
+            var ctx = document.getElementById("tokenDistribution");
+            var tokenDistribution = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                datasets: [{
+                  data: [16.7, 33.3, 30, 20],
+                  backgroundColor: ['#46da60', '#ffbe00', '#0facf3', '#ff4954']
+                }],
+                labels: [
+                  '早期投资者',
+                  '产品开发',
+                  '股东',
+                  'CoinFi基金'
+                ]
+              },
+              options: {
+                cutoutPercentage: 50,
+                legend: {
+                  position: 'bottom',
+                  labels: {
+                    padding: 14,
+                    fontColor: '#eee',
+                    defaultFontFamily: 'Open Sans'
+                  }
+                }
+              }
+            });
+          });
+        </script>
+</div>
+<div class="col-12 col-md-6">
+<h2>代币分配</h2>
+<p>CoinFi代币将以如下方式分配：</p>
+<ul>
+<li><strong>16.7%</strong>在对早期投资者的预售中筹集。</li>
+<li><strong>33.3%</strong>在公开代币销售中筹集，筹集到的资金被分配至公司的产品开发。</li>
+<li><strong>30%</strong>由公司股东保留。</li>
+<li><strong>20%</strong>由CoinFi基金保留，用于激励合伙人和产品的早期采用者。</li>
+</ul>
+</div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+<div class="col-12 col-md-6">
+<h2>资金的使用</h2>
+<p>如下为筹集到的资金的使用计划：</p>
+<ul>
+<li><strong>40%</strong>用于平台的继续开发。</li>
+<li><strong>20%</strong>用于总体员工配备。</li>
+<li><strong>20%</strong>用于销售和市场营销成本。</li>
+<li><strong>10%</strong>用于法律和合规成本。</li>
+<li><strong>10%</strong>用于运营开支。</li>
+</ul>
+<br>
+</div>
+<div class="col-12 col-md-6">
+<canvas id="useOfFunds"></canvas>
+<script>
+          $(function() {
+            var ctx = document.getElementById("useOfFunds");
+            var useOfFunds = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                datasets: [{
+                  data: [40, 20, 20, 10, 10],
+                  backgroundColor: ['#46da60', '#0facf3', '#ffbe00', '#ff4954', '#333333']
+                }],
+                labels: [
+                  '平台开发',
+                  '总体员工配备',
+                  '销售和市场营销',
+                  '法律和合规',
+                  '运营'
+                ]
+              },
+              options: {
+                cutoutPercentage: 50,
+                legend: {
+                  position: 'bottom',
+                  labels: {
+                    padding: 14,
+                    fontColor: '#eee',
+                    defaultFontFamily: 'Open Sans'
+                  }
+                }
+              }
+            });
+          });
+        </script>
+</div>
+</div>
+</div>
+</section>
+
+<a id="press" name="press"></a>
+<section class="section bg-gray">
+<div class="container">
+<header class="section-header">
+<small>新闻编辑室</small>
+<h2>媒体报导</h2>
+</header>
+<div class="row text-center gap-y">
+<div class="col-12 col-lg-3 py-10">
+<a href="https://venturebeat.com/2017/12/14/how-bots-are-manipulating-cryptocurrency-prices/" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/venturebeat.png" alt="VentureBeat">
+<h5 class="card-title mt-12">Bots如何操纵加密货币的价格</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="https://www.buzzfeed.com/rabbiyitziweiner/9-bitcoin-more-experts-predict-what-will-happen-wi-37p3h" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top p-12 h-50" src="/landing/img/buzzfeed.png" alt="Buzzfeed">
+<h5 class="card-title mt-12">比特币专家预测的即将发生的9件事</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="https://www.bloomberg.com/gadfly/articles/2017-12-12/bitcoin-bulls-should-focus-on-futures-exit-not-entrance" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/bloomberg.png" alt="Bloomberg">
+<h5 class="card-title mt-12">比特币看好者应专注于将来退场，而非入市</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="https://www.pymnts.com/news/2017/bitcoin-tracker-wild-west-indeed/" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/pymnts.png" alt="Pymnts">
+<h5 class="card-title mt-12">CoinFi致力减少加密货币的波幅</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="https://thebitcoinpodcast.com/announcements-coinfi/" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/bitcoinpodcast.png" alt="BitcoinPodcast">
+<h5 class="card-title mt-12">The Bitcoin Podcast宣布：CoinFi</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="https://www.huffingtonpost.com/entry/4-must-have-cryptocurrency-tools-for-2018_us_5a1cfb2ae4b05df68936cfe0" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/huffpost.png" alt="HuffPost">
+<h5 class="card-title mt-12">2018年必须拥有的4个加密货币工具</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="http://thehill.com/blogs/pundits-blog/technology/347746-before-slapping-regulations-on-bitcoin-congress-should-learn" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/thehill.png" alt="TheHill">
+<h5 class="card-title mt-12">国会规管比特币之前应该学习更多</h5>
+</div>
+</div>
+</a>
+</div>
+<div class="col-12 col-lg-3 py-10">
+<a href="https://www.business.com/articles/why-you-should-consider-accepting-cryptocurrency/" target="_blank">
+<div class="card card-bordered card-hover-shadow">
+<div class="card-block">
+<img class="card-img-top py-12 h-50" src="/landing/img/business-com.png" alt="Business.com">
+<h5 class="card-title mt-12">为什么你应该考虑接受加密货币</h5>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+
+<a id="contact" name="contact"></a>
+<section class="section section-inverse" data-overlay="9">
+<div class="container text-center">
+<header class="section-header">
+<small>联系我们</small>
+<h2>CoinFi</h2>
+</header>
+<div class="row">
+<div class="col">
+<p class="lead">
+在社交媒体上成为我们的粉丝，获取最新更新。
+<div class="social-colored">
+<a class="btn btn-lg btn-round social-medium" href="https://medium.com/coinfi"><i class="fa fa-medium"></i> Medium</a>
+<a class="btn btn-lg btn-round social-twitter" href="https://twitter.com/coin_fi"><i class="fa fa-twitter"></i> Twitter</a>
+<a class="btn btn-lg btn-round social-reddit" href="https://www.reddit.com/u/coinfi"><i class="fa fa-reddit"></i> Reddit</a>
+</div>
+</p>
+</div>
+<div class="col">
+<p class="lead">
+如果您有任何意见、建议或有意建立伙伴关系，请发邮件至以下邮箱：
+<br>
+<a href="/cdn-cgi/l/email-protection#97f4f8f9e3f6f4e3d7f4f8fef9f1feb9f4f8fa" style="color: #0facf3;"><h5><span class="__cf_email__" data-cfemail="12717d7c6673716652717d7b7c747b3c717d7f">[email&#160;protected]</span></h5></a>
+</p>
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col">
+<p class="lead">在Telegram上加入我们，随时提问，获取答案。 </p>
+<a class="btn btn-lg btn-info btn-round" href="https://t.me/coinfi" target="_blank">
+<i class="fa fa-telegram"></i> Telegram
+</a>
+</div>
+<div class="col">
+<p class="lead">加入我们的ICO贵宾组，接收来自CoinFi的最新资讯。 </p>
+<div class="ck_form_container ck_inline" data-ck-version="6">
+<div class="ck_form">
+<div class="ck_form_fields">
+<div id="ck_success_msg" style="display:none; background: #46da60; border: 0">
+<p>成功！请查看您的邮件，以确认您对CoinFi ICO 的兴趣。 </p>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/d07b1474/cloudflare-static/email-decode.min.js"></script><script src="https://assets.convertkit.com/assets/CKJS4.js?v=21"></script>
+<form id="ck_subscribe_form" class="ck_subscribe_form form-inline form-glass justify-content-center" action="https://app.convertkit.com/landing_pages/267531/subscribe" method="post" data-remote="true">
+<input type="hidden" value="{&quot;form_style&quot;:&quot;naked&quot;,&quot;embed_style&quot;:&quot;inline&quot;,&quot;embed_trigger&quot;:&quot;scroll_percentage&quot;,&quot;scroll_percentage&quot;:&quot;70&quot;,&quot;delay_seconds&quot;:&quot;10&quot;,&quot;display_position&quot;:&quot;br&quot;,&quot;display_devices&quot;:&quot;all&quot;,&quot;days_no_show&quot;:&quot;15&quot;,&quot;converted_behavior&quot;:&quot;show&quot;}" id="ck_form_options">
+<input type="hidden" name="id" value="267531" id="landing_page_id">
+<input type="hidden" name="ck_form_recaptcha" value="" id="ck_form_recaptcha">
+<div class="ck_errorArea">
+<div id="ck_error_msg" style="display:none">
+<p>发送您的订阅时出错。请再试。 </p>
+</div>
+</div>
+<div class="form-group">
+<div class="input-group input-group-lg">
+<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+<input type="email" name="email" class="ck_email_address form-control" id="ck_emailField" placeholder="Email Address" required>
+</div>
+</div>
+<button id="ck_subscribe_button" class="subscribe_button ck_subscribe_button btn fields btn btn-lg btn-success ml-12">订阅</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+</main>
+
+<footer class="site-footer">
+<div class="container">
+<div class="row gap-y">
+<div class="col-12 col-md-6">
+<p class="text-center text-md-left">Copyright © 2018 <a class="text-dark" href="/">CoinFi</a> - All rights reserved.</p>
+</div>
+<div class="col-12 col-md-6">
+<ul class="nav nav-inline nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+<li class="nav-item">
+<a class="nav-link" href="#">Terms of Use</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Privacy Policy</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="row gap-y">
+<div class="col">
+<small>
+<p>Disclaimer: The findings, ratings and/or opinions expressed herein are the intellectual property of CoinFi and are subject to change without notice. They are not intended to convey any guarantees as to the future performance of the said products. Past performance does not guarantee future results.
+This does not contain investment advice or constitute individualized investment advice relating to your particular circumstances. No investment decision should be made based on this information without first obtaining appropriate professional advice and considering your circumstances.
+This does not constitute an offer or a solicitation of an offer to buy or sell securities, commodities and/or any other financial instruments or products or constitute a solicitation on behalf of any of the investment managers, their affiliates, products or strategies the information of which may be contained herein.
+The information contained herein may not adequately take into account the recipient’s particular investment objectives, financial situations, or needs. Prospective token contributors should consult their legal, tax and financial advisers as to the consequences of an contribution. Any manager mix and portfolio structure which may be provided herein are for illustrative purposes only and subject to change. The inclusion of any contribution herein does not represent a recommendation of that contribution. All contributions experience gain or loss. An contributor may lose all or a substantial part of its contribution. <a href="https://icons8.com">Icon pack by Icons8</a></p>
+</small>
+</div>
+</div>
+</div>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+<script src="/landing/js/thesaas.js"></script>
+<script src="/landing/js/script.js"></script>
+<script src="/landing/js/jquery.ui.widget.js"></script>
+<script src="/landing/js/jquery.fileupload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+<script type="text/javascript">
+      window._mfq = window._mfq || [];
+      (function() {
+        var mf = document.createElement("script");
+        mf.type = "text/javascript"; mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/62f7b1d8-2d67-46db-9db5-d396e360d36b.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+      })();
+    </script>
+</body>
+</html>

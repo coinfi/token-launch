@@ -1,0 +1,831 @@
+<!doctype html>
+<html>
+
+<head>
+  <script async="" src="//static.ads-twitter.com/uwt.js"></script>
+  <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
+  <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script type="text/javascript">var _rollbarConfig = { "accessToken": "e096d72e2c6442ac924a369ae40065c0", "captureUncaught": true, "hostWhiteList": ["staging.coinfi.com", "www.coinfi.com", "sale.coinfi.com"], "payload": { "environment": "production", "person": { "id": 84938, "username": null, "email": "buycryptogetrich@yahoo.com" } } };</script>
+  <script type="text/javascript">!function (r) { function o(e) { if (n[e]) return n[e].exports; var t = n[e] = { exports: {}, id: e, loaded: !1 }; return r[e].call(t.exports, t, t.exports, o), t.loaded = !0, t.exports } var n = {}; return o.m = r, o.c = n, o.p = "", o(0) }([function (r, o, n) { "use strict"; var e = n(1), t = n(4); _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.0.4/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async; var a = e.setupShim(window, _rollbarConfig), l = t(_rollbarConfig); window.rollbar = e.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l) }, function (r, o, n) { "use strict"; function e(r) { return function () { try { return r.apply(this, arguments) } catch (r) { try { console.error("[Rollbar]: Internal error", r) } catch (r) { } } } } function t(r, o) { this.options = r, this._rollbarOldOnError = null; var n = s++; this.shimId = function () { return n }, window && window._rollbarShims && (window._rollbarShims[n] = { handler: o, messages: [] }) } function a(r, o) { var n = o.globalAlias || "Rollbar"; if ("object" == typeof r[n]) return r[n]; r._rollbarShims = {}, r._rollbarWrappedError = null; var t = new d(o); return e(function () { return o.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), o.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0), r[n] = t, t })() } function l(r) { return e(function () { var o = this, n = Array.prototype.slice.call(arguments, 0), e = { shim: o, method: r, args: n, ts: new Date }; window._rollbarShims[this.shimId()].messages.push(e) }) } var i = n(2), s = 0, c = n(3), p = function (r, o) { return new t(r, o) }, d = c.bind(null, p); t.prototype.loadFull = function (r, o, n, t, a) { var l = function () { var o; if (void 0 === r._rollbarDidLoad) { o = new Error("rollbar.js did not load"); for (var n, e, t, l, i = 0; n = r._rollbarShims[i++];)for (n = n.messages || []; e = n.shift();)for (t = e.args || [], i = 0; i < t.length; ++i)if (l = t[i], "function" == typeof l) { l(o); break } } "function" == typeof a && a(o) }, i = !1, s = o.createElement("script"), c = o.getElementsByTagName("script")[0], p = c.parentNode; s.crossOrigin = "", s.src = t.rollbarJsUrl, n || (s.async = !0), s.onload = s.onreadystatechange = e(function () { if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { p.removeChild(s) } catch (r) { } i = !0, l() } }), p.insertBefore(s, c) }, t.prototype.wrap = function (r, o) { try { var n; if (n = "function" == typeof o ? o : function () { return o || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._wrapped && (r._wrapped = function () { try { return r.apply(this, arguments) } catch (e) { var o = e; throw "string" == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o } }, r._wrapped._isWrap = !0, r.hasOwnProperty)) for (var e in r) r.hasOwnProperty(e) && (r._wrapped[e] = r[e]); return r._wrapped } catch (o) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection".split(","), f = 0; f < u.length; ++f)t.prototype[u[f]] = l(u[f]); r.exports = { setupShim: a, Rollbar: d } }, function (r, o) { "use strict"; function n(r, o, n) { if (r) { var t; "function" == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t); var a = function () { var n = Array.prototype.slice.call(arguments, 0); e(r, o, t, n) }; a.belongsToShim = n, r.onerror = a } } function e(r, o, n, e) { r._rollbarWrappedError && (e[4] || (e[4] = r._rollbarWrappedError), e[5] || (e[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null), o.handleUncaughtException.apply(o, e), n && n.apply(r, e) } function t(r, o, n) { if (r) { "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH); var e = function (r) { var n = r.reason, e = r.promise, t = r.detail; !n && t && (n = t.reason, e = t.promise), o && o.handleUnhandledRejection && o.handleUnhandledRejection(n, e) }; e.belongsToShim = n, r._rollbarURH = e, r.addEventListener("unhandledrejection", e) } } function a(r, o, n) { if (r) { var e, t, a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (e = 0; e < a.length; ++e)t = a[e], r[t] && r[t].prototype && l(o, r[t].prototype, n) } } function l(r, o, n) { if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) { for (var e = o.addEventListener; e._rollbarOldAdd && e.belongsToShim;)e = e._rollbarOldAdd; var t = function (o, n, t) { e.call(this, o, r.wrap(n), t) }; t._rollbarOldAdd = e, t.belongsToShim = n, o.addEventListener = t; for (var a = o.removeEventListener; a._rollbarOldRemove && a.belongsToShim;)a = a._rollbarOldRemove; var l = function (r, o, n) { a.call(this, r, o && o._wrapped || o, n) }; l._rollbarOldRemove = a, l.belongsToShim = n, o.removeEventListener = l } } r.exports = { captureUncaughtExceptions: n, captureUnhandledRejections: t, wrapGlobals: a } }, function (r, o) { "use strict"; function n(r, o) { this.impl = r(o, this), this.options = o, e(n.prototype) } function e(r) { for (var o = function (r) { return function () { var o = Array.prototype.slice.call(arguments, 0); if (this.impl[r]) return this.impl[r].apply(this.impl, o) } }, n = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId".split(","), e = 0; e < n.length; e++)r[n[e]] = o(n[e]) } n.prototype._swapAndProcessMessages = function (r, o) { this.impl = r(this.options); for (var n, e, t; n = o.shift();)e = n.method, t = n.args, this[e] && "function" == typeof this[e] && this[e].apply(this, t); return this }, r.exports = n }, function (r, o) { "use strict"; r.exports = function (r) { return function (o) { if (!o && !window._rollbarInitialized) { r = r || {}; for (var n, e, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function (r) { return new a(r) }, i = 0; n = window._rollbarShims[i++];)e || (e = n.handler), n.handler._swapAndProcessMessages(l, n.messages); window[t] = e, window._rollbarInitialized = !0 } } } }]);</script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>CoinFi</title>
+  <meta name="csrf-param" content="authenticity_token">
+  <meta name="csrf-token" content="Gw8Hqg2o5Whq+u3JJHQKWEhBmAhWZZcBw885keSnG2IEEfVBjzr70ugfCAXjeaLi2WtJO8QXfk7A+KDSZ5fGyw==">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" media="all" href="/assets/application-eb5b9aad6eb938ae80bce053f730b9357a2c9c74ab2d1c753bc0dd37f85bc98f.css">
+
+
+  <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+  <script>
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)    
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-105378428-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 995933950;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    &lt;div style="display:inline;"&gt; &lt;img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995933950/?guid=ON&amp;amp;script=0"/&gt;
+    &lt;/div&gt;
+  </noscript>
+
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-1064039393"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-1064039393');
+  </script>
+
+  <script>
+    !function (f, b, e, v, n, t, s) {      
+if (f.fbq) return; n = f.fbq = function () {        
+n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      }; if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)    
+}(window,
+      document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '175229079700938'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+  </script>
+  <noscript>&lt;img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=175229079700938&amp;ev=PageView&amp;noscript=1"
+    /&gt;
+  </noscript>
+
+  <script>
+    !function (e, t, n, s, u, a) {    
+e.twq || (s = e.twq = function () {
+      s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+    }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+      a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))    
+}(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'nyhv6');
+    twq('track', 'PageView');
+  </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/assets/application-10fa74141322efd213e286b7efd43a352d67c2cd849ce5c77886affbbea435cb.js"></script>
+  <style id="dark-reader-style" type="text/css"></style>
+  <style></style>
+  <script type="text/javascript" charset="utf-8" async="" src="https://platform.twitter.com/js/timeline.25e3f797ea5047ab5a8d06fd6ee7f701.js"></script>
+  <style id="style-1-cropbar-clipper">
+    /* Copyright 2014 Evernote Corporation. All rights reserved. */
+
+    .en-markup-crop-options {
+      top: 18px !important;
+      left: 50% !important;
+      margin-left: -100px !important;
+      width: 200px !important;
+      border: 2px rgba(255, 255, 255, .38) solid !important;
+      border-radius: 4px !important;
+    }
+
+    .en-markup-crop-options div div:first-of-type {
+      margin-left: 0px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-ct-blue">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">CoinFi</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-right navbar-nav">
+          <li>
+            <a href="/coins">Coins</a>
+          </li>
+          <li>
+            <a href="/daily">Daily</a>
+          </li>
+          <li>
+            <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/contact">Contact</a>
+          </li>
+          <li>
+            <a href="/auth/twitter?locale=en">Log In with Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="wrapper">
+    <div class="section section-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+            <div class="card card-user">
+              <div class="image"></div>
+              <div class="content">
+                <div class="author">
+                  <a>
+                    <img class="avatar" alt="Bitcoin" src="https://files.coinmarketcap.com/static/img/coins/128x128/bitcoin.png">
+                    <h1 class="title">
+                      <span id="name">Bitcoin</span>&nbsp;
+                      <small id="symbol">BTC</small>
+                    </h1>
+                    <h2 class="title">$9,836.14
+                      <small>
+                        <strong>
+                          <span class="text-danger">-7.56%</span>
+                        </strong>
+                      </small>
+                    </h2>
+                  </a>
+                </div>
+                <br>
+                <div class="text-center">
+                  <ul class="list-inline">
+                    <li>
+                      <i aria-hidden="true" class="fa fa-link"></i>
+                      <a target="_blank" href="https://bitcoin.org/">Website</a>
+                    </li>
+                    <li>
+                      <i aria-hidden="true" class="fa fa-search"></i>
+                      <a target="_blank" href="http://blockchain.info">Explorer</a>
+                    </li>
+                    <li>
+                      <i aria-hidden="true" class="fa fa-comments-o"></i>
+                      <a target="_blank" href="https://bitcointalk.org">Forum</a>
+                    </li>
+                    <li>
+                      <i aria-hidden="true" class="fa fa-twitter"></i>
+                      <a target="_blank" href="https://twitter.com/bitcoin">Twitter</a>
+                    </li>
+                  </ul>
+                </div>
+                <p class="description">
+                  <br>
+                </p>
+                <div class="row">
+                  <div class="col-sm-8 col-sm-offset-2">
+                    <table class="table table-condensed" _vimium-has-onclick-listener="">
+                      <tbody>
+                        <tr>
+                          <td>Market Cap</td>
+                          <td class="text-right">$166,296,668,138
+                            <br>
+                            <small class="text-muted">฿16,906,700</small>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Volume (24h)</td>
+                          <td class="text-right">9,151,940,000.0
+                            <br>
+                            <small class="text-muted">฿930,440.19</small>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Circulation</td>
+                          <td class="text-right">16,906,700 BTC</td>
+                        </tr>
+                        <tr>
+                          <td>Max Supply</td>
+                          <td class="text-right">16,906,700 BTC</td>
+                        </tr>
+                        <tr>
+                          <td>Last Updated</td>
+                          <td class="text-right">2018-03-08 06:54:25 +0000</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section" id="charts">
+      <h2 class="header">
+        <i class="pe-7s-graph2"></i>&nbsp;Price Charts</h2>
+      <br>
+      <div id="chart" data-highcharts-chart="0">
+        <div style="position: relative; height: 0px; z-index: 1;">
+          <input name="min" class="highcharts-range-selector" type="text" style="top: -9999em; position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; text-align: center; font-size: 12px; font-family: Roboto; margin-top: 0px;">
+          <input name="max" class="highcharts-range-selector" type="text" style="top: -9999em; position: absolute; border: 0px; width: 1px; height: 1px; padding: 0px; text-align: center; font-size: 12px; font-family: Roboto; margin-top: 0px;">
+        </div>
+        <div id="highcharts-w7egyzm-0" dir="ltr" class="highcharts-container " style="position: relative; overflow: hidden; width: 1127px; height: 400px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: Roboto; color: rgb(68, 68, 68);">
+          <svg version="1.1" class="highcharts-root" style="font-family:Roboto;font-size:12px;color:#444444;fill:#444444;"
+            xmlns="http://www.w3.org/2000/svg" width="1127" height="400" viewBox="0 0 1127 400">
+            <desc>Created with Highstock 6.0.7</desc>
+            <defs>
+              <clipPath id="highcharts-w7egyzm-1">
+                <rect x="1" y="0" width="882" height="240" fill="none"></rect>
+              </clipPath>
+              <clipPath id="highcharts-w7egyzm-3">
+                <rect x="0" y="0" width="884" height="144" fill="none"></rect>
+              </clipPath>
+              <clipPath id="highcharts-w7egyzm-5">
+                <rect x="0" y="0" width="884" height="144" fill="none"></rect>
+              </clipPath>
+              <clipPath id="highcharts-w7egyzm-7">
+                <rect x="0" y="0" width="884" height="40" fill="none"></rect>
+              </clipPath>
+              <clipPath id="highcharts-w7egyzm-8">
+                <rect x="1" y="0" width="884" height="84" fill="none"></rect>
+              </clipPath>
+            </defs>
+            <rect fill="#ffffff" class="highcharts-background" x="0" y="0" width="1127" height="400" rx="0" ry="0"></rect>
+            <rect fill="none" class="highcharts-plot-background" x="209" y="45" width="884" height="240"></rect>
+            <g class="highcharts-grid highcharts-xaxis-grid ">
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 269.5 45 L 269.5 189 M 269.5 201 L 269.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 383.5 45 L 383.5 189 M 383.5 201 L 383.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 470.5 45 L 470.5 189 M 470.5 201 L 470.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 586.5 45 L 586.5 189 M 586.5 201 L 586.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 702.5 45 L 702.5 189 M 702.5 201 L 702.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 791.5 45 L 791.5 189 M 791.5 201 L 791.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 885.5 45 L 885.5 189 M 885.5 201 L 885.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 991.5 45 L 991.5 189 M 991.5 201 L 991.5 285"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 1092.5 45 L 1092.5 189 M 1092.5 201 L 1092.5 285"
+                opacity="1"></path>
+            </g>
+            <g class="highcharts-grid highcharts-xaxis-grid highcharts-navigator-xaxis">
+              <path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 283.5 331 L 283.5 371"
+                opacity="1"></path>
+              <path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 447.5 331 L 447.5 371"
+                opacity="1"></path>
+              <path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 603.5 331 L 603.5 371"
+                opacity="1"></path>
+              <path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 759.5 331 L 759.5 371"
+                opacity="1"></path>
+              <path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 923.5 331 L 923.5 371"
+                opacity="1"></path>
+              <path fill="none" stroke="#e6e6e6" stroke-width="1" class="highcharts-grid-line" d="M 1078.5 331 L 1078.5 371"
+                opacity="1"></path>
+            </g>
+            <g class="highcharts-grid highcharts-yaxis-grid ">
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 209 189.5 L 1093 189.5"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 209 117.5 L 1093 117.5"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 209 44.5 L 1093 44.5"
+                opacity="1"></path>
+            </g>
+            <g class="highcharts-grid highcharts-yaxis-grid "></g>
+            <g class="highcharts-grid highcharts-yaxis-grid ">
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 209 285.5 L 1093 285.5"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 209 243.5 L 1093 243.5"
+                opacity="1"></path>
+              <path fill="none" stroke="#F3F3F3" stroke-width="1" class="highcharts-grid-line" d="M 209 200.5 L 1093 200.5"
+                opacity="1"></path>
+            </g>
+            <g class="highcharts-grid highcharts-yaxis-grid highcharts-navigator-yaxis">
+              <path fill="none" class="highcharts-grid-line" d="M 223 371.5 L 1079 371.5" opacity="1"></path>
+              <path fill="none" class="highcharts-grid-line" d="M 223 333.5 L 1079 333.5" opacity="1"></path>
+            </g>
+            <rect fill="none" class="highcharts-plot-border" x="209" y="45" width="884" height="240"></rect>
+            <g class="highcharts-axis highcharts-xaxis ">
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 269.5 285 L 269.5 295" opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 383.5 285 L 383.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 470.5 285 L 470.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 586.5 285 L 586.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 702.5 285 L 702.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 791.5 285 L 791.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 885.5 285 L 885.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 991.5 285 L 991.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093.5 285 L 1093.5 295"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-axis-line" stroke="#F3F3F3" stroke-width="1" d="M 209 285.5 L 1093 285.5"></path>
+            </g>
+            <g class="highcharts-axis highcharts-xaxis highcharts-navigator-xaxis">
+              <path fill="none" class="highcharts-axis-line" d="M 223 371 L 1079 371"></path>
+            </g>
+            <g class="highcharts-axis highcharts-yaxis ">
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093 189.5 L 1103 189.5" opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093 117.5 L 1103 117.5"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093 44.5 L 1103 44.5"
+                opacity="1"></path>
+              <text x="1103" text-anchor="middle" transform="translate(0,0) rotate(90 1103 117)" class="highcharts-axis-title"
+                style="color:#666666;fill:#666666;" y="117">
+                <tspan>USD Price</tspan>
+              </text>
+              <path fill="none" class="highcharts-axis-line" stroke="#F3F3F3" stroke-width="2" d="M 1093 45 L 1093 189"></path>
+            </g>
+            <g class="highcharts-axis highcharts-yaxis ">
+              <text x="199" text-anchor="middle" transform="translate(0,0) rotate(270 199 117)" class="highcharts-axis-title"
+                style="color:#666666;fill:#666666;" y="117">
+                <tspan>Avg Vol</tspan>
+              </text>
+              <path fill="none" class="highcharts-axis-line" stroke="#F3F3F3" stroke-width="2" d="M 209 45 L 209 189"></path>
+            </g>
+            <g class="highcharts-axis highcharts-yaxis ">
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093 285.5 L 1103 285.5" opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093 243.5 L 1103 243.5"
+                opacity="1"></path>
+              <path fill="none" class="highcharts-tick" stroke="#F3F3F3" stroke-width="1" d="M 1093 200.5 L 1103 200.5"
+                opacity="1"></path>
+              <text x="1103" text-anchor="middle" transform="translate(0,0) rotate(90 1103 243)" class="highcharts-axis-title"
+                style="color:#666666;fill:#666666;" y="243">
+                <tspan>Volume</tspan>
+              </text>
+              <path fill="none" class="highcharts-axis-line" stroke="#F3F3F3" stroke-width="2" d="M 1093 201 L 1093 285"></path>
+            </g>
+            <g class="highcharts-axis highcharts-yaxis highcharts-navigator-yaxis">
+              <path fill="none" class="highcharts-axis-line" d="M 209 331 L 209 371"></path>
+            </g>
+            <g class="highcharts-scrollbar" transform="translate(209,372)">
+              <rect fill="#f2f2f2" class="highcharts-scrollbar-track" x="0" rx="0" ry="0" height="14" width="884" stroke="#f2f2f2"
+                stroke-width="1" y="-0.5" _vimium-has-onclick-listener=""></rect>
+              <g transform="translate(788,-0.5)">
+                <rect fill="#cccccc" class="highcharts-scrollbar-thumb" height="14" width="82" rx="0" ry="0" stroke="#cccccc"
+                  stroke-width="1"></rect>
+                <path fill="none" d="M -3 3.5 L -3 9.333333333333334 M 0 3.5 L 0 9.333333333333334 M 3 3.5 L 3 9.333333333333334"
+                  class="highcharts-scrollbar-rifles" stroke="#333333" stroke-width="1" transform="translate(40.5,0)"></path>
+              </g>
+              <g _vimium-has-onclick-listener="">
+                <rect fill="#e6e6e6" class="highcharts-scrollbar-button" stroke="#cccccc" stroke-width="1" x="-0.5" y="-0.5"
+                  width="14" height="14" rx="0" ry="0"></rect>
+                <path fill="#333333" d="M 8 4 L 8 10 L 5 7" class="highcharts-scrollbar-arrow"></path>
+              </g>
+              <g _vimium-has-onclick-listener="" transform="translate(870,0)">
+                <rect fill="#e6e6e6" class="highcharts-scrollbar-button" stroke="#cccccc" stroke-width="1" x="-0.5" y="-0.5"
+                  width="14" height="14" rx="0" ry="0"></rect>
+                <path fill="#333333" d="M 6 4 L 6 10 L 9 7" class="highcharts-scrollbar-arrow"></path>
+              </g>
+            </g>
+            <g class="highcharts-series-group">
+              <g class="highcharts-series highcharts-series-0 highcharts-line-series highcharts-color-0 " transform="translate(209,45) scale(1 1)"
+                clip-path="url(#highcharts-w7egyzm-3)">
+                <path fill="none" d="M 0.36549848462511 126.85932 L 29.337121485117 130.29606 L 58.308744485635 128.78865000000002 L 87.280367486127 127.34775 L 116.25199048664 127.94463 L 145.22361348714 128.29275 L 174.19523648765 124.50708 L 203.16685948815 122.29083 L 232.13848248866 119.89791 L 261.11010548916 116.07381000000001 L 290.08172848967 114.96348 L 319.05335149017 113.37813 L 348.02497449068 113.13135 L 376.99659749118 116.11674 L 405.96822049169 116.08362 L 434.93984349219 113.29173 L 463.9114664927 115.68186 L 492.8830894932 119.30418 L 521.85471249371 122.50314 L 550.82633549421 128.19402 L 579.79795849472 121.45203000000001 L 608.76958149522 106.67699999999999 L 637.74120449573 105.56622 L 666.71282749623 29.276100000000028 L 695.68445049674 21.88170000000001 L 724.65607349724 31.662000000000006 L 753.62769649775 21.353399999999993 L 782.59931949825 7.592399999999998 L 811.57094249876 10.497600000000034 L 840.54256549926 31.324500000000015 L 869.51418849975 53.7372"
+                  class="highcharts-graph" stroke="#26afda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>
+                <path fill="none" d="M -9.63450151537489 126.85932 L 0.36549848462511 126.85932 L 29.337121485117 130.29606 L 58.308744485635 128.78865000000002 L 87.280367486127 127.34775 L 116.25199048664 127.94463 L 145.22361348714 128.29275 L 174.19523648765 124.50708 L 203.16685948815 122.29083 L 232.13848248866 119.89791 L 261.11010548916 116.07381000000001 L 290.08172848967 114.96348 L 319.05335149017 113.37813 L 348.02497449068 113.13135 L 376.99659749118 116.11674 L 405.96822049169 116.08362 L 434.93984349219 113.29173 L 463.9114664927 115.68186 L 492.8830894932 119.30418 L 521.85471249371 122.50314 L 550.82633549421 128.19402 L 579.79795849472 121.45203000000001 L 608.76958149522 106.67699999999999 L 637.74120449573 105.56622 L 666.71282749623 29.276100000000028 L 695.68445049674 21.88170000000001 L 724.65607349724 31.662000000000006 L 753.62769649775 21.353399999999993 L 782.59931949825 7.592399999999998 L 811.57094249876 10.497600000000034 L 840.54256549926 31.324500000000015 L 869.51418849975 53.7372 L 879.51418849975 53.7372"
+                  stroke-linejoin="round" visibility="visible" stroke="rgba(192,192,192,0.0001)" stroke-width="22" class="highcharts-tracker"></path>
+              </g>
+              <g class="highcharts-markers highcharts-series-0 highcharts-line-series highcharts-color-0 highcharts-tracker"
+                transform="translate(209,45) scale(1 1)"></g>
+              <g class="highcharts-series highcharts-series-1 highcharts-line-series highcharts-color-1 " visibility="hidden"
+                transform="translate(209,45) scale(1 1)" clip-path="url(#highcharts-w7egyzm-5)">
+                <path fill="none" d="M 0 0" class="highcharts-graph" stroke="#F90101" stroke-width="2" stroke-linejoin="round"
+                  stroke-linecap="round"></path>
+                <path fill="none" d="M 0 0" stroke-linejoin="round" visibility="hidden" stroke="rgba(192,192,192,0.0001)"
+                  stroke-width="22" class="highcharts-tracker"></path>
+              </g>
+              <g class="highcharts-markers highcharts-series-1 highcharts-line-series highcharts-color-1 highcharts-tracker"
+                visibility="hidden" transform="translate(209,45) scale(1 1)"></g>
+              <g class="highcharts-series highcharts-series-2 highcharts-flags-series highcharts-color-2 " transform="translate(209,45) scale(1 1)"
+                clip-path="url(#highcharts-w7egyzm-1)"></g>
+              <g class="highcharts-markers highcharts-series-2 highcharts-flags-series highcharts-color-2 highcharts-tracker"
+                transform="translate(209,45) scale(1 1)">
+                <g class="highcharts-label highcharts-point" transform="translate(847,11)">
+                  <path fill="#ffffff" class="highcharts-label-box" d="M 16.5 10.5 A 10 10 0 1 1 16.499995000000418 10.49000000166666 Z M 6.5 20.5 L 6.5 30.469603126849904 M 7.5 30.469603126849904 A 1 1 0 1 1 7.499999500000042 30.46860312701657 Z"
+                    stroke="#d35400" stroke-width="1"></path>
+                </g>
+                <g class="highcharts-label highcharts-point" transform="translate(826,-4)">
+                  <path fill="#ffffff" class="highcharts-label-box" d="M 16.5 10.5 A 10 10 0 1 1 16.499995000000418 10.49000000166666 Z M 6.5 20.5 L 6.5 29.9893838911105 M 7.5 29.9893838911105 A 1 1 0 1 1 7.499999500000042 29.988383891277167 Z"
+                    stroke="#d35400" stroke-width="1"></path>
+                </g>
+              </g>
+              <g class="highcharts-series highcharts-series-3 highcharts-column-series highcharts-tracker" transform="translate(209,201) scale(1 1)"
+                clip-path="url(#highcharts-w7egyzm-8)">
+                <rect x="22" y="75" width="14" height="10" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="51" y="78" width="14" height="7" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="80" y="78" width="14" height="7" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="109" y="79" width="14" height="6" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="138" y="80" width="14" height="5" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="167" y="75" width="14" height="10" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="196" y="77" width="14" height="8" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="225" y="75" width="14" height="10" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="254" y="69" width="14" height="16" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="283" y="73" width="14" height="12" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="312" y="76" width="14" height="9" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="341" y="77" width="14" height="8" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="370" y="74" width="14" height="11" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="399" y="77" width="14" height="8" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="428" y="69" width="14" height="16" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="457" y="74" width="14" height="11" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="486" y="67" width="14" height="18" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="515" y="67" width="14" height="18" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="544" y="54" width="14" height="31" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="573" y="62" width="14" height="23" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="602" y="70" width="14" height="15" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="631" y="67" width="14" height="18" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="660" y="38" width="14" height="47" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="689" y="33" width="14" height="52" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="718" y="37" width="14" height="48" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="747" y="34" width="14" height="51" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="776" y="38" width="14" height="47" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="805" y="34" width="14" height="51" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="834" y="7" width="14" height="78" fill="#d35400" class="highcharts-point"></rect>
+                <rect x="863" y="39" width="14" height="46" fill="#d35400" class="highcharts-point"></rect>
+              </g>
+              <g class="highcharts-markers highcharts-series-3 highcharts-column-series " transform="translate(209,201) scale(1 1)"
+                clip-path="none"></g>
+              <g class="highcharts-series highcharts-series-4 highcharts-areaspline-series highcharts-navigator-series"
+                transform="translate(223,331) scale(1 1)" clip-path="url(#highcharts-w7egyzm-7)">
+                <path fill="rgba(38,175,218,0.05)" d="M 0 38.1674863602862 C 0 38.1674863602862 1.6675324675338001 38.11371016929943 2.779220779223 38.09028216319206 C 3.89090909090976 38.06685415708474 4.44675324675314 38.06333309696056 5.5584415584399 38.05034632974948 C 6.6701298701291 38.03735956253836 7.2259740259737 38.05034632974948 8.3376623376629 38.02534832713657 C 9.44935064935214 38.00035032452366 10.00519480519676 37.813265425395485 11.116883116886 37.813265425395485 C 12.228571428572799 37.813265425395485 12.7844155844162 37.974085654827235 13.896103896103 38.06686558909811 C 15.007792207792198 38.15964552336918 15.5636363636368 38.26645901621056 16.675324675326 38.277165096750345 C 17.787012987012798 38.28787117729013 18.3428571428562 38.28787117729013 19.454545454543 38.28787117729013 C 20.566233766232198 38.28787117729013 21.1220779220768 38.26219678055164 22.233766233766 38.26219678055164 C 23.3454545454552 38.26219678055164 23.9012987012998 38.28690517215867 25.012987012989 38.28690517215867 C 26.1246753246758 38.28690517215867 26.6805194805192 38.26445079252504 27.792207792206 38.26445079252504 C 28.9038961038952 38.26445079252504 29.4597402597398 38.506927607199145 30.571428571429 38.506927607199145 C 31.683116883118203 38.506927607199145 32.2389610389628 38.466828295965115 33.350649350652 38.45126703933855 C 34.462337662338406 38.435705782712034 35.018181818181596 38.42912132406646 36.129870129868 38.42912132406646 C 37.241558441557196 38.42912132406646 37.7974025974018 38.445377647107115 38.909090909091 38.445377647107115 C 40.0207792207806 38.445377647107115 40.5766233766254 38.445377647107115 41.688311688315 38.44115161282392 C 42.8000000000014 38.43692557854073 43.3558441558446 38.44115161282392 44.467532467531 38.417390172992704 C 45.5792207792202 38.393628733161485 46.1350649350648 38.27021252727363 47.246753246754 38.27021252727363 C 48.3584415584408 38.27021252727363 48.9142857142842 38.32783559076618 50.025974025971 38.32783559076618 C 51.137662337660196 38.32783559076618 51.6935064935048 38.30037208393214 52.805194805194 38.29623941109164 C 53.9168831168832 38.29210673825114 54.472727272727795 38.29623941109164 55.584415584417 38.29210673825114 C 56.69610389610379 38.287974065410644 57.2519480519472 38.242406060037894 58.363636363634 38.242406060037894 C 59.4753246753232 38.242406060037894 60.03116883116779 38.24471913741382 61.142857142857 38.24471913741382 C 62.254545454546204 38.24471913741382 62.8103896103908 38.24132954544366 63.92207792208 38.24132954544366 C 65.0337662337668 38.24132954544366 65.58961038961021 38.289284936279365 66.701298701297 38.289284936279365 C 67.81298701298621 38.289284936279365 68.3688311688308 38.289284936279365 69.48051948052 38.28464734951413 C 70.59220779220921 38.2800097627489 71.14805194805379 38.25883957928609 72.259740259743 38.253035927155075 C 73.37142857142979 38.24723227502406 73.9272727272732 38.24905187048864 75.03896103896 38.24723227502406 C 76.1506493506492 38.24541267955948 76.7064935064938 38.243937949832166 77.818181818183 38.243937949832166 C 78.9298701298698 38.243937949832166 79.48571428571321 38.24679023717298 80.5974025974 38.24679023717298 C 81.70909090908921 38.24679023717298 82.2649350649338 38.24679023717298 83.376623376623 38.24479535083642 C 84.48831168831221 38.24280046449986 85.04415584415679 38.18003185178046 86.155844155846 38.15505023505339 C 87.26753246753279 38.13006861832636 87.8233766233762 38.13662868867664 88.935064935063 38.11988726720116 C 90.0467532467522 38.103145845725635 90.6025974025968 38.08687466106759 91.714285714286 38.071343127675874 C 92.82597402597521 38.05581159428415 93.3818181818198 38.05329578920412 94.493506493509 38.04222960024254 C 95.6051948051958 38.031163411280986 96.16103896103921 38.01601218286803 97.272727272726 38.01601218286803 C 98.3844155844156 38.01601218286803 98.9402597402604 38.043620495205005 100.05194805195 38.043620495205005 C 101.163636363638 38.043620495205005 101.719480519482 38.035869590126545 102.83116883117 38.02292855096901 C 103.94285714285802 38.009987511811474 104.498701298702 37.988842097711014 105.61038961039 37.97891529941732 C 106.722077922078 37.96898850112362 107.277922077922 37.96898850112362 108.38961038961 37.96898850112362 C 109.501298701298 37.96898850112362 110.05714285714198 38.12624918265272 111.16883116883 38.12624918265272 C 112.28051948051798 38.12624918265272 112.83636363636201 38.118582874473354 113.94805194805 38.11005192501459 C 115.059740259738 38.10152097555582 115.61558441558199 38.083594435358876 116.72727272727 38.083594435358876 C 117.83896103895799 38.083594435358876 118.394805194802 38.09101076351211 119.50649350649 38.096249674181664 C 120.618181818178 38.10148858485121 121.17402597402199 38.10978898870661 122.28571428571 38.10978898870661 C 123.39740259740199 38.10978898870661 123.95324675324801 38.093093676351806 125.06493506494 38.086700132329845 C 126.17662337662401 38.08030658830793 126.73246753246599 38.08647911340427 127.84415584415 38.0778212685969 C 128.955844155842 38.06916342378947 129.511688311688 38.05887080106736 130.62337662338 38.04341090829285 C 131.735064935068 38.0279510155184 132.290909090912 38.007704919804596 133.4025974026 38.000521804724514 C 134.514285714288 37.99333868964443 135.070129870132 37.99333868964443 136.18181818182 37.99333868964443 C 137.293506493508 37.99333868964443 137.849350649352 38.00257956713472 138.96103896104 38.00257956713472 C 140.072727272728 38.00257956713472 140.628571428572 38.00257956713472 141.74025974026 37.98082063498232 C 142.851948051948 37.95906170282993 143.407792207792 37.908421694183126 144.51948051948 37.87597001883991 C 145.631168831168 37.84351834349668 146.187012987012 37.83737173096397 147.2987012987 37.818562258266205 C 148.410389610388 37.799752785568444 148.966233766232 37.794650296925354 150.07792207792 37.781922655351096 C 151.189610389608 37.76919501377684 151.745454545452 37.76185566118041 152.85714285714 37.754924050394926 C 153.968831168832 37.74799243960941 154.524675324678 37.754924050394926 155.63636363637 37.747264601423595 C 156.74805194805398 37.73960515245226 157.303896103896 37.71667634426286 158.41558441558 37.69012358782899 C 159.527272727272 37.66357083139494 160.083116883118 37.636953293551905 161.19480519481 37.614500819253806 C 162.30649350649801 37.592048344955785 162.862337662342 37.57786121633869 163.97402597403 37.57786121633869 C 165.08571428571798 37.57786121633869 165.64155844156204 37.611414175638494 166.75324675325 37.611414175638494 C 167.86493506493804 37.611414175638494 168.420779220782 37.59728801775952 169.53246753247 37.590531697846 C 170.644155844158 37.583775377932476 171.200000000002 37.57763257607089 172.31168831169 37.57763257607089 C 173.423376623378 37.57763257607089 173.97922077922198 37.669755550639046 175.09090909091 37.669755550639046 C 176.20259740259797 37.669755550639046 176.75844155844203 37.64319517286283 177.87012987013 37.64319517286283 C 178.98181818181803 37.64319517286283 179.537662337662 37.89187957080773 180.64935064935 37.89187957080773 C 181.761038961038 37.89187957080773 182.316883116882 37.80472571139311 183.42857142857 37.7604304701778 C 184.540259740258 37.716135228962486 185.09610389610197 37.68741801132667 186.20779220779 37.67040336473115 C 187.31948051947796 37.65338871813563 187.87532467532202 37.65980207764744 188.98701298701 37.65338871813563 C 190.09870129869802 37.64697535862381 190.654545454542 37.64412878728968 191.76623376623 37.63833656717206 C 192.877922077922 37.63254434705443 193.43376623376798 37.6244276175475 194.54545454546 37.6244276175475 C 195.657142857144 37.6244276175475 196.21298701298602 37.6908628580284 197.32467532467 37.74118658097122 C 198.43636363636202 37.7915103039144 198.992207792208 37.79225490905272 200.1038961039 37.87604623226251 C 201.215584415584 37.959837555471694 201.77142857142601 38.160143197018655 202.88311688311 38.160143197018655 C 203.994805194802 38.160143197018655 204.55064935064803 37.99533929198769 205.66233766234 37.989623285292666 C 206.774025974028 37.98390727859764 207.329870129872 37.989623285292666 208.44155844156 37.98390727859764 C 209.553246753248 37.97819127190262 210.109090909092 37.861394201767595 211.22077922078 37.861394201767595 C 212.332467532468 37.861394201767595 212.88831168831203 38.032626708994904 214 38.032626708994904 C 215.11168831168797 38.032626708994904 215.667532467532 38.01702201071748 216.77922077922 38.01702201071748 C 217.890909090908 38.01702201071748 218.446753246752 38.19793362261503 219.55844155844 38.19793362261503 C 220.670129870128 38.19793362261503 221.225974025972 38.17519534798222 222.33766233766 38.17143612091246 C 223.44935064935197 38.1676768938427 224.00519480519796 38.17143612091246 225.11688311689 38.1676768938427 C 226.228571428574 38.163917666772946 226.784415584416 38.038304608978635 227.8961038961 38.027844316726735 C 229.007792207792 38.017384024474836 229.56363636363798 38.020512585472595 230.67532467533 38.017384024474836 C 231.78701298701398 38.014255463477106 232.34285714285596 38.01220151173801 233.45454545454 38.01220151173801 C 234.56623376623202 38.01220151173801 235.122077922078 38.0433156415146 236.23376623377 38.0433156415146 C 237.345454545458 38.0433156415146 237.90129870130198 37.97640025647151 239.01298701299 37.96573037730746 C 240.12467532467798 37.95506049814341 240.68051948052204 37.96573037730746 241.79220779221 37.95506049814341 C 242.90389610389803 37.94439061897936 243.459740259742 37.933053872367566 244.57142857143 37.904435732181135 C 245.683116883118 37.87581759199471 246.238961038962 37.811969797211276 247.35064935065 37.811969797211276 C 248.462337662338 37.811969797211276 249.01818181818197 37.831187011719955 250.12987012987 37.84140723169066 C 251.24155844155797 37.851627451661365 251.79740259740203 37.8630708970648 252.90909090909 37.8630708970648 C 254.02077922077802 37.8630708970648 254.576623376622 37.74225356888762 255.68831168831 37.74225356888762 C 256.799999999998 37.74225356888762 257.355844155842 37.74255080123576 258.46753246753 37.74707406786709 C 259.579220779218 37.75159733449842 260.135064935062 37.76486990204427 261.24675324675 37.76486990204427 C 262.358441558438 37.76486990204427 262.914285714282 37.73259351757303 264.02597402597 37.73259351757303 C 265.137662337658 37.73259351757303 265.693506493502 37.74741702826879 266.80519480519 37.74741702826879 C 267.91688311688205 37.74741702826879 268.47272727272804 37.699040558273225 269.58441558442 37.699040558273225 C 270.69610389610403 37.699040558273225 271.251948051946 37.701917614976445 272.36363636363 37.716626805538255 C 273.475324675322 37.73133599610017 274.031168831168 37.769328387266384 275.14285714286 37.77258651108255 C 276.254545454548 37.77584463489872 276.810389610392 37.77584463489872 277.92207792208 37.77584463489872 C 279.033766233768 37.77584463489872 279.589610389612 37.756917031395915 280.7012987013 37.749855857792 C 281.812987012988 37.74279468418808 282.368831168832 37.74485625726942 283.48051948052 37.74053876687911 C 284.592207792208 37.736221276488806 285.148051948052 37.73823712151658 286.25974025974 37.72826840584046 C 287.371428571428 37.718299690164336 287.927272727272 37.690695188498495 289.03896103896 37.690695188498495 C 290.150649350648 37.690695188498495 290.706493506492 37.702622589135444 291.81818181818 37.702622589135444 C 292.929870129868 37.702622589135444 293.485714285712 37.65605618792664 294.5974025974 37.65605618792664 C 295.709090909088 37.65605618792664 296.264935064932 37.67985382913359 297.37662337662 37.67985382913359 C 298.48831168831197 37.67985382913359 299.044155844158 37.64849200573356 300.15584415585 37.64849200573356 C 301.26753246753395 37.64849200573356 301.823376623376 37.70149844115209 302.93506493506 37.70149844115209 C 304.046753246752 37.70149844115209 304.602597402598 37.63967792340987 305.71428571429 37.616768168576165 C 306.825974025978 37.593858413742545 307.381818181822 37.59853410721903 308.49350649351 37.586949666983784 C 309.605194805198 37.57536522674853 310.161038961042 37.57824990479396 311.27272727273 37.55884596739991 C 312.384415584418 37.539442030005866 312.940259740262 37.48992998001356 314.05194805195 37.48992998001356 C 315.163636363638 37.48992998001356 315.719480519482 37.527598464133774 316.83116883117 37.527598464133774 C 317.942857142858 37.527598464133774 318.498701298702 37.496716785296115 319.61038961039 37.479412527694706 C 320.72207792207803 37.462108270093296 321.27792207792197 37.479412527694706 322.38961038961 37.44107717612674 C 323.501298701298 37.402741824558774 324.057142857142 37.282724737318894 325.16883116883 37.272569298757396 C 326.280519480518 37.2624138601959 326.836363636362 37.272569298757396 327.94805194805 37.2624138601959 C 329.059740259738 37.2522584216344 329.615584415582 37.20426682942297 330.72727272727 37.17678807990442 C 331.838961038958 37.14930933038587 332.394805194802 37.15574936459559 333.50649350649 37.12502011260314 C 334.618181818178 37.094290860610684 335.174025974022 37.0475110618186 336.28571428571 37.02314181994214 C 337.397402597402 36.99877257806568 337.953246753248 36.99877257806568 339.06493506494 36.99877257806568 C 340.176623376624 36.99877257806568 340.73246753246605 37.00103992738804 341.84415584415 37.00103992738804 C 342.955844155842 37.00103992738804 343.51168831168803 36.83156413955179 344.62337662338 36.77018947033162 C 345.735064935068 36.70881480111168 346.290909090912 36.72248367845494 347.4025974026 36.69416658128779 C 348.51428571428806 36.66584948412063 349.070129870132 36.66491586969378 350.18181818182 36.62860398449585 C 351.293506493508 36.592292099297914 351.849350649352 36.512607155298134 352.96103896104 36.512607155298134 C 354.072727272728 36.512607155298134 354.628571428572 36.70028270845146 355.74025974026 36.70028270845146 C 356.851948051948 36.70028270845146 357.40779220779194 36.61315171306363 358.51948051948 36.59329811647624 C 359.631168831168 36.57344451988885 360.187012987012 36.57344451988885 361.2987012987 36.57344451988885 C 362.410389610388 36.57344451988885 362.966233766232 36.675741986374156 364.07792207792 36.675741986374156 C 365.189610389608 36.675741986374156 365.745454545452 36.675741986374156 366.85714285714 36.671321607863334 C 367.968831168832 36.66690122935251 368.524675324678 36.58595495320889 369.63636363637 36.532975192488074 C 370.748051948054 36.47999543176764 371.30389610389597 36.46425354932914 372.41558441558 36.40642280426022 C 373.52727272727196 36.34859205919088 374.08311688311795 36.30590111052161 375.19480519481 36.243821467142396 C 376.306493506498 36.1817418237634 376.862337662342 36.097072521925455 377.97402597403 36.096024587364695 C 379.085714285718 36.094976652803936 379.6415584415619 36.096024587364695 380.75324675325 36.094976652803936 C 381.864935064938 36.09392871824318 382.420779220782 35.85269418235746 383.53246753247 35.759618540006805 C 384.644155844158 35.66654289765614 385.200000000002 35.722201560181176 386.31168831169 35.62959844105063 C 387.423376623378 35.53699532192009 387.979220779222 35.38845917194316 389.09090909091 35.296602944354106 C 390.202597402598 35.204746716765044 390.758441558442 35.17031730310535 391.87012987013 35.17031730310535 C 392.981818181818 35.17031730310535 393.537662337662 35.58635113439607 394.64935064935 35.79204735132325 C 395.761038961038 35.99774356825043 396.316883116882 36.19879838774125 397.42857142857 36.19879838774125 C 398.540259740258 36.19879838774125 399.09610389610197 36.0633099757135 400.20779220779 35.95140961798055 C 401.319480519478 35.83950926024761 401.875324675322 35.63929659907652 402.98701298701 35.63929659907652 C 404.098701298698 35.63929659907652 404.654545454542 35.76413418529587 405.76623376623 35.76413418529587 C 406.877922077922 35.76413418529587 407.43376623376804 35.70596047982528 408.54545454546 35.63845825142792 C 409.65714285714404 35.570956023031044 410.212987012986 35.485574125691436 411.32467532467 35.426623043310286 C 412.43636363636205 35.36767196092871 412.992207792208 35.39341304441236 414.1038961039 35.343702839521114 C 415.215584415584 35.29399263463022 415.771428571426 35.178072018854934 416.88311688311 35.178072018854934 C 417.99480519480204 35.178072018854934 418.55064935064803 35.207680933535165 419.66233766234 35.207680933535165 C 420.77402597402795 35.207680933535165 421.32987012987195 35.07966524759338 422.44155844156 34.95063211245988 C 423.553246753248 34.82159897732638 424.109090909092 34.56251525786766 425.22077922078 34.56251525786766 C 426.33246753246806 34.56251525786766 426.888311688312 34.78835468238811 428 34.78835468238811 C 429.111688311688 34.78835468238811 429.66753246753194 34.72569581699725 430.77922077922 34.67416792197716 C 431.890909090908 34.62264002695707 432.446753246752 34.53071520728767 433.55844155844 34.53071520728767 C 434.67012987012805 34.53071520728767 435.22597402597205 34.571927615558806 436.33766233766 34.571927615558806 C 437.44935064935197 34.571927615558806 438.00519480519796 34.37623059967679 439.11688311689 34.37623059967679 C 440.228571428574 34.37623059967679 440.784415584416 34.91734590013918 441.8961038961 34.91734590013918 C 443.007792207792 34.91734590013918 443.56363636363795 34.802225525301374 444.67532467533 34.802225525301374 C 445.787012987014 34.802225525301374 446.34285714285596 35.13232491193908 447.45454545454 35.22309509825608 C 448.5662337662319 35.31386528457308 449.122077922078 35.31386528457308 450.23376623377 35.31386528457308 C 451.345454545458 35.31386528457308 451.90129870130204 35.273182559589024 453.01298701299 35.197982775509274 C 454.124675324678 35.12278299142952 454.680519480522 34.937866364174326 455.79220779221 34.937866364174326 C 456.90389610389803 34.937866364174326 457.4597402597419 35.17437566785882 458.57142857143 35.17437566785882 C 459.683116883118 35.17437566785882 460.238961038962 35.17059929276896 461.35064935065 35.09351322647986 C 462.462337662338 35.016427160190744 463.018181818182 34.78894533641326 464.12987012987 34.78894533641326 C 465.241558441558 34.78894533641326 465.797402597402 34.9098198246574 466.90909090909 34.9098198246574 C 468.0207792207781 34.9098198246574 468.576623376622 34.88387677560424 469.68831168831 34.8534028385775 C 470.799999999998 34.82292890155075 471.35584415584196 34.75745013952368 472.46753246753 34.75745013952368 C 473.579220779218 34.75745013952368 474.135064935062 34.92218164180317 475.24675324675 34.990777532814604 C 476.3584415584381 35.05937342382604 476.9142857142821 35.03418869832776 478.02597402597 35.100429594580845 C 479.137662337658 35.16667049083393 479.693506493502 35.32198201408002 480.80519480519 35.32198201408002 C 481.91688311688205 35.32198201408002 482.47272727272804 35.32198201408002 483.58441558442 35.305481808087045 C 484.6961038961041 35.28898160209407 485.251948051946 35.04319331420799 486.36363636363 35.04319331420799 C 487.475324675322 35.04319331420799 488.031168831168 35.074779967204634 489.14285714286 35.10858443079908 C 490.25454545454795 35.14238889439339 490.810389610392 35.158908153742075 491.92207792208 35.212215632179884 C 493.033766233768 35.26552311061769 493.58961038961206 35.375121822988106 494.7012987013 35.375121822988106 C 495.812987012988 35.375121822988106 496.368831168832 35.293043777518676 497.48051948052 35.235174925738235 C 498.59220779220806 35.177306073957794 499.14805194805194 35.09799076505764 500.25974025974 35.08577756408593 C 501.371428571428 35.07356436311422 501.927272727272 35.08169633530568 503.03896103896 35.07356436311422 C 504.150649350648 35.065432390922766 504.706493506492 35.0468134517815 505.81818181818 35.045117703128646 C 506.92987012986794 35.04342195447579 507.48571428571194 35.04342195447579 508.5974025974 35.04342195447579 C 509.709090909088 35.04342195447579 510.264935064932 35.190285219826634 511.37662337662 35.190285219826634 C 512.488311688312 35.190285219826634 513.044155844158 35.143737871973485 514.15584415585 35.143737871973485 C 515.267532467534 35.143737871973485 515.823376623376 35.143737871973485 516.93506493506 35.16132411923851 C 518.0467532467521 35.17891036650353 518.6025974025981 35.43936973824019 519.71428571429 35.47621892806745 C 520.825974025978 35.51306811789472 521.381818181822 35.51306811789472 522.49350649351 35.51306811789472 C 523.6051948051979 35.51306811789472 524.161038961042 35.45956629522928 525.27272727273 35.45956629522928 C 526.384415584418 35.45956629522928 526.940259740262 35.45956629522928 528.05194805195 35.52699612087493 C 529.163636363638 35.59442594652057 529.719480519482 36.03549207646438 530.83116883117 36.04972493313499 C 531.942857142858 36.0639577898056 532.4987012987019 36.04972493313499 533.61038961039 36.0639577898056 C 534.722077922078 36.07819064647621 535.277922077922 36.38746471538838 536.38961038961 36.38746471538838 C 537.5012987012981 36.38746471538838 538.057142857142 36.04232842047163 539.16883116883 35.86241139373901 C 540.280519480518 35.68249436700639 540.836363636362 35.4878795817253 541.94805194805 35.4878795817253 C 543.059740259738 35.4878795817253 543.615584415582 35.64068749403898 544.72727272727 35.64068749403898 C 545.838961038958 35.64068749403898 546.3948051948021 34.81401955244878 547.50649350649 34.81401955244878 C 548.618181818178 34.81401955244878 549.174025974022 34.98222257612772 550.28571428571 34.98222257612772 C 551.3974025974019 34.98222257612772 551.9532467532479 34.64899843916339 553.06493506494 34.64899843916339 C 554.176623376624 34.64899843916339 554.732467532466 34.75188655967385 555.84415584415 34.761946731457094 C 556.955844155842 34.77200690324034 557.511688311688 34.76618038708253 558.62337662338 34.77200690324034 C 559.735064935068 34.77783341939813 560.290909090912 34.782051832339064 561.4025974026 34.791079312246076 C 562.514285714288 34.80010679215309 563.0701298701321 34.81714430277539 564.18181818182 34.81714430277539 C 565.293506493508 34.81714430277539 565.849350649352 34.81714430277539 566.96103896104 34.76059394320594 C 568.0727272727279 34.70404358363649 568.628571428572 34.51873064658377 569.74025974026 34.51873064658377 C 570.8519480519479 34.51873064658377 571.407792207792 34.766043202921864 572.51948051948 34.80975160078316 C 573.631168831168 34.85345999864445 574.1870129870119 34.85345999864445 575.2987012987 34.85345999864445 C 576.410389610388 34.85345999864445 576.966233766232 34.79618942223143 578.07792207792 34.73580552750518 C 579.1896103896081 34.67542163277893 579.745454545452 34.72944551738887 580.85714285714 34.551540525013216 C 581.968831168832 34.37363553263693 582.524675324678 33.86466705382768 583.63636363637 33.84628056562535 C 584.748051948054 33.82789407742302 585.303896103896 33.84628056562535 586.41558441558 33.82789407742302 C 587.527272727272 33.809507589220686 588.083116883118 33.73080198770143 589.19480519481 33.66717902251455 C 590.306493506498 33.60355605732791 590.862337662342 33.509779251489206 591.97402597403 33.509779251489206 C 593.0857142857179 33.509779251489206 593.641558441562 33.59327105594788 594.75324675325 33.59327105594788 C 595.864935064938 33.59327105594788 596.420779220782 33.59327105594788 597.53246753247 33.53315771887186 C 598.644155844158 33.473044381795845 599.200000000002 33.32687084791953 600.31168831169 33.15793998605476 C 601.423376623378 32.98900912418998 601.979220779222 32.87385826398313 603.09090909091 32.68850340954798 C 604.202597402598 32.50314855511283 604.7584415584421 32.40418923653742 605.87012987013 32.23116571387901 C 606.981818181818 32.05814219122058 607.537662337662 31.823385796255906 608.64935064935 31.823385796255906 C 609.7610389610379 31.823385796255906 610.316883116882 32.049663447956306 611.42857142857 32.049663447956306 C 612.540259740258 32.049663447956306 613.096103896102 31.806180616103884 614.20779220779 31.757118225304914 C 615.319480519478 31.708055834505945 615.875324675322 31.708055834505945 616.98701298701 31.708055834505945 C 618.098701298698 31.708055834505945 618.6545454545419 32.325117810589575 619.76623376623 32.325117810589575 C 620.877922077922 32.325117810589575 621.433766233768 32.18286545730605 622.54545454546 32.151370260416456 C 623.657142857144 32.11987506352686 624.212987012986 32.11987506352686 625.32467532467 32.11987506352686 C 626.436363636362 32.11987506352686 626.992207792208 32.28173331977433 628.1038961039 32.28173331977433 C 629.215584415584 32.28173331977433 629.771428571426 32.202071239801334 630.88311688311 32.18532334018491 C 631.994805194802 32.16857544056848 632.550649350648 32.18532334018491 633.66233766234 32.16857544056848 C 634.774025974028 32.151827540952056 635.329870129872 32.015207359598705 636.44155844156 31.919871989267932 C 637.5532467532479 31.82453661893717 638.109090909092 31.691898588914675 639.22077922078 31.691898588914675 C 640.332467532468 31.691898588914675 640.888311688312 31.747629654191172 642 31.747629654191172 C 643.111688311688 31.747629654191172 643.667532467532 31.747629654191172 644.77922077922 31.705940912028787 C 645.890909090908 31.6642521698664 646.4467532467521 31.340478497304517 647.55844155844 31.2797173461364 C 648.670129870128 31.218956194968285 649.225974025972 31.218956194968285 650.33766233766 31.218956194968285 C 651.449350649352 31.218956194968285 652.005194805198 31.343260287229434 653.11688311689 31.343260287229434 C 654.228571428574 31.343260287229434 654.784415584416 31.160214699498667 655.8961038961 31.045570658552517 C 657.007792207792 30.93092661760555 657.563636363638 30.77004008249665 658.67532467533 30.77004008249665 C 659.787012987014 30.77004008249665 660.342857142856 31.475833535842717 661.45454545454 31.475833535842717 C 662.566233766232 31.475833535842717 663.122077922078 31.307763885653323 664.23376623377 31.307763885653323 C 665.3454545454581 31.307763885653323 665.901298701302 31.729643286457488 667.01298701299 31.729643286457488 C 668.124675324678 31.729643286457488 668.680519480522 31.729643286457488 669.79220779221 31.723279465670362 C 670.903896103898 31.716915644883237 671.459740259742 31.283413697132517 672.57142857143 31.283413697132517 C 673.683116883118 31.283413697132517 674.2389610389621 32.15396151678487 675.35064935065 32.15396151678487 C 676.462337662338 32.15396151678487 677.018181818182 32.02317928360269 678.12987012987 32.02317928360269 C 679.2415584415579 32.02317928360269 679.797402597402 32.094248300177505 680.90909090909 32.094248300177505 C 682.020779220778 32.094248300177505 682.576623376622 32.0913788648166 683.68831168831 32.088075012946874 C 684.799999999998 32.08477116107715 685.355844155842 32.07772904082888 686.46753246753 32.07772904082888 C 687.579220779218 32.07772904082888 688.135064935062 32.244899372631586 689.24675324675 32.5813854440832 C 690.358441558438 32.91787151553482 690.9142857142821 33.76015939808697 692.02597402597 33.76015939808697 C 693.137662337658 33.76015939808697 693.693506493502 32.28565831103825 694.80519480519 32.28565831103825 C 695.916883116882 32.28565831103825 696.472727272728 33.02090825221935 697.58441558442 33.02090825221935 C 698.6961038961041 33.02090825221935 699.251948051946 33.02090825221935 700.36363636363 32.975180198659146 C 701.475324675322 32.92945214509894 702.031168831168 32.49419728862842 703.14285714286 32.49419728862842 C 704.254545454548 32.49419728862842 704.8103896103919 32.53180861268169 705.92207792208 32.53180861268169 C 707.033766233768 32.53180861268169 707.589610389612 32.06791656266908 708.7012987013 32.05132108989786 C 709.8129870129881 32.03472561712664 710.368831168832 32.05132108989786 711.48051948052 32.03472561712664 C 712.592207792208 32.01813014435542 713.148051948052 31.781373147047468 714.25974025974 31.74602917231656 C 715.3714285714279 31.710685197585654 715.927272727272 31.73744754093176 717.03896103896 31.710685197585654 C 718.150649350648 31.683922854239547 718.706493506492 31.61221745558602 719.81818181818 31.61221745558602 C 720.9298701298679 31.61221745558602 721.485714285712 31.75214529948024 722.5974025974 31.816221734531474 C 723.709090909088 31.88029816958271 724.264935064932 31.93259963084219 725.37662337662 31.93259963084219 C 726.488311688312 31.93259963084219 727.044155844158 31.750544817605633 728.15584415585 31.72958612639054 C 729.267532467534 31.708627435175448 729.823376623376 31.72958612639054 730.93506493506 31.708627435175448 C 732.0467532467521 31.687668743960355 732.6025974025981 30.905166480767043 733.71428571429 30.81807359209051 C 734.825974025978 30.730980703413977 735.381818181822 30.730980703413977 736.49350649351 30.730980703413977 C 737.605194805198 30.730980703413977 738.1610389610421 30.811728824659035 739.27272727273 30.811728824659035 C 740.3844155844181 30.811728824659035 740.940259740262 30.217149808242503 742.05194805195 29.914029973205317 C 743.163636363638 29.61091013816813 743.719480519482 29.45941309672317 744.83116883117 29.29612964947308 C 745.942857142858 29.132846202222986 746.4987012987019 29.097612736954858 747.61038961039 29.097612736954858 C 748.722077922078 29.097612736954858 749.277922077922 29.428741004797672 750.38961038961 29.428741004797672 C 751.5012987012981 29.428741004797672 752.057142857142 29.226470581216375 753.16883116883 29.226470581216375 C 754.280519480518 29.226470581216375 754.836363636362 29.27725158469498 755.94805194805 29.32981598226243 C 757.059740259738 29.382380379829883 757.6155844155819 29.48929256905364 758.72727272727 29.48929256905364 C 759.8389610389579 29.48929256905364 760.394805194802 29.284823388230322 761.50649350649 29.113750929190473 C 762.618181818178 28.942678470150625 763.174025974022 28.779585556456787 764.28571428571 28.633930273854403 C 765.3974025974019 28.488274991251515 765.9532467532479 28.385474516177307 767.06493506494 28.385474516177307 C 768.176623376624 28.385474516177307 768.732467532466 28.518040143448594 769.84415584415 28.590926850152165 C 770.955844155842 28.663813556856258 771.511688311688 28.590926850152165 772.62337662338 28.749908049696465 C 773.735064935068 28.908889249240765 774.290909090912 29.477479488550586 775.4025974026 29.477479488550586 C 776.514285714288 29.477479488550586 777.0701298701321 29.283188610315538 778.18181818182 29.158354834767323 C 779.293506493508 29.033521059219094 779.849350649352 28.853310610809476 780.96103896104 28.853310610809476 C 782.072727272728 28.853310610809476 782.6285714285721 28.93966041861566 783.74025974026 28.97967246548083 C 784.851948051948 29.019684512346014 785.407792207792 29.053370845135362 786.51948051948 29.053370845135362 C 787.631168831168 29.053370845135362 788.1870129870119 28.506055582744445 789.2987012987 28.251929546425867 C 790.410389610388 27.997803510107317 790.966233766232 27.977896564124084 792.07792207792 27.78274066354254 C 793.1896103896081 27.587584762960976 793.745454545452 27.539383583836933 794.85714285714 27.276150043518104 C 795.968831168832 27.01291650319833 796.524675324678 26.675500627992207 797.63636363637 26.466572961946024 C 798.748051948054 26.257645295901337 799.3038961038959 26.345648934976797 800.41558441558 26.231511713290935 C 801.527272727272 26.117374491604266 802.083116883118 25.948131154707234 803.19480519481 25.895886853514703 C 804.306493506498 25.843642552322173 804.862337662342 25.843642552322173 805.97402597403 25.843642552322173 C 807.0857142857179 25.843642552322173 807.641558441562 26.475661412591116 808.75324675325 26.475661412591116 C 809.864935064938 26.475661412591116 810.420779220782 26.475661412591116 811.53246753247 26.468649777711885 C 812.644155844158 26.461638142832655 813.200000000002 25.87759563209062 814.31168831169 25.87759563209062 C 815.423376623378 25.87759563209062 815.979220779222 26.12902371324913 817.09090909091 26.383595598089908 C 818.202597402598 26.638167482930683 818.7584415584421 26.861636670008274 819.87012987013 27.150455056294497 C 820.981818181818 27.43927344258075 821.537662337662 27.451284677982564 822.64935064935 27.827687529521093 C 823.7610389610381 28.204090381059657 824.316883116882 29.032469313987217 825.42857142857 29.032469313987217 C 826.5402597402581 29.032469313987217 827.096103896102 28.516211021305928 828.20779220779 27.60516338888376 C 829.319480519478 26.694115756461592 829.875324675322 24.71238766730972 830.98701298701 24.47723115187638 C 832.098701298698 24.242074636443043 832.6545454545419 24.47723115187638 833.76623376623 24.242074636443043 C 834.8779220779219 24.006918121009704 835.4337662337679 9.656578459458373 836.54545454546 8.091154759247448 C 837.657142857144 6.525731059036524 838.212987012986 6.525731059036524 839.32467532467 6.525731059036524 C 840.436363636362 6.525731059036524 840.992207792208 8.596259217531177 842.1038961039 8.596259217531177 C 843.2155844155841 8.596259217531177 843.7714285714259 7.433013748378635 844.88311688311 6.413887861370526 C 845.994805194802 5.394761974355225 846.550649350648 3.50062978247265 847.66233766234 3.50062978247265 C 848.774025974028 3.50062978247265 849.329870129872 3.50062978247265 850.44155844156 4.115672102857374 C 851.5532467532479 4.730714423242098 852.109090909092 6.694010296137978 853.22077922078 8.524809133843362 C 854.3324675324678 10.355607971548562 856 13.269666291383835 856 13.269666291383835 L 856 40 C 856 40 854.3324675324678 40 853.22077922078 40 C 852.109090909092 40 851.5532467532479 40 850.44155844156 40 C 849.329870129872 40 848.774025974028 40 847.66233766234 40 C 846.550649350648 40 845.994805194802 40 844.88311688311 40 C 843.7714285714259 40 843.2155844155841 40 842.1038961039 40 C 840.992207792208 40 840.436363636362 40 839.32467532467 40 C 838.212987012986 40 837.657142857144 40 836.54545454546 40 C 835.4337662337679 40 834.8779220779219 40 833.76623376623 40 C 832.6545454545419 40 832.098701298698 40 830.98701298701 40 C 829.875324675322 40 829.319480519478 40 828.20779220779 40 C 827.096103896102 40 826.5402597402581 40 825.42857142857 40 C 824.316883116882 40 823.7610389610381 40 822.64935064935 40 C 821.537662337662 40 820.981818181818 40 819.87012987013 40 C 818.7584415584421 40 818.202597402598 40 817.09090909091 40 C 815.979220779222 40 815.423376623378 40 814.31168831169 40 C 813.200000000002 40 812.644155844158 40 811.53246753247 40 C 810.420779220782 40 809.864935064938 40 808.75324675325 40 C 807.641558441562 40 807.0857142857179 40 805.97402597403 40 C 804.862337662342 40 804.306493506498 40 803.19480519481 40 C 802.083116883118 40 801.527272727272 40 800.41558441558 40 C 799.3038961038959 40 798.748051948054 40 797.63636363637 40 C 796.524675324678 40 795.968831168832 40 794.85714285714 40 C 793.745454545452 40 793.1896103896081 40 792.07792207792 40 C 790.966233766232 40 790.410389610388 40 789.2987012987 40 C 788.1870129870119 40 787.631168831168 40 786.51948051948 40 C 785.407792207792 40 784.851948051948 40 783.74025974026 40 C 782.6285714285721 40 782.072727272728 40 780.96103896104 40 C 779.849350649352 40 779.293506493508 40 778.18181818182 40 C 777.0701298701321 40 776.514285714288 40 775.4025974026 40 C 774.290909090912 40 773.735064935068 40 772.62337662338 40 C 771.511688311688 40 770.955844155842 40 769.84415584415 40 C 768.732467532466 40 768.176623376624 40 767.06493506494 40 C 765.9532467532479 40 765.3974025974019 40 764.28571428571 40 C 763.174025974022 40 762.618181818178 40 761.50649350649 40 C 760.394805194802 40 759.8389610389579 40 758.72727272727 40 C 757.6155844155819 40 757.059740259738 40 755.94805194805 40 C 754.836363636362 40 754.280519480518 40 753.16883116883 40 C 752.057142857142 40 751.5012987012981 40 750.38961038961 40 C 749.277922077922 40 748.722077922078 40 747.61038961039 40 C 746.4987012987019 40 745.942857142858 40 744.83116883117 40 C 743.719480519482 40 743.163636363638 40 742.05194805195 40 C 740.940259740262 40 740.3844155844181 40 739.27272727273 40 C 738.1610389610421 40 737.605194805198 40 736.49350649351 40 C 735.381818181822 40 734.825974025978 40 733.71428571429 40 C 732.6025974025981 40 732.0467532467521 40 730.93506493506 40 C 729.823376623376 40 729.267532467534 40 728.15584415585 40 C 727.044155844158 40 726.488311688312 40 725.37662337662 40 C 724.264935064932 40 723.709090909088 40 722.5974025974 40 C 721.485714285712 40 720.9298701298679 40 719.81818181818 40 C 718.706493506492 40 718.150649350648 40 717.03896103896 40 C 715.927272727272 40 715.3714285714279 40 714.25974025974 40 C 713.148051948052 40 712.592207792208 40 711.48051948052 40 C 710.368831168832 40 709.8129870129881 40 708.7012987013 40 C 707.589610389612 40 707.033766233768 40 705.92207792208 40 C 704.8103896103919 40 704.254545454548 40 703.14285714286 40 C 702.031168831168 40 701.475324675322 40 700.36363636363 40 C 699.251948051946 40 698.6961038961041 40 697.58441558442 40 C 696.472727272728 40 695.916883116882 40 694.80519480519 40 C 693.693506493502 40 693.137662337658 40 692.02597402597 40 C 690.9142857142821 40 690.358441558438 40 689.24675324675 40 C 688.135064935062 40 687.579220779218 40 686.46753246753 40 C 685.355844155842 40 684.799999999998 40 683.68831168831 40 C 682.576623376622 40 682.020779220778 40 680.90909090909 40 C 679.797402597402 40 679.2415584415579 40 678.12987012987 40 C 677.018181818182 40 676.462337662338 40 675.35064935065 40 C 674.2389610389621 40 673.683116883118 40 672.57142857143 40 C 671.459740259742 40 670.903896103898 40 669.79220779221 40 C 668.680519480522 40 668.124675324678 40 667.01298701299 40 C 665.901298701302 40 665.3454545454581 40 664.23376623377 40 C 663.122077922078 40 662.566233766232 40 661.45454545454 40 C 660.342857142856 40 659.787012987014 40 658.67532467533 40 C 657.563636363638 40 657.007792207792 40 655.8961038961 40 C 654.784415584416 40 654.228571428574 40 653.11688311689 40 C 652.005194805198 40 651.449350649352 40 650.33766233766 40 C 649.225974025972 40 648.670129870128 40 647.55844155844 40 C 646.4467532467521 40 645.890909090908 40 644.77922077922 40 C 643.667532467532 40 643.111688311688 40 642 40 C 640.888311688312 40 640.332467532468 40 639.22077922078 40 C 638.109090909092 40 637.5532467532479 40 636.44155844156 40 C 635.329870129872 40 634.774025974028 40 633.66233766234 40 C 632.550649350648 40 631.994805194802 40 630.88311688311 40 C 629.771428571426 40 629.215584415584 40 628.1038961039 40 C 626.992207792208 40 626.436363636362 40 625.32467532467 40 C 624.212987012986 40 623.657142857144 40 622.54545454546 40 C 621.433766233768 40 620.877922077922 40 619.76623376623 40 C 618.6545454545419 40 618.098701298698 40 616.98701298701 40 C 615.875324675322 40 615.319480519478 40 614.20779220779 40 C 613.096103896102 40 612.540259740258 40 611.42857142857 40 C 610.316883116882 40 609.7610389610379 40 608.64935064935 40 C 607.537662337662 40 606.981818181818 40 605.87012987013 40 C 604.7584415584421 40 604.202597402598 40 603.09090909091 40 C 601.979220779222 40 601.423376623378 40 600.31168831169 40 C 599.200000000002 40 598.644155844158 40 597.53246753247 40 C 596.420779220782 40 595.864935064938 40 594.75324675325 40 C 593.641558441562 40 593.0857142857179 40 591.97402597403 40 C 590.862337662342 40 590.306493506498 40 589.19480519481 40 C 588.083116883118 40 587.527272727272 40 586.41558441558 40 C 585.303896103896 40 584.748051948054 40 583.63636363637 40 C 582.524675324678 40 581.968831168832 40 580.85714285714 40 C 579.745454545452 40 579.1896103896081 40 578.07792207792 40 C 576.966233766232 40 576.410389610388 40 575.2987012987 40 C 574.1870129870119 40 573.631168831168 40 572.51948051948 40 C 571.407792207792 40 570.8519480519479 40 569.74025974026 40 C 568.628571428572 40 568.0727272727279 40 566.96103896104 40 C 565.849350649352 40 565.293506493508 40 564.18181818182 40 C 563.0701298701321 40 562.514285714288 40 561.4025974026 40 C 560.290909090912 40 559.735064935068 40 558.62337662338 40 C 557.511688311688 40 556.955844155842 40 555.84415584415 40 C 554.732467532466 40 554.176623376624 40 553.06493506494 40 C 551.9532467532479 40 551.3974025974019 40 550.28571428571 40 C 549.174025974022 40 548.618181818178 40 547.50649350649 40 C 546.3948051948021 40 545.838961038958 40 544.72727272727 40 C 543.615584415582 40 543.059740259738 40 541.94805194805 40 C 540.836363636362 40 540.280519480518 40 539.16883116883 40 C 538.057142857142 40 537.5012987012981 40 536.38961038961 40 C 535.277922077922 40 534.722077922078 40 533.61038961039 40 C 532.4987012987019 40 531.942857142858 40 530.83116883117 40 C 529.719480519482 40 529.163636363638 40 528.05194805195 40 C 526.940259740262 40 526.384415584418 40 525.27272727273 40 C 524.161038961042 40 523.6051948051979 40 522.49350649351 40 C 521.381818181822 40 520.825974025978 40 519.71428571429 40 C 518.6025974025981 40 518.0467532467521 40 516.93506493506 40 C 515.823376623376 40 515.267532467534 40 514.15584415585 40 C 513.044155844158 40 512.488311688312 40 511.37662337662 40 C 510.264935064932 40 509.709090909088 40 508.5974025974 40 C 507.48571428571194 40 506.92987012986794 40 505.81818181818 40 C 504.706493506492 40 504.150649350648 40 503.03896103896 40 C 501.927272727272 40 501.371428571428 40 500.25974025974 40 C 499.14805194805194 40 498.59220779220806 40 497.48051948052 40 C 496.368831168832 40 495.812987012988 40 494.7012987013 40 C 493.58961038961206 40 493.033766233768 40 491.92207792208 40 C 490.810389610392 40 490.25454545454795 40 489.14285714286 40 C 488.031168831168 40 487.475324675322 40 486.36363636363 40 C 485.251948051946 40 484.6961038961041 40 483.58441558442 40 C 482.47272727272804 40 481.91688311688205 40 480.80519480519 40 C 479.693506493502 40 479.137662337658 40 478.02597402597 40 C 476.9142857142821 40 476.3584415584381 40 475.24675324675 40 C 474.135064935062 40 473.579220779218 40 472.46753246753 40 C 471.35584415584196 40 470.799999999998 40 469.68831168831 40 C 468.576623376622 40 468.0207792207781 40 466.90909090909 40 C 465.797402597402 40 465.241558441558 40 464.12987012987 40 C 463.018181818182 40 462.462337662338 40 461.35064935065 40 C 460.238961038962 40 459.683116883118 40 458.57142857143 40 C 457.4597402597419 40 456.90389610389803 40 455.79220779221 40 C 454.680519480522 40 454.124675324678 40 453.01298701299 40 C 451.90129870130204 40 451.345454545458 40 450.23376623377 40 C 449.122077922078 40 448.5662337662319 40 447.45454545454 40 C 446.34285714285596 40 445.787012987014 40 444.67532467533 40 C 443.56363636363795 40 443.007792207792 40 441.8961038961 40 C 440.784415584416 40 440.228571428574 40 439.11688311689 40 C 438.00519480519796 40 437.44935064935197 40 436.33766233766 40 C 435.22597402597205 40 434.67012987012805 40 433.55844155844 40 C 432.446753246752 40 431.890909090908 40 430.77922077922 40 C 429.66753246753194 40 429.111688311688 40 428 40 C 426.888311688312 40 426.33246753246806 40 425.22077922078 40 C 424.109090909092 40 423.553246753248 40 422.44155844156 40 C 421.32987012987195 40 420.77402597402795 40 419.66233766234 40 C 418.55064935064803 40 417.99480519480204 40 416.88311688311 40 C 415.771428571426 40 415.215584415584 40 414.1038961039 40 C 412.992207792208 40 412.43636363636205 40 411.32467532467 40 C 410.212987012986 40 409.65714285714404 40 408.54545454546 40 C 407.43376623376804 40 406.877922077922 40 405.76623376623 40 C 404.654545454542 40 404.098701298698 40 402.98701298701 40 C 401.875324675322 40 401.319480519478 40 400.20779220779 40 C 399.09610389610197 40 398.540259740258 40 397.42857142857 40 C 396.316883116882 40 395.761038961038 40 394.64935064935 40 C 393.537662337662 40 392.981818181818 40 391.87012987013 40 C 390.758441558442 40 390.202597402598 40 389.09090909091 40 C 387.979220779222 40 387.423376623378 40 386.31168831169 40 C 385.200000000002 40 384.644155844158 40 383.53246753247 40 C 382.420779220782 40 381.864935064938 40 380.75324675325 40 C 379.6415584415619 40 379.085714285718 40 377.97402597403 40 C 376.862337662342 40 376.306493506498 40 375.19480519481 40 C 374.08311688311795 40 373.52727272727196 40 372.41558441558 40 C 371.30389610389597 40 370.748051948054 40 369.63636363637 40 C 368.524675324678 40 367.968831168832 40 366.85714285714 40 C 365.745454545452 40 365.189610389608 40 364.07792207792 40 C 362.966233766232 40 362.410389610388 40 361.2987012987 40 C 360.187012987012 40 359.631168831168 40 358.51948051948 40 C 357.40779220779194 40 356.851948051948 40 355.74025974026 40 C 354.628571428572 40 354.072727272728 40 352.96103896104 40 C 351.849350649352 40 351.293506493508 40 350.18181818182 40 C 349.070129870132 40 348.51428571428806 40 347.4025974026 40 C 346.290909090912 40 345.735064935068 40 344.62337662338 40 C 343.51168831168803 40 342.955844155842 40 341.84415584415 40 C 340.73246753246605 40 340.176623376624 40 339.06493506494 40 C 337.953246753248 40 337.397402597402 40 336.28571428571 40 C 335.174025974022 40 334.618181818178 40 333.50649350649 40 C 332.394805194802 40 331.838961038958 40 330.72727272727 40 C 329.615584415582 40 329.059740259738 40 327.94805194805 40 C 326.836363636362 40 326.280519480518 40 325.16883116883 40 C 324.057142857142 40 323.501298701298 40 322.38961038961 40 C 321.27792207792197 40 320.72207792207803 40 319.61038961039 40 C 318.498701298702 40 317.942857142858 40 316.83116883117 40 C 315.719480519482 40 315.163636363638 40 314.05194805195 40 C 312.940259740262 40 312.384415584418 40 311.27272727273 40 C 310.161038961042 40 309.605194805198 40 308.49350649351 40 C 307.381818181822 40 306.825974025978 40 305.71428571429 40 C 304.602597402598 40 304.046753246752 40 302.93506493506 40 C 301.823376623376 40 301.26753246753395 40 300.15584415585 40 C 299.044155844158 40 298.48831168831197 40 297.37662337662 40 C 296.264935064932 40 295.709090909088 40 294.5974025974 40 C 293.485714285712 40 292.929870129868 40 291.81818181818 40 C 290.706493506492 40 290.150649350648 40 289.03896103896 40 C 287.927272727272 40 287.371428571428 40 286.25974025974 40 C 285.148051948052 40 284.592207792208 40 283.48051948052 40 C 282.368831168832 40 281.812987012988 40 280.7012987013 40 C 279.589610389612 40 279.033766233768 40 277.92207792208 40 C 276.810389610392 40 276.254545454548 40 275.14285714286 40 C 274.031168831168 40 273.475324675322 40 272.36363636363 40 C 271.251948051946 40 270.69610389610403 40 269.58441558442 40 C 268.47272727272804 40 267.91688311688205 40 266.80519480519 40 C 265.693506493502 40 265.137662337658 40 264.02597402597 40 C 262.914285714282 40 262.358441558438 40 261.24675324675 40 C 260.135064935062 40 259.579220779218 40 258.46753246753 40 C 257.355844155842 40 256.799999999998 40 255.68831168831 40 C 254.576623376622 40 254.02077922077802 40 252.90909090909 40 C 251.79740259740203 40 251.24155844155797 40 250.12987012987 40 C 249.01818181818197 40 248.462337662338 40 247.35064935065 40 C 246.238961038962 40 245.683116883118 40 244.57142857143 40 C 243.459740259742 40 242.90389610389803 40 241.79220779221 40 C 240.68051948052204 40 240.12467532467798 40 239.01298701299 40 C 237.90129870130198 40 237.345454545458 40 236.23376623377 40 C 235.122077922078 40 234.56623376623202 40 233.45454545454 40 C 232.34285714285596 40 231.78701298701398 40 230.67532467533 40 C 229.56363636363798 40 229.007792207792 40 227.8961038961 40 C 226.784415584416 40 226.228571428574 40 225.11688311689 40 C 224.00519480519796 40 223.44935064935197 40 222.33766233766 40 C 221.225974025972 40 220.670129870128 40 219.55844155844 40 C 218.446753246752 40 217.890909090908 40 216.77922077922 40 C 215.667532467532 40 215.11168831168797 40 214 40 C 212.88831168831203 40 212.332467532468 40 211.22077922078 40 C 210.109090909092 40 209.553246753248 40 208.44155844156 40 C 207.329870129872 40 206.774025974028 40 205.66233766234 40 C 204.55064935064803 40 203.994805194802 40 202.88311688311 40 C 201.77142857142601 40 201.215584415584 40 200.1038961039 40 C 198.992207792208 40 198.43636363636202 40 197.32467532467 40 C 196.21298701298602 40 195.657142857144 40 194.54545454546 40 C 193.43376623376798 40 192.877922077922 40 191.76623376623 40 C 190.654545454542 40 190.09870129869802 40 188.98701298701 40 C 187.87532467532202 40 187.31948051947796 40 186.20779220779 40 C 185.09610389610197 40 184.540259740258 40 183.42857142857 40 C 182.316883116882 40 181.761038961038 40 180.64935064935 40 C 179.537662337662 40 178.98181818181803 40 177.87012987013 40 C 176.75844155844203 40 176.20259740259797 40 175.09090909091 40 C 173.97922077922198 40 173.423376623378 40 172.31168831169 40 C 171.200000000002 40 170.644155844158 40 169.53246753247 40 C 168.420779220782 40 167.86493506493804 40 166.75324675325 40 C 165.64155844156204 40 165.08571428571798 40 163.97402597403 40 C 162.862337662342 40 162.30649350649801 40 161.19480519481 40 C 160.083116883118 40 159.527272727272 40 158.41558441558 40 C 157.303896103896 40 156.74805194805398 40 155.63636363637 40 C 154.524675324678 40 153.968831168832 40 152.85714285714 40 C 151.745454545452 40 151.189610389608 40 150.07792207792 40 C 148.966233766232 40 148.410389610388 40 147.2987012987 40 C 146.187012987012 40 145.631168831168 40 144.51948051948 40 C 143.407792207792 40 142.851948051948 40 141.74025974026 40 C 140.628571428572 40 140.072727272728 40 138.96103896104 40 C 137.849350649352 40 137.293506493508 40 136.18181818182 40 C 135.070129870132 40 134.514285714288 40 133.4025974026 40 C 132.290909090912 40 131.735064935068 40 130.62337662338 40 C 129.511688311688 40 128.955844155842 40 127.84415584415 40 C 126.73246753246599 40 126.17662337662401 40 125.06493506494 40 C 123.95324675324801 40 123.39740259740199 40 122.28571428571 40 C 121.17402597402199 40 120.618181818178 40 119.50649350649 40 C 118.394805194802 40 117.83896103895799 40 116.72727272727 40 C 115.61558441558199 40 115.059740259738 40 113.94805194805 40 C 112.83636363636201 40 112.28051948051798 40 111.16883116883 40 C 110.05714285714198 40 109.501298701298 40 108.38961038961 40 C 107.277922077922 40 106.722077922078 40 105.61038961039 40 C 104.498701298702 40 103.94285714285802 40 102.83116883117 40 C 101.719480519482 40 101.163636363638 40 100.05194805195 40 C 98.9402597402604 40 98.3844155844156 40 97.272727272726 40 C 96.16103896103921 40 95.6051948051958 40 94.493506493509 40 C 93.3818181818198 40 92.82597402597521 40 91.714285714286 40 C 90.6025974025968 40 90.0467532467522 40 88.935064935063 40 C 87.8233766233762 40 87.26753246753279 40 86.155844155846 40 C 85.04415584415679 40 84.48831168831221 40 83.376623376623 40 C 82.2649350649338 40 81.70909090908921 40 80.5974025974 40 C 79.48571428571321 40 78.9298701298698 40 77.818181818183 40 C 76.7064935064938 40 76.1506493506492 40 75.03896103896 40 C 73.9272727272732 40 73.37142857142979 40 72.259740259743 40 C 71.14805194805379 40 70.59220779220921 40 69.48051948052 40 C 68.3688311688308 40 67.81298701298621 40 66.701298701297 40 C 65.58961038961021 40 65.0337662337668 40 63.92207792208 40 C 62.8103896103908 40 62.254545454546204 40 61.142857142857 40 C 60.03116883116779 40 59.4753246753232 40 58.363636363634 40 C 57.2519480519472 40 56.69610389610379 40 55.584415584417 40 C 54.472727272727795 40 53.9168831168832 40 52.805194805194 40 C 51.6935064935048 40 51.137662337660196 40 50.025974025971 40 C 48.9142857142842 40 48.3584415584408 40 47.246753246754 40 C 46.1350649350648 40 45.5792207792202 40 44.467532467531 40 C 43.3558441558446 40 42.8000000000014 40 41.688311688315 40 C 40.5766233766254 40 40.0207792207806 40 38.909090909091 40 C 37.7974025974018 40 37.241558441557196 40 36.129870129868 40 C 35.018181818181596 40 34.462337662338406 40 33.350649350652 40 C 32.2389610389628 40 31.683116883118203 40 30.571428571429 40 C 29.4597402597398 40 28.9038961038952 40 27.792207792206 40 C 26.6805194805192 40 26.1246753246758 40 25.012987012989 40 C 23.9012987012998 40 23.3454545454552 40 22.233766233766 40 C 21.1220779220768 40 20.566233766232198 40 19.454545454543 40 C 18.3428571428562 40 17.787012987012798 40 16.675324675326 40 C 15.5636363636368 40 15.007792207792198 40 13.896103896103 40 C 12.7844155844162 40 12.228571428572799 40 11.116883116886 40 C 10.00519480519676 40 9.44935064935214 40 8.3376623376629 40 C 7.2259740259737 40 6.6701298701291 40 5.5584415584399 40 C 4.44675324675314 40 3.89090909090976 40 2.779220779223 40 C 1.6675324675338001 40 0 40 0 40"
+                  class="highcharts-area"></path>
+                <path fill="none" d="M 0 38.1674863602862 C 0 38.1674863602862 1.6675324675338001 38.11371016929943 2.779220779223 38.09028216319206 C 3.89090909090976 38.06685415708474 4.44675324675314 38.06333309696056 5.5584415584399 38.05034632974948 C 6.6701298701291 38.03735956253836 7.2259740259737 38.05034632974948 8.3376623376629 38.02534832713657 C 9.44935064935214 38.00035032452366 10.00519480519676 37.813265425395485 11.116883116886 37.813265425395485 C 12.228571428572799 37.813265425395485 12.7844155844162 37.974085654827235 13.896103896103 38.06686558909811 C 15.007792207792198 38.15964552336918 15.5636363636368 38.26645901621056 16.675324675326 38.277165096750345 C 17.787012987012798 38.28787117729013 18.3428571428562 38.28787117729013 19.454545454543 38.28787117729013 C 20.566233766232198 38.28787117729013 21.1220779220768 38.26219678055164 22.233766233766 38.26219678055164 C 23.3454545454552 38.26219678055164 23.9012987012998 38.28690517215867 25.012987012989 38.28690517215867 C 26.1246753246758 38.28690517215867 26.6805194805192 38.26445079252504 27.792207792206 38.26445079252504 C 28.9038961038952 38.26445079252504 29.4597402597398 38.506927607199145 30.571428571429 38.506927607199145 C 31.683116883118203 38.506927607199145 32.2389610389628 38.466828295965115 33.350649350652 38.45126703933855 C 34.462337662338406 38.435705782712034 35.018181818181596 38.42912132406646 36.129870129868 38.42912132406646 C 37.241558441557196 38.42912132406646 37.7974025974018 38.445377647107115 38.909090909091 38.445377647107115 C 40.0207792207806 38.445377647107115 40.5766233766254 38.445377647107115 41.688311688315 38.44115161282392 C 42.8000000000014 38.43692557854073 43.3558441558446 38.44115161282392 44.467532467531 38.417390172992704 C 45.5792207792202 38.393628733161485 46.1350649350648 38.27021252727363 47.246753246754 38.27021252727363 C 48.3584415584408 38.27021252727363 48.9142857142842 38.32783559076618 50.025974025971 38.32783559076618 C 51.137662337660196 38.32783559076618 51.6935064935048 38.30037208393214 52.805194805194 38.29623941109164 C 53.9168831168832 38.29210673825114 54.472727272727795 38.29623941109164 55.584415584417 38.29210673825114 C 56.69610389610379 38.287974065410644 57.2519480519472 38.242406060037894 58.363636363634 38.242406060037894 C 59.4753246753232 38.242406060037894 60.03116883116779 38.24471913741382 61.142857142857 38.24471913741382 C 62.254545454546204 38.24471913741382 62.8103896103908 38.24132954544366 63.92207792208 38.24132954544366 C 65.0337662337668 38.24132954544366 65.58961038961021 38.289284936279365 66.701298701297 38.289284936279365 C 67.81298701298621 38.289284936279365 68.3688311688308 38.289284936279365 69.48051948052 38.28464734951413 C 70.59220779220921 38.2800097627489 71.14805194805379 38.25883957928609 72.259740259743 38.253035927155075 C 73.37142857142979 38.24723227502406 73.9272727272732 38.24905187048864 75.03896103896 38.24723227502406 C 76.1506493506492 38.24541267955948 76.7064935064938 38.243937949832166 77.818181818183 38.243937949832166 C 78.9298701298698 38.243937949832166 79.48571428571321 38.24679023717298 80.5974025974 38.24679023717298 C 81.70909090908921 38.24679023717298 82.2649350649338 38.24679023717298 83.376623376623 38.24479535083642 C 84.48831168831221 38.24280046449986 85.04415584415679 38.18003185178046 86.155844155846 38.15505023505339 C 87.26753246753279 38.13006861832636 87.8233766233762 38.13662868867664 88.935064935063 38.11988726720116 C 90.0467532467522 38.103145845725635 90.6025974025968 38.08687466106759 91.714285714286 38.071343127675874 C 92.82597402597521 38.05581159428415 93.3818181818198 38.05329578920412 94.493506493509 38.04222960024254 C 95.6051948051958 38.031163411280986 96.16103896103921 38.01601218286803 97.272727272726 38.01601218286803 C 98.3844155844156 38.01601218286803 98.9402597402604 38.043620495205005 100.05194805195 38.043620495205005 C 101.163636363638 38.043620495205005 101.719480519482 38.035869590126545 102.83116883117 38.02292855096901 C 103.94285714285802 38.009987511811474 104.498701298702 37.988842097711014 105.61038961039 37.97891529941732 C 106.722077922078 37.96898850112362 107.277922077922 37.96898850112362 108.38961038961 37.96898850112362 C 109.501298701298 37.96898850112362 110.05714285714198 38.12624918265272 111.16883116883 38.12624918265272 C 112.28051948051798 38.12624918265272 112.83636363636201 38.118582874473354 113.94805194805 38.11005192501459 C 115.059740259738 38.10152097555582 115.61558441558199 38.083594435358876 116.72727272727 38.083594435358876 C 117.83896103895799 38.083594435358876 118.394805194802 38.09101076351211 119.50649350649 38.096249674181664 C 120.618181818178 38.10148858485121 121.17402597402199 38.10978898870661 122.28571428571 38.10978898870661 C 123.39740259740199 38.10978898870661 123.95324675324801 38.093093676351806 125.06493506494 38.086700132329845 C 126.17662337662401 38.08030658830793 126.73246753246599 38.08647911340427 127.84415584415 38.0778212685969 C 128.955844155842 38.06916342378947 129.511688311688 38.05887080106736 130.62337662338 38.04341090829285 C 131.735064935068 38.0279510155184 132.290909090912 38.007704919804596 133.4025974026 38.000521804724514 C 134.514285714288 37.99333868964443 135.070129870132 37.99333868964443 136.18181818182 37.99333868964443 C 137.293506493508 37.99333868964443 137.849350649352 38.00257956713472 138.96103896104 38.00257956713472 C 140.072727272728 38.00257956713472 140.628571428572 38.00257956713472 141.74025974026 37.98082063498232 C 142.851948051948 37.95906170282993 143.407792207792 37.908421694183126 144.51948051948 37.87597001883991 C 145.631168831168 37.84351834349668 146.187012987012 37.83737173096397 147.2987012987 37.818562258266205 C 148.410389610388 37.799752785568444 148.966233766232 37.794650296925354 150.07792207792 37.781922655351096 C 151.189610389608 37.76919501377684 151.745454545452 37.76185566118041 152.85714285714 37.754924050394926 C 153.968831168832 37.74799243960941 154.524675324678 37.754924050394926 155.63636363637 37.747264601423595 C 156.74805194805398 37.73960515245226 157.303896103896 37.71667634426286 158.41558441558 37.69012358782899 C 159.527272727272 37.66357083139494 160.083116883118 37.636953293551905 161.19480519481 37.614500819253806 C 162.30649350649801 37.592048344955785 162.862337662342 37.57786121633869 163.97402597403 37.57786121633869 C 165.08571428571798 37.57786121633869 165.64155844156204 37.611414175638494 166.75324675325 37.611414175638494 C 167.86493506493804 37.611414175638494 168.420779220782 37.59728801775952 169.53246753247 37.590531697846 C 170.644155844158 37.583775377932476 171.200000000002 37.57763257607089 172.31168831169 37.57763257607089 C 173.423376623378 37.57763257607089 173.97922077922198 37.669755550639046 175.09090909091 37.669755550639046 C 176.20259740259797 37.669755550639046 176.75844155844203 37.64319517286283 177.87012987013 37.64319517286283 C 178.98181818181803 37.64319517286283 179.537662337662 37.89187957080773 180.64935064935 37.89187957080773 C 181.761038961038 37.89187957080773 182.316883116882 37.80472571139311 183.42857142857 37.7604304701778 C 184.540259740258 37.716135228962486 185.09610389610197 37.68741801132667 186.20779220779 37.67040336473115 C 187.31948051947796 37.65338871813563 187.87532467532202 37.65980207764744 188.98701298701 37.65338871813563 C 190.09870129869802 37.64697535862381 190.654545454542 37.64412878728968 191.76623376623 37.63833656717206 C 192.877922077922 37.63254434705443 193.43376623376798 37.6244276175475 194.54545454546 37.6244276175475 C 195.657142857144 37.6244276175475 196.21298701298602 37.6908628580284 197.32467532467 37.74118658097122 C 198.43636363636202 37.7915103039144 198.992207792208 37.79225490905272 200.1038961039 37.87604623226251 C 201.215584415584 37.959837555471694 201.77142857142601 38.160143197018655 202.88311688311 38.160143197018655 C 203.994805194802 38.160143197018655 204.55064935064803 37.99533929198769 205.66233766234 37.989623285292666 C 206.774025974028 37.98390727859764 207.329870129872 37.989623285292666 208.44155844156 37.98390727859764 C 209.553246753248 37.97819127190262 210.109090909092 37.861394201767595 211.22077922078 37.861394201767595 C 212.332467532468 37.861394201767595 212.88831168831203 38.032626708994904 214 38.032626708994904 C 215.11168831168797 38.032626708994904 215.667532467532 38.01702201071748 216.77922077922 38.01702201071748 C 217.890909090908 38.01702201071748 218.446753246752 38.19793362261503 219.55844155844 38.19793362261503 C 220.670129870128 38.19793362261503 221.225974025972 38.17519534798222 222.33766233766 38.17143612091246 C 223.44935064935197 38.1676768938427 224.00519480519796 38.17143612091246 225.11688311689 38.1676768938427 C 226.228571428574 38.163917666772946 226.784415584416 38.038304608978635 227.8961038961 38.027844316726735 C 229.007792207792 38.017384024474836 229.56363636363798 38.020512585472595 230.67532467533 38.017384024474836 C 231.78701298701398 38.014255463477106 232.34285714285596 38.01220151173801 233.45454545454 38.01220151173801 C 234.56623376623202 38.01220151173801 235.122077922078 38.0433156415146 236.23376623377 38.0433156415146 C 237.345454545458 38.0433156415146 237.90129870130198 37.97640025647151 239.01298701299 37.96573037730746 C 240.12467532467798 37.95506049814341 240.68051948052204 37.96573037730746 241.79220779221 37.95506049814341 C 242.90389610389803 37.94439061897936 243.459740259742 37.933053872367566 244.57142857143 37.904435732181135 C 245.683116883118 37.87581759199471 246.238961038962 37.811969797211276 247.35064935065 37.811969797211276 C 248.462337662338 37.811969797211276 249.01818181818197 37.831187011719955 250.12987012987 37.84140723169066 C 251.24155844155797 37.851627451661365 251.79740259740203 37.8630708970648 252.90909090909 37.8630708970648 C 254.02077922077802 37.8630708970648 254.576623376622 37.74225356888762 255.68831168831 37.74225356888762 C 256.799999999998 37.74225356888762 257.355844155842 37.74255080123576 258.46753246753 37.74707406786709 C 259.579220779218 37.75159733449842 260.135064935062 37.76486990204427 261.24675324675 37.76486990204427 C 262.358441558438 37.76486990204427 262.914285714282 37.73259351757303 264.02597402597 37.73259351757303 C 265.137662337658 37.73259351757303 265.693506493502 37.74741702826879 266.80519480519 37.74741702826879 C 267.91688311688205 37.74741702826879 268.47272727272804 37.699040558273225 269.58441558442 37.699040558273225 C 270.69610389610403 37.699040558273225 271.251948051946 37.701917614976445 272.36363636363 37.716626805538255 C 273.475324675322 37.73133599610017 274.031168831168 37.769328387266384 275.14285714286 37.77258651108255 C 276.254545454548 37.77584463489872 276.810389610392 37.77584463489872 277.92207792208 37.77584463489872 C 279.033766233768 37.77584463489872 279.589610389612 37.756917031395915 280.7012987013 37.749855857792 C 281.812987012988 37.74279468418808 282.368831168832 37.74485625726942 283.48051948052 37.74053876687911 C 284.592207792208 37.736221276488806 285.148051948052 37.73823712151658 286.25974025974 37.72826840584046 C 287.371428571428 37.718299690164336 287.927272727272 37.690695188498495 289.03896103896 37.690695188498495 C 290.150649350648 37.690695188498495 290.706493506492 37.702622589135444 291.81818181818 37.702622589135444 C 292.929870129868 37.702622589135444 293.485714285712 37.65605618792664 294.5974025974 37.65605618792664 C 295.709090909088 37.65605618792664 296.264935064932 37.67985382913359 297.37662337662 37.67985382913359 C 298.48831168831197 37.67985382913359 299.044155844158 37.64849200573356 300.15584415585 37.64849200573356 C 301.26753246753395 37.64849200573356 301.823376623376 37.70149844115209 302.93506493506 37.70149844115209 C 304.046753246752 37.70149844115209 304.602597402598 37.63967792340987 305.71428571429 37.616768168576165 C 306.825974025978 37.593858413742545 307.381818181822 37.59853410721903 308.49350649351 37.586949666983784 C 309.605194805198 37.57536522674853 310.161038961042 37.57824990479396 311.27272727273 37.55884596739991 C 312.384415584418 37.539442030005866 312.940259740262 37.48992998001356 314.05194805195 37.48992998001356 C 315.163636363638 37.48992998001356 315.719480519482 37.527598464133774 316.83116883117 37.527598464133774 C 317.942857142858 37.527598464133774 318.498701298702 37.496716785296115 319.61038961039 37.479412527694706 C 320.72207792207803 37.462108270093296 321.27792207792197 37.479412527694706 322.38961038961 37.44107717612674 C 323.501298701298 37.402741824558774 324.057142857142 37.282724737318894 325.16883116883 37.272569298757396 C 326.280519480518 37.2624138601959 326.836363636362 37.272569298757396 327.94805194805 37.2624138601959 C 329.059740259738 37.2522584216344 329.615584415582 37.20426682942297 330.72727272727 37.17678807990442 C 331.838961038958 37.14930933038587 332.394805194802 37.15574936459559 333.50649350649 37.12502011260314 C 334.618181818178 37.094290860610684 335.174025974022 37.0475110618186 336.28571428571 37.02314181994214 C 337.397402597402 36.99877257806568 337.953246753248 36.99877257806568 339.06493506494 36.99877257806568 C 340.176623376624 36.99877257806568 340.73246753246605 37.00103992738804 341.84415584415 37.00103992738804 C 342.955844155842 37.00103992738804 343.51168831168803 36.83156413955179 344.62337662338 36.77018947033162 C 345.735064935068 36.70881480111168 346.290909090912 36.72248367845494 347.4025974026 36.69416658128779 C 348.51428571428806 36.66584948412063 349.070129870132 36.66491586969378 350.18181818182 36.62860398449585 C 351.293506493508 36.592292099297914 351.849350649352 36.512607155298134 352.96103896104 36.512607155298134 C 354.072727272728 36.512607155298134 354.628571428572 36.70028270845146 355.74025974026 36.70028270845146 C 356.851948051948 36.70028270845146 357.40779220779194 36.61315171306363 358.51948051948 36.59329811647624 C 359.631168831168 36.57344451988885 360.187012987012 36.57344451988885 361.2987012987 36.57344451988885 C 362.410389610388 36.57344451988885 362.966233766232 36.675741986374156 364.07792207792 36.675741986374156 C 365.189610389608 36.675741986374156 365.745454545452 36.675741986374156 366.85714285714 36.671321607863334 C 367.968831168832 36.66690122935251 368.524675324678 36.58595495320889 369.63636363637 36.532975192488074 C 370.748051948054 36.47999543176764 371.30389610389597 36.46425354932914 372.41558441558 36.40642280426022 C 373.52727272727196 36.34859205919088 374.08311688311795 36.30590111052161 375.19480519481 36.243821467142396 C 376.306493506498 36.1817418237634 376.862337662342 36.097072521925455 377.97402597403 36.096024587364695 C 379.085714285718 36.094976652803936 379.6415584415619 36.096024587364695 380.75324675325 36.094976652803936 C 381.864935064938 36.09392871824318 382.420779220782 35.85269418235746 383.53246753247 35.759618540006805 C 384.644155844158 35.66654289765614 385.200000000002 35.722201560181176 386.31168831169 35.62959844105063 C 387.423376623378 35.53699532192009 387.979220779222 35.38845917194316 389.09090909091 35.296602944354106 C 390.202597402598 35.204746716765044 390.758441558442 35.17031730310535 391.87012987013 35.17031730310535 C 392.981818181818 35.17031730310535 393.537662337662 35.58635113439607 394.64935064935 35.79204735132325 C 395.761038961038 35.99774356825043 396.316883116882 36.19879838774125 397.42857142857 36.19879838774125 C 398.540259740258 36.19879838774125 399.09610389610197 36.0633099757135 400.20779220779 35.95140961798055 C 401.319480519478 35.83950926024761 401.875324675322 35.63929659907652 402.98701298701 35.63929659907652 C 404.098701298698 35.63929659907652 404.654545454542 35.76413418529587 405.76623376623 35.76413418529587 C 406.877922077922 35.76413418529587 407.43376623376804 35.70596047982528 408.54545454546 35.63845825142792 C 409.65714285714404 35.570956023031044 410.212987012986 35.485574125691436 411.32467532467 35.426623043310286 C 412.43636363636205 35.36767196092871 412.992207792208 35.39341304441236 414.1038961039 35.343702839521114 C 415.215584415584 35.29399263463022 415.771428571426 35.178072018854934 416.88311688311 35.178072018854934 C 417.99480519480204 35.178072018854934 418.55064935064803 35.207680933535165 419.66233766234 35.207680933535165 C 420.77402597402795 35.207680933535165 421.32987012987195 35.07966524759338 422.44155844156 34.95063211245988 C 423.553246753248 34.82159897732638 424.109090909092 34.56251525786766 425.22077922078 34.56251525786766 C 426.33246753246806 34.56251525786766 426.888311688312 34.78835468238811 428 34.78835468238811 C 429.111688311688 34.78835468238811 429.66753246753194 34.72569581699725 430.77922077922 34.67416792197716 C 431.890909090908 34.62264002695707 432.446753246752 34.53071520728767 433.55844155844 34.53071520728767 C 434.67012987012805 34.53071520728767 435.22597402597205 34.571927615558806 436.33766233766 34.571927615558806 C 437.44935064935197 34.571927615558806 438.00519480519796 34.37623059967679 439.11688311689 34.37623059967679 C 440.228571428574 34.37623059967679 440.784415584416 34.91734590013918 441.8961038961 34.91734590013918 C 443.007792207792 34.91734590013918 443.56363636363795 34.802225525301374 444.67532467533 34.802225525301374 C 445.787012987014 34.802225525301374 446.34285714285596 35.13232491193908 447.45454545454 35.22309509825608 C 448.5662337662319 35.31386528457308 449.122077922078 35.31386528457308 450.23376623377 35.31386528457308 C 451.345454545458 35.31386528457308 451.90129870130204 35.273182559589024 453.01298701299 35.197982775509274 C 454.124675324678 35.12278299142952 454.680519480522 34.937866364174326 455.79220779221 34.937866364174326 C 456.90389610389803 34.937866364174326 457.4597402597419 35.17437566785882 458.57142857143 35.17437566785882 C 459.683116883118 35.17437566785882 460.238961038962 35.17059929276896 461.35064935065 35.09351322647986 C 462.462337662338 35.016427160190744 463.018181818182 34.78894533641326 464.12987012987 34.78894533641326 C 465.241558441558 34.78894533641326 465.797402597402 34.9098198246574 466.90909090909 34.9098198246574 C 468.0207792207781 34.9098198246574 468.576623376622 34.88387677560424 469.68831168831 34.8534028385775 C 470.799999999998 34.82292890155075 471.35584415584196 34.75745013952368 472.46753246753 34.75745013952368 C 473.579220779218 34.75745013952368 474.135064935062 34.92218164180317 475.24675324675 34.990777532814604 C 476.3584415584381 35.05937342382604 476.9142857142821 35.03418869832776 478.02597402597 35.100429594580845 C 479.137662337658 35.16667049083393 479.693506493502 35.32198201408002 480.80519480519 35.32198201408002 C 481.91688311688205 35.32198201408002 482.47272727272804 35.32198201408002 483.58441558442 35.305481808087045 C 484.6961038961041 35.28898160209407 485.251948051946 35.04319331420799 486.36363636363 35.04319331420799 C 487.475324675322 35.04319331420799 488.031168831168 35.074779967204634 489.14285714286 35.10858443079908 C 490.25454545454795 35.14238889439339 490.810389610392 35.158908153742075 491.92207792208 35.212215632179884 C 493.033766233768 35.26552311061769 493.58961038961206 35.375121822988106 494.7012987013 35.375121822988106 C 495.812987012988 35.375121822988106 496.368831168832 35.293043777518676 497.48051948052 35.235174925738235 C 498.59220779220806 35.177306073957794 499.14805194805194 35.09799076505764 500.25974025974 35.08577756408593 C 501.371428571428 35.07356436311422 501.927272727272 35.08169633530568 503.03896103896 35.07356436311422 C 504.150649350648 35.065432390922766 504.706493506492 35.0468134517815 505.81818181818 35.045117703128646 C 506.92987012986794 35.04342195447579 507.48571428571194 35.04342195447579 508.5974025974 35.04342195447579 C 509.709090909088 35.04342195447579 510.264935064932 35.190285219826634 511.37662337662 35.190285219826634 C 512.488311688312 35.190285219826634 513.044155844158 35.143737871973485 514.15584415585 35.143737871973485 C 515.267532467534 35.143737871973485 515.823376623376 35.143737871973485 516.93506493506 35.16132411923851 C 518.0467532467521 35.17891036650353 518.6025974025981 35.43936973824019 519.71428571429 35.47621892806745 C 520.825974025978 35.51306811789472 521.381818181822 35.51306811789472 522.49350649351 35.51306811789472 C 523.6051948051979 35.51306811789472 524.161038961042 35.45956629522928 525.27272727273 35.45956629522928 C 526.384415584418 35.45956629522928 526.940259740262 35.45956629522928 528.05194805195 35.52699612087493 C 529.163636363638 35.59442594652057 529.719480519482 36.03549207646438 530.83116883117 36.04972493313499 C 531.942857142858 36.0639577898056 532.4987012987019 36.04972493313499 533.61038961039 36.0639577898056 C 534.722077922078 36.07819064647621 535.277922077922 36.38746471538838 536.38961038961 36.38746471538838 C 537.5012987012981 36.38746471538838 538.057142857142 36.04232842047163 539.16883116883 35.86241139373901 C 540.280519480518 35.68249436700639 540.836363636362 35.4878795817253 541.94805194805 35.4878795817253 C 543.059740259738 35.4878795817253 543.615584415582 35.64068749403898 544.72727272727 35.64068749403898 C 545.838961038958 35.64068749403898 546.3948051948021 34.81401955244878 547.50649350649 34.81401955244878 C 548.618181818178 34.81401955244878 549.174025974022 34.98222257612772 550.28571428571 34.98222257612772 C 551.3974025974019 34.98222257612772 551.9532467532479 34.64899843916339 553.06493506494 34.64899843916339 C 554.176623376624 34.64899843916339 554.732467532466 34.75188655967385 555.84415584415 34.761946731457094 C 556.955844155842 34.77200690324034 557.511688311688 34.76618038708253 558.62337662338 34.77200690324034 C 559.735064935068 34.77783341939813 560.290909090912 34.782051832339064 561.4025974026 34.791079312246076 C 562.514285714288 34.80010679215309 563.0701298701321 34.81714430277539 564.18181818182 34.81714430277539 C 565.293506493508 34.81714430277539 565.849350649352 34.81714430277539 566.96103896104 34.76059394320594 C 568.0727272727279 34.70404358363649 568.628571428572 34.51873064658377 569.74025974026 34.51873064658377 C 570.8519480519479 34.51873064658377 571.407792207792 34.766043202921864 572.51948051948 34.80975160078316 C 573.631168831168 34.85345999864445 574.1870129870119 34.85345999864445 575.2987012987 34.85345999864445 C 576.410389610388 34.85345999864445 576.966233766232 34.79618942223143 578.07792207792 34.73580552750518 C 579.1896103896081 34.67542163277893 579.745454545452 34.72944551738887 580.85714285714 34.551540525013216 C 581.968831168832 34.37363553263693 582.524675324678 33.86466705382768 583.63636363637 33.84628056562535 C 584.748051948054 33.82789407742302 585.303896103896 33.84628056562535 586.41558441558 33.82789407742302 C 587.527272727272 33.809507589220686 588.083116883118 33.73080198770143 589.19480519481 33.66717902251455 C 590.306493506498 33.60355605732791 590.862337662342 33.509779251489206 591.97402597403 33.509779251489206 C 593.0857142857179 33.509779251489206 593.641558441562 33.59327105594788 594.75324675325 33.59327105594788 C 595.864935064938 33.59327105594788 596.420779220782 33.59327105594788 597.53246753247 33.53315771887186 C 598.644155844158 33.473044381795845 599.200000000002 33.32687084791953 600.31168831169 33.15793998605476 C 601.423376623378 32.98900912418998 601.979220779222 32.87385826398313 603.09090909091 32.68850340954798 C 604.202597402598 32.50314855511283 604.7584415584421 32.40418923653742 605.87012987013 32.23116571387901 C 606.981818181818 32.05814219122058 607.537662337662 31.823385796255906 608.64935064935 31.823385796255906 C 609.7610389610379 31.823385796255906 610.316883116882 32.049663447956306 611.42857142857 32.049663447956306 C 612.540259740258 32.049663447956306 613.096103896102 31.806180616103884 614.20779220779 31.757118225304914 C 615.319480519478 31.708055834505945 615.875324675322 31.708055834505945 616.98701298701 31.708055834505945 C 618.098701298698 31.708055834505945 618.6545454545419 32.325117810589575 619.76623376623 32.325117810589575 C 620.877922077922 32.325117810589575 621.433766233768 32.18286545730605 622.54545454546 32.151370260416456 C 623.657142857144 32.11987506352686 624.212987012986 32.11987506352686 625.32467532467 32.11987506352686 C 626.436363636362 32.11987506352686 626.992207792208 32.28173331977433 628.1038961039 32.28173331977433 C 629.215584415584 32.28173331977433 629.771428571426 32.202071239801334 630.88311688311 32.18532334018491 C 631.994805194802 32.16857544056848 632.550649350648 32.18532334018491 633.66233766234 32.16857544056848 C 634.774025974028 32.151827540952056 635.329870129872 32.015207359598705 636.44155844156 31.919871989267932 C 637.5532467532479 31.82453661893717 638.109090909092 31.691898588914675 639.22077922078 31.691898588914675 C 640.332467532468 31.691898588914675 640.888311688312 31.747629654191172 642 31.747629654191172 C 643.111688311688 31.747629654191172 643.667532467532 31.747629654191172 644.77922077922 31.705940912028787 C 645.890909090908 31.6642521698664 646.4467532467521 31.340478497304517 647.55844155844 31.2797173461364 C 648.670129870128 31.218956194968285 649.225974025972 31.218956194968285 650.33766233766 31.218956194968285 C 651.449350649352 31.218956194968285 652.005194805198 31.343260287229434 653.11688311689 31.343260287229434 C 654.228571428574 31.343260287229434 654.784415584416 31.160214699498667 655.8961038961 31.045570658552517 C 657.007792207792 30.93092661760555 657.563636363638 30.77004008249665 658.67532467533 30.77004008249665 C 659.787012987014 30.77004008249665 660.342857142856 31.475833535842717 661.45454545454 31.475833535842717 C 662.566233766232 31.475833535842717 663.122077922078 31.307763885653323 664.23376623377 31.307763885653323 C 665.3454545454581 31.307763885653323 665.901298701302 31.729643286457488 667.01298701299 31.729643286457488 C 668.124675324678 31.729643286457488 668.680519480522 31.729643286457488 669.79220779221 31.723279465670362 C 670.903896103898 31.716915644883237 671.459740259742 31.283413697132517 672.57142857143 31.283413697132517 C 673.683116883118 31.283413697132517 674.2389610389621 32.15396151678487 675.35064935065 32.15396151678487 C 676.462337662338 32.15396151678487 677.018181818182 32.02317928360269 678.12987012987 32.02317928360269 C 679.2415584415579 32.02317928360269 679.797402597402 32.094248300177505 680.90909090909 32.094248300177505 C 682.020779220778 32.094248300177505 682.576623376622 32.0913788648166 683.68831168831 32.088075012946874 C 684.799999999998 32.08477116107715 685.355844155842 32.07772904082888 686.46753246753 32.07772904082888 C 687.579220779218 32.07772904082888 688.135064935062 32.244899372631586 689.24675324675 32.5813854440832 C 690.358441558438 32.91787151553482 690.9142857142821 33.76015939808697 692.02597402597 33.76015939808697 C 693.137662337658 33.76015939808697 693.693506493502 32.28565831103825 694.80519480519 32.28565831103825 C 695.916883116882 32.28565831103825 696.472727272728 33.02090825221935 697.58441558442 33.02090825221935 C 698.6961038961041 33.02090825221935 699.251948051946 33.02090825221935 700.36363636363 32.975180198659146 C 701.475324675322 32.92945214509894 702.031168831168 32.49419728862842 703.14285714286 32.49419728862842 C 704.254545454548 32.49419728862842 704.8103896103919 32.53180861268169 705.92207792208 32.53180861268169 C 707.033766233768 32.53180861268169 707.589610389612 32.06791656266908 708.7012987013 32.05132108989786 C 709.8129870129881 32.03472561712664 710.368831168832 32.05132108989786 711.48051948052 32.03472561712664 C 712.592207792208 32.01813014435542 713.148051948052 31.781373147047468 714.25974025974 31.74602917231656 C 715.3714285714279 31.710685197585654 715.927272727272 31.73744754093176 717.03896103896 31.710685197585654 C 718.150649350648 31.683922854239547 718.706493506492 31.61221745558602 719.81818181818 31.61221745558602 C 720.9298701298679 31.61221745558602 721.485714285712 31.75214529948024 722.5974025974 31.816221734531474 C 723.709090909088 31.88029816958271 724.264935064932 31.93259963084219 725.37662337662 31.93259963084219 C 726.488311688312 31.93259963084219 727.044155844158 31.750544817605633 728.15584415585 31.72958612639054 C 729.267532467534 31.708627435175448 729.823376623376 31.72958612639054 730.93506493506 31.708627435175448 C 732.0467532467521 31.687668743960355 732.6025974025981 30.905166480767043 733.71428571429 30.81807359209051 C 734.825974025978 30.730980703413977 735.381818181822 30.730980703413977 736.49350649351 30.730980703413977 C 737.605194805198 30.730980703413977 738.1610389610421 30.811728824659035 739.27272727273 30.811728824659035 C 740.3844155844181 30.811728824659035 740.940259740262 30.217149808242503 742.05194805195 29.914029973205317 C 743.163636363638 29.61091013816813 743.719480519482 29.45941309672317 744.83116883117 29.29612964947308 C 745.942857142858 29.132846202222986 746.4987012987019 29.097612736954858 747.61038961039 29.097612736954858 C 748.722077922078 29.097612736954858 749.277922077922 29.428741004797672 750.38961038961 29.428741004797672 C 751.5012987012981 29.428741004797672 752.057142857142 29.226470581216375 753.16883116883 29.226470581216375 C 754.280519480518 29.226470581216375 754.836363636362 29.27725158469498 755.94805194805 29.32981598226243 C 757.059740259738 29.382380379829883 757.6155844155819 29.48929256905364 758.72727272727 29.48929256905364 C 759.8389610389579 29.48929256905364 760.394805194802 29.284823388230322 761.50649350649 29.113750929190473 C 762.618181818178 28.942678470150625 763.174025974022 28.779585556456787 764.28571428571 28.633930273854403 C 765.3974025974019 28.488274991251515 765.9532467532479 28.385474516177307 767.06493506494 28.385474516177307 C 768.176623376624 28.385474516177307 768.732467532466 28.518040143448594 769.84415584415 28.590926850152165 C 770.955844155842 28.663813556856258 771.511688311688 28.590926850152165 772.62337662338 28.749908049696465 C 773.735064935068 28.908889249240765 774.290909090912 29.477479488550586 775.4025974026 29.477479488550586 C 776.514285714288 29.477479488550586 777.0701298701321 29.283188610315538 778.18181818182 29.158354834767323 C 779.293506493508 29.033521059219094 779.849350649352 28.853310610809476 780.96103896104 28.853310610809476 C 782.072727272728 28.853310610809476 782.6285714285721 28.93966041861566 783.74025974026 28.97967246548083 C 784.851948051948 29.019684512346014 785.407792207792 29.053370845135362 786.51948051948 29.053370845135362 C 787.631168831168 29.053370845135362 788.1870129870119 28.506055582744445 789.2987012987 28.251929546425867 C 790.410389610388 27.997803510107317 790.966233766232 27.977896564124084 792.07792207792 27.78274066354254 C 793.1896103896081 27.587584762960976 793.745454545452 27.539383583836933 794.85714285714 27.276150043518104 C 795.968831168832 27.01291650319833 796.524675324678 26.675500627992207 797.63636363637 26.466572961946024 C 798.748051948054 26.257645295901337 799.3038961038959 26.345648934976797 800.41558441558 26.231511713290935 C 801.527272727272 26.117374491604266 802.083116883118 25.948131154707234 803.19480519481 25.895886853514703 C 804.306493506498 25.843642552322173 804.862337662342 25.843642552322173 805.97402597403 25.843642552322173 C 807.0857142857179 25.843642552322173 807.641558441562 26.475661412591116 808.75324675325 26.475661412591116 C 809.864935064938 26.475661412591116 810.420779220782 26.475661412591116 811.53246753247 26.468649777711885 C 812.644155844158 26.461638142832655 813.200000000002 25.87759563209062 814.31168831169 25.87759563209062 C 815.423376623378 25.87759563209062 815.979220779222 26.12902371324913 817.09090909091 26.383595598089908 C 818.202597402598 26.638167482930683 818.7584415584421 26.861636670008274 819.87012987013 27.150455056294497 C 820.981818181818 27.43927344258075 821.537662337662 27.451284677982564 822.64935064935 27.827687529521093 C 823.7610389610381 28.204090381059657 824.316883116882 29.032469313987217 825.42857142857 29.032469313987217 C 826.5402597402581 29.032469313987217 827.096103896102 28.516211021305928 828.20779220779 27.60516338888376 C 829.319480519478 26.694115756461592 829.875324675322 24.71238766730972 830.98701298701 24.47723115187638 C 832.098701298698 24.242074636443043 832.6545454545419 24.47723115187638 833.76623376623 24.242074636443043 C 834.8779220779219 24.006918121009704 835.4337662337679 9.656578459458373 836.54545454546 8.091154759247448 C 837.657142857144 6.525731059036524 838.212987012986 6.525731059036524 839.32467532467 6.525731059036524 C 840.436363636362 6.525731059036524 840.992207792208 8.596259217531177 842.1038961039 8.596259217531177 C 843.2155844155841 8.596259217531177 843.7714285714259 7.433013748378635 844.88311688311 6.413887861370526 C 845.994805194802 5.394761974355225 846.550649350648 3.50062978247265 847.66233766234 3.50062978247265 C 848.774025974028 3.50062978247265 849.329870129872 3.50062978247265 850.44155844156 4.115672102857374 C 851.5532467532479 4.730714423242098 852.109090909092 6.694010296137978 853.22077922078 8.524809133843362 C 854.3324675324678 10.355607971548562 856 13.269666291383835 856 13.269666291383835"
+                  class="highcharts-graph" stroke="#26afda" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"></path>
+              </g>
+              <g class="highcharts-markers highcharts-series-4 highcharts-areaspline-series highcharts-navigator-series"
+                transform="translate(223,331) scale(1 1)"></g>
+            </g>
+            <text x="564" text-anchor="middle" class="highcharts-title" style="color:#333333;font-size:16px;fill:#333333;"
+              y="22"></text>
+            <text x="564" text-anchor="middle" class="highcharts-subtitle" style="color:#666666;fill:#666666;" y="24"></text>
+            <g class="highcharts-axis-labels highcharts-xaxis-labels ">
+              <text x="991.59866254161" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>18. Dec</tspan>
+              </text>
+              <text x="1094.0104338424" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>26. Dec</tspan>
+              </text>
+              <text x="269.72237576293" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>26. Oct</tspan>
+              </text>
+              <text x="383.79848013812" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>30. Oct</tspan>
+              </text>
+              <text x="471.31658580811" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>3. Nov</tspan>
+              </text>
+              <text x="587.20341312982" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>7. Nov</tspan>
+              </text>
+              <text x="703.08956981212" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>11. Nov</tspan>
+              </text>
+              <text x="791.81579886577" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>15. Nov</tspan>
+              </text>
+              <text x="886.20172054748" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="middle"
+                transform="translate(0,0)" y="304" opacity="1">
+                <tspan>12. Dec</tspan>
+              </text>
+            </g>
+            <g class="highcharts-axis-labels highcharts-xaxis-labels highcharts-navigator-xaxis">
+              <text x="1082.640435097" style="color:#999999;cursor:default;font-size:11px;fill:#999999;" text-anchor="start"
+                transform="translate(0,0)" y="367" opacity="1">
+                <tspan>25. Dec</tspan>
+              </text>
+              <text x="287.25859367484" style="color:#999999;cursor:default;font-size:11px;fill:#999999;" text-anchor="start"
+                transform="translate(0,0)" y="367" opacity="1">
+                <tspan>23. Jan</tspan>
+              </text>
+              <text x="451.34842051467" style="color:#999999;cursor:default;font-size:11px;fill:#999999;" text-anchor="start"
+                transform="translate(0,0)" y="367" opacity="1">
+                <tspan>27. Mar</tspan>
+              </text>
+              <text x="606.98454823258" style="color:#999999;cursor:default;font-size:11px;fill:#999999;" text-anchor="start"
+                transform="translate(0,0)" y="367" opacity="1">
+                <tspan>22. May</tspan>
+              </text>
+              <text x="762.62111562049" style="color:#999999;cursor:default;font-size:11px;fill:#999999;" text-anchor="start"
+                transform="translate(0,0)" y="367" opacity="1">
+                <tspan>17. Jul</tspan>
+              </text>
+              <text x="926.59517376142" style="color:#999999;cursor:default;font-size:11px;fill:#999999;" text-anchor="start"
+                transform="translate(0,0)" y="367" opacity="1">
+                <tspan>25. Sep</tspan>
+              </text>
+            </g>
+            <g class="highcharts-axis-labels highcharts-yaxis-labels ">
+              <text x="1090" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)"
+                y="187" opacity="1">4k</text>
+              <text x="1090" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end"
+                transform="translate(0,0)" y="115" opacity="1">12k</text>
+              <text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)"
+                y="-9999">20k</text>
+            </g>
+            <g class="highcharts-axis-labels highcharts-yaxis-labels "></g>
+            <g class="highcharts-axis-labels highcharts-yaxis-labels ">
+              <text x="1090" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)"
+                y="283" opacity="1">0</text>
+              <text x="1090" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end"
+                transform="translate(0,0)" y="241" opacity="1">12G</text>
+              <text x="0" style="color:#666666;cursor:default;font-size:11px;fill:#666666;" text-anchor="end" transform="translate(0,0)"
+                y="-9999">24G</text>
+            </g>
+            <g class="highcharts-axis-labels highcharts-yaxis-labels highcharts-navigator-yaxis"></g>
+            <g class="highcharts-range-selector-group" transform="translate(0,0)">
+              <g class="highcharts-range-selector-buttons" transform="translate(0,10)">
+                <text x="34" y="15" style="color:#666666;fill:#666666;">Zoom</text>
+                <g class="highcharts-button highcharts-button-normal" style="cursor:pointer;" transform="translate(68,0)">
+                  <rect fill="#f7f7f7" class=" highcharts-button-box" x="0" y="0" width="32" height="22" rx="2" ry="2"></rect>
+                  <text x="8.3359375" style="font-weight:normal;color:#333333;fill:#333333;" y="14">1m</text>
+                </g>
+                <g class="highcharts-button highcharts-button-pressed" style="cursor:pointer;" transform="translate(105,0)">
+                  <rect fill="#e6ebf5" class=" highcharts-button-box" x="0" y="0" width="32" height="22" rx="2" ry="2"></rect>
+                  <text x="8.3359375" style="font-weight:bold;color:#000000;fill:#000000;" y="14">3m</text>
+                </g>
+                <g class="highcharts-button highcharts-button-normal" style="cursor:pointer;" transform="translate(142,0)">
+                  <rect fill="#f7f7f7" class=" highcharts-button-box" x="0" y="0" width="32" height="22" rx="2" ry="2"></rect>
+                  <text x="8.3359375" style="font-weight:normal;color:#333333;fill:#333333;" y="14">6m</text>
+                </g>
+                <g class="highcharts-button highcharts-button-normal" style="cursor:pointer;" transform="translate(179,0)">
+                  <rect fill="#f7f7f7" class=" highcharts-button-box" x="0" y="0" width="32" height="22" rx="2" ry="2"></rect>
+                  <text x="3.671875" style="font-weight:normal;color:#333333;fill:#333333;" y="14">YTD</text>
+                </g>
+                <g class="highcharts-button highcharts-button-normal" style="cursor:pointer;" transform="translate(216,0)">
+                  <rect fill="#f7f7f7" class=" highcharts-button-box" x="0" y="0" width="32" height="22" rx="2" ry="2"></rect>
+                  <text x="10" style="font-weight:normal;color:#333333;fill:#333333;" y="14">1y</text>
+                </g>
+                <g class="highcharts-button highcharts-button-normal" style="cursor:pointer;" transform="translate(253,0)">
+                  <rect fill="#f7f7f7" class=" highcharts-button-box" x="0" y="0" width="32" height="22" rx="2" ry="2"></rect>
+                  <text x="8.3359375" style="font-weight:normal;color:#333333;fill:#333333;" y="14">All</text>
+                </g>
+              </g>
+              <g class="highcharts-input-group" transform="translate(839,10)">
+                <g class="highcharts-label highcharts-range-label" transform="translate(0,0)" style="fill:#666666;">
+                  <text x="2" y="14" style="font-size:12px;font-family:Roboto;color:#666666;fill:#666666;">From</text>
+                </g>
+                <g class="highcharts-label highcharts-range-input" transform="translate(35,0)" style="fill:#444444;">
+                  <rect fill="none" class="highcharts-label-box" x="0.5" y="0.5" width="94" height="21" stroke="#cccccc" stroke-width="1"></rect>
+                  <text x="15.84375" y="14" style="font-size:12px;font-family:Roboto;color:#444444;fill:#444444;">
+                    <tspan>Oct 24, 2017</tspan>
+                  </text>
+                </g>
+                <g class="highcharts-label highcharts-range-label" transform="translate(139,0)" style="fill:#666666;">
+                  <text x="2" y="14" style="font-size:12px;font-family:Roboto;color:#666666;fill:#666666;">To</text>
+                </g>
+                <g class="highcharts-label highcharts-range-input" transform="translate(160,0)" style="fill:#444444;">
+                  <rect fill="none" class="highcharts-label-box" x="0.5" y="0.5" width="94" height="21" stroke="#cccccc" stroke-width="1"></rect>
+                  <text x="16.5078125" y="14" style="font-size:12px;font-family:Roboto;color:#444444;fill:#444444;">
+                    <tspan>Jan 24, 2018</tspan>
+                  </text>
+                </g>
+              </g>
+            </g>
+            <g class="highcharts-legend" transform="translate(10,10)">
+              <rect fill="#FFFFFF" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="162" height="67" visibility="visible"></rect>
+              <g>
+                <g>
+                  <g class="highcharts-legend-item highcharts-line-series highcharts-color-0 highcharts-series-0" transform="translate(8,3)">
+                    <path fill="none" d="M 0 11 L 16 11" class="highcharts-graph" stroke="#26afda" stroke-width="2"></path>
+                    <text x="21" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;"
+                      text-anchor="start" y="15">
+                      <tspan>USD Price</tspan>
+                    </text>
+                  </g>
+                  <g class="highcharts-legend-item highcharts-line-series highcharts-color-1 highcharts-series-1 highcharts-legend-item-hidden"
+                    transform="translate(8,17)">
+                    <path fill="none" d="M 0 11 L 16 11" class="highcharts-graph" stroke="#cccccc" stroke-width="2"></path>
+                    <text x="21" y="15" style="color:#cccccc;font-size:12px;font-weight:bold;cursor:pointer;fill:#cccccc;"
+                      text-anchor="start">
+                      <tspan>Moving Average Volume</tspan>
+                    </text>
+                  </g>
+                  <g class="highcharts-legend-item highcharts-flags-series highcharts-color-2 highcharts-series-2" transform="translate(8,31)">
+                    <text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;"
+                      text-anchor="start">
+                      <tspan>News</tspan>
+                    </text>
+                    <rect x="2" y="4" width="12" height="12" fill="#d35400" rx="6" ry="6" class="highcharts-point"></rect>
+                  </g>
+                  <g class="highcharts-legend-item highcharts-column-series highcharts-color-undefined highcharts-series-3"
+                    transform="translate(8,45)">
+                    <text x="21" y="15" style="color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;"
+                      text-anchor="start">
+                      <tspan>Volume</tspan>
+                    </text>
+                    <rect x="2" y="4" width="12" height="12" fill="#d35400" rx="6" ry="6" class="highcharts-point"></rect>
+                  </g>
+                </g>
+              </g>
+            </g>
+            <g class="highcharts-navigator" visibility="visible">
+              <rect fill="rgba(0,0,0,0)" class="highcharts-navigator-mask-outside" x="223" y="331" width="774" height="40"></rect>
+              <rect fill="rgba(102,133,194,0.3)" class="highcharts-navigator-mask-inside" style="cursor:ew-resize;"
+                x="997" y="331" width="82" height="40"></rect>
+              <rect fill="rgba(0,0,0,0)" class="highcharts-navigator-mask-outside" x="1079" y="331" width="0" height="40"></rect>
+              <path fill="none" class="highcharts-navigator-outline" stroke="#cccccc" stroke-width="1" d="M 209 331.5 L 996.5 331.5 L 996.5 385.5 L 1078.5 385.5 L 1078.5 331.5 L 1093 331.5 M 996 331.5 L 1079 331.5"></path>
+              <path fill="#f2f2f2" d="M -4.5 0.5 L 3.5 0.5 L 3.5 15.5 L -4.5 15.5 L -4.5 0.5 M -1.5 4 L -1.5 12 M 0.5 4 L 0.5 12"
+                class="highcharts-navigator-handle highcharts-navigator-handle-right" stroke="#999999" stroke-width="1" style="cursor:ew-resize;"
+                transform="translate(1079,343)"></path>
+              <path fill="#f2f2f2" d="M -4.5 0.5 L 3.5 0.5 L 3.5 15.5 L -4.5 15.5 L -4.5 0.5 M -1.5 4 L -1.5 12 M 0.5 4 L 0.5 12"
+                class="highcharts-navigator-handle highcharts-navigator-handle-left" stroke="#999999" stroke-width="1" style="cursor:ew-resize;"
+                transform="translate(997,343)"></path>
+            </g>
+            <text x="1117" class="highcharts-credits" text-anchor="end" style="cursor:pointer;color:#999999;font-size:9px;fill:#999999;"
+              y="395">Highcharts.com</text>
+          </svg>
+          <div class="highcharts-series-group" style="position: absolute; left: 0px; top: 0px; opacity: 1;">
+            <div class="highcharts-markers highcharts-series-2 highcharts-flags-series highcharts-color-2 highcharts-tracker"
+              style="position: absolute; left: 209px; top: 45px; opacity: 1;">
+              <div class="highcharts-label highcharts-point" style="position: absolute; left: 847px; top: 11px; opacity: 1;">
+                <span style="font-family: Roboto; font-size: 11px; position: absolute; white-space: nowrap; font-weight: bold; margin-left: 0px; margin-top: 0px; left: 3px; top: 3px;">
+                  <a href="#n2">2</a>
+                </span>
+              </div>
+              <div class="highcharts-label highcharts-point" style="position: absolute; left: 826px; top: -4px; opacity: 1;">
+                <span style="font-family: Roboto; font-size: 11px; position: absolute; white-space: nowrap; font-weight: bold; margin-left: 0px; margin-top: 0px; left: 3px; top: 3px;">
+                  <a href="#n3">3</a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section section-gray" id="news">
+      <h2 class="header">
+        <i class="pe-7s-news-paper"></i>&nbsp;Latest News</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="timeline">
+              <dl>
+                <dd class="clearfix pos-left" id="n1" name="n1">
+                  <div class="circ"></div>
+                  <div class="time">1</div>
+                  <div class="events">
+                    <div class="card card-plain">
+                      <div class="content">
+                        <p class="category">January 24, 2018</p>
+                        <a class="card-link" target="_blank" href="https://www.ccn.com/analyst-now-best-time-invest-bitcoin-even-recent-correction/">
+                          <h4 class="title">Now is the Best Time to Invest in Bitcoin, Even After Recent Correction</h4>
+                        </a>
+                        <p class="description">
+                          <a href="https://www.ccn.com/analyst-now-best-time-invest-bitcoin-even-recent-correction/">https://www.ccn.com/analyst-now-best-time-invest-bitcoin-even-recent-correction/</a>
+                        </p>
+                        <p>Now, when everyone is saying … it’s over, that’s it, bitcoin is dead, for the 175th time. Now’s the
+                          time you start looking at it, on the buy side. And that money is still coming in. The flows have
+                          not stopped. This is not the end of bitcoin</p>
+                        <p></p>
+                        <p class="footer">
+                          <span class="label label-default label-fill">bitcoin</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </dd>
+                <dd class="clearfix pos-right" id="n2" name="n2">
+                  <div class="circ"></div>
+                  <div class="time">2</div>
+                  <div class="events">
+                    <div class="card card-plain">
+                      <div class="content">
+                        <p class="category">December 22, 2017</p>
+                        <a class="card-link" target="_blank" href="https://www.cnbc.com/2017/12/22/bitcoin-plunges-below-12000-on-coinbase-as-rout-accelerates-now-down-40-percent-from-record.html">
+                          <h4 class="title">Bitcoin plunges below $11,000 in volatile trading on Coinbase as rout accelerates; now down 40
+                            percent from record</h4>
+                        </a>
+                        <p class="description">
+                          <a href="https://www.cnbc.com/2017/12/22/bitcoin-plunges-below-12000-on-coinbase-as-rout-accelerates-now-down-40-percent-from-record.html">https://www.cnbc.com/2017/12/22/bitcoin-plunges-below-12000-on-coinbase-as-rout-accelerates-now-down-40-percent-from-record.html</a>
+                        </p>
+                        <p>Bitcoin plunges more than 40 percent from its all-time high reached Sunday, according to Coinbase.
+                          <br> Coinbase said a little after 11 a.m. New York time that buying and selling was temporarily disabled.
+                          <br> CME's bitcoin futures expiring in January reached 'limit down,' off 20 percent.
+                          <br> Stocks that have soared dramatically on speculation around their connection to bitcoin and its
+                          underlying blockchain technology also fall.</p>
+                        <p></p>
+                        <p class="footer">
+                          <span class="label label-default label-fill">bitcoin</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </dd>
+                <dd class="clearfix pos-left" id="n3" name="n3">
+                  <div class="circ"></div>
+                  <div class="time">3</div>
+                  <div class="events">
+                    <div class="card card-plain">
+                      <div class="content">
+                        <p class="category">December 20, 2017</p>
+                        <a class="card-link" target="_blank" href="https://www.wsj.com/articles/north-korea-is-suspected-in-bitcoin-robbery-1513790899">
+                          <h4 class="title">North Korea Is Suspected in Bitcoin Heist</h4>
+                        </a>
+                        <p class="description">
+                          <a href="https://www.wsj.com/articles/north-korea-is-suspected-in-bitcoin-robbery-1513790899">https://www.wsj.com/articles/north-korea-is-suspected-in-bitcoin-robbery-1513790899</a>
+                        </p>
+                        <p>Investigators in South Korea are looking into North Korea’s possible involvement in a heist from
+                          a bitcoin exchange that collapsed here on Tuesday, according to people familiar with the situation,
+                          as the sanctions-choked regime develops new ways to raise money.</p>
+                        <p></p>
+                        <p class="footer">
+                          <span class="label label-default label-fill">bitcoin</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </dd>
+                <dd class="clearfix pos-right" id="n4" name="n4">
+                  <div class="circ"></div>
+                  <div class="time">4</div>
+                  <div class="events">
+                    <div class="card card-plain">
+                      <div class="content">
+                        <p class="category">September 2, 2017</p>
+                        <a class="card-link" target="_blank" href="https://www.cryptocoinsnews.com/record-5000-bitcoin-price-triggers-13-billion-market-sell-off/">
+                          <h4 class="title">$5k Bitcoin triggers selloff</h4>
+                        </a>
+                        <p class="description">
+                          <a href="https://www.cryptocoinsnews.com/record-5000-bitcoin-price-triggers-13-billion-market-sell-off/">https://www.cryptocoinsnews.com/record-5000-bitcoin-price-triggers-13-billion-market-sell-off/</a>
+                        </p>
+                        <p class="footer">
+                          <span class="label label-default label-fill">news</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section" id="social">
+      <h2 class="header">
+        <i class="pe-7s-share"></i>&nbsp;Social</h2>
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="content">
+                <h3 class="header">
+                  <i aria-hidden="true" class="fa fa-twitter"></i>&nbsp;&nbsp;Twitter</h3>
+                <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true"
+                  allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 100%; height: 600px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;"
+                  kwframeid="2" data-widget-id="profile:bitcoin" title="Twitter Timeline"></iframe>
+                <script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer text-center">
+      <div class="mastfoot">
+        © 2018 CoinFi
+      </div>
+    </footer>
+  </div>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+
+
+  <iframe scrolling="no" frameborder="0" allowtransparency="true" src="https://platform.twitter.com/widgets/widget_iframe.2e798283373a8137c24e277b9b9620d6.html?origin=https%3A%2F%2Fsale.coinfi.com"
+    style="display: none;" kwframeid="1"></iframe>
+  <iframe id="rufous-sandbox" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: none;"
+    title="Twitter analytics iframe" kwframeid="3"></iframe>
+</body>
+
+</html>

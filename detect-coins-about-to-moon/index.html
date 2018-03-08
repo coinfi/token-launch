@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript">var _rollbarConfig = { "accessToken": "e096d72e2c6442ac924a369ae40065c0", "captureUncaught": true, "hostWhiteList": ["staging.coinfi.com", "www.coinfi.com", "sale.coinfi.com"], "payload": { "environment": "production", "person": { "id": 84938, "username": null, "email": "buycryptogetrich@yahoo.com" } } };</script>
+    <script type="text/javascript">!function (r) { function o(e) { if (n[e]) return n[e].exports; var t = n[e] = { exports: {}, id: e, loaded: !1 }; return r[e].call(t.exports, t, t.exports, o), t.loaded = !0, t.exports } var n = {}; return o.m = r, o.c = n, o.p = "", o(0) }([function (r, o, n) { "use strict"; var e = n(1), t = n(4); _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.0.4/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async; var a = e.setupShim(window, _rollbarConfig), l = t(_rollbarConfig); window.rollbar = e.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l) }, function (r, o, n) { "use strict"; function e(r) { return function () { try { return r.apply(this, arguments) } catch (r) { try { console.error("[Rollbar]: Internal error", r) } catch (r) { } } } } function t(r, o) { this.options = r, this._rollbarOldOnError = null; var n = s++; this.shimId = function () { return n }, window && window._rollbarShims && (window._rollbarShims[n] = { handler: o, messages: [] }) } function a(r, o) { var n = o.globalAlias || "Rollbar"; if ("object" == typeof r[n]) return r[n]; r._rollbarShims = {}, r._rollbarWrappedError = null; var t = new d(o); return e(function () { return o.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), o.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0), r[n] = t, t })() } function l(r) { return e(function () { var o = this, n = Array.prototype.slice.call(arguments, 0), e = { shim: o, method: r, args: n, ts: new Date }; window._rollbarShims[this.shimId()].messages.push(e) }) } var i = n(2), s = 0, c = n(3), p = function (r, o) { return new t(r, o) }, d = c.bind(null, p); t.prototype.loadFull = function (r, o, n, t, a) { var l = function () { var o; if (void 0 === r._rollbarDidLoad) { o = new Error("rollbar.js did not load"); for (var n, e, t, l, i = 0; n = r._rollbarShims[i++];)for (n = n.messages || []; e = n.shift();)for (t = e.args || [], i = 0; i < t.length; ++i)if (l = t[i], "function" == typeof l) { l(o); break } } "function" == typeof a && a(o) }, i = !1, s = o.createElement("script"), c = o.getElementsByTagName("script")[0], p = c.parentNode; s.crossOrigin = "", s.src = t.rollbarJsUrl, n || (s.async = !0), s.onload = s.onreadystatechange = e(function () { if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { p.removeChild(s) } catch (r) { } i = !0, l() } }), p.insertBefore(s, c) }, t.prototype.wrap = function (r, o) { try { var n; if (n = "function" == typeof o ? o : function () { return o || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._wrapped && (r._wrapped = function () { try { return r.apply(this, arguments) } catch (e) { var o = e; throw "string" == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o } }, r._wrapped._isWrap = !0, r.hasOwnProperty)) for (var e in r) r.hasOwnProperty(e) && (r._wrapped[e] = r[e]); return r._wrapped } catch (o) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection".split(","), f = 0; f < u.length; ++f)t.prototype[u[f]] = l(u[f]); r.exports = { setupShim: a, Rollbar: d } }, function (r, o) { "use strict"; function n(r, o, n) { if (r) { var t; "function" == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t); var a = function () { var n = Array.prototype.slice.call(arguments, 0); e(r, o, t, n) }; a.belongsToShim = n, r.onerror = a } } function e(r, o, n, e) { r._rollbarWrappedError && (e[4] || (e[4] = r._rollbarWrappedError), e[5] || (e[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null), o.handleUncaughtException.apply(o, e), n && n.apply(r, e) } function t(r, o, n) { if (r) { "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH); var e = function (r) { var n = r.reason, e = r.promise, t = r.detail; !n && t && (n = t.reason, e = t.promise), o && o.handleUnhandledRejection && o.handleUnhandledRejection(n, e) }; e.belongsToShim = n, r._rollbarURH = e, r.addEventListener("unhandledrejection", e) } } function a(r, o, n) { if (r) { var e, t, a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (e = 0; e < a.length; ++e)t = a[e], r[t] && r[t].prototype && l(o, r[t].prototype, n) } } function l(r, o, n) { if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) { for (var e = o.addEventListener; e._rollbarOldAdd && e.belongsToShim;)e = e._rollbarOldAdd; var t = function (o, n, t) { e.call(this, o, r.wrap(n), t) }; t._rollbarOldAdd = e, t.belongsToShim = n, o.addEventListener = t; for (var a = o.removeEventListener; a._rollbarOldRemove && a.belongsToShim;)a = a._rollbarOldRemove; var l = function (r, o, n) { a.call(this, r, o && o._wrapped || o, n) }; l._rollbarOldRemove = a, l.belongsToShim = n, o.removeEventListener = l } } r.exports = { captureUncaughtExceptions: n, captureUnhandledRejections: t, wrapGlobals: a } }, function (r, o) { "use strict"; function n(r, o) { this.impl = r(o, this), this.options = o, e(n.prototype) } function e(r) { for (var o = function (r) { return function () { var o = Array.prototype.slice.call(arguments, 0); if (this.impl[r]) return this.impl[r].apply(this.impl, o) } }, n = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId".split(","), e = 0; e < n.length; e++)r[n[e]] = o(n[e]) } n.prototype._swapAndProcessMessages = function (r, o) { this.impl = r(this.options); for (var n, e, t; n = o.shift();)e = n.method, t = n.args, this[e] && "function" == typeof this[e] && this[e].apply(this, t); return this }, r.exports = n }, function (r, o) { "use strict"; r.exports = function (r) { return function (o) { if (!o && !window._rollbarInitialized) { r = r || {}; for (var n, e, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function (r) { return new a(r) }, i = 0; n = window._rollbarShims[i++];)e || (e = n.handler), n.handler._swapAndProcessMessages(l, n.messages); window[t] = e, window._rollbarInitialized = !0 } } } }]);</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>CoinFi</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/landing/css/thesaas.css" rel="stylesheet">
+    <link href="/landing/css/style.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" href="/landing/img/apple-touch-icon.png">
+    <link rel="icon" href="/landing/img/favicon.png">
+
+    <meta property="og:title" content="CoinFi">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta name="twitter:card" content="">
+    <script>
+        var _rollbarConfig = {
+            accessToken: "e096d72e2c6442ac924a369ae40065c0",
+            captureUncaught: true,
+            captureUnhandledRejections: true,
+            payload: {
+                environment: "production"
+            }
+        };
+        // Rollbar Snippet
+        !function (r) { function o(n) { if (e[n]) return e[n].exports; var t = e[n] = { exports: {}, id: n, loaded: !1 }; return r[n].call(t.exports, t, t.exports, o), t.loaded = !0, t.exports } var e = {}; return o.m = r, o.c = e, o.p = "", o(0) }([function (r, o, e) { "use strict"; var n = e(1), t = e(4); _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.2.10/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async; var a = n.setupShim(window, _rollbarConfig), l = t(_rollbarConfig); window.rollbar = n.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l) }, function (r, o, e) { "use strict"; function n(r) { return function () { try { return r.apply(this, arguments) } catch (r) { try { console.error("[Rollbar]: Internal error", r) } catch (r) { } } } } function t(r, o) { this.options = r, this._rollbarOldOnError = null; var e = s++; this.shimId = function () { return e }, window && window._rollbarShims && (window._rollbarShims[e] = { handler: o, messages: [] }) } function a(r, o) { var e = o.globalAlias || "Rollbar"; if ("object" == typeof r[e]) return r[e]; r._rollbarShims = {}, r._rollbarWrappedError = null; var t = new p(o); return n(function () { o.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), o.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0); var n = o.autoInstrument; return o.enabled !== !1 && (void 0 === n || n === !0 || "object" == typeof n && n.network) && r.addEventListener && (r.addEventListener("load", t.captureLoad.bind(t)), r.addEventListener("DOMContentLoaded", t.captureDomContentLoaded.bind(t))), r[e] = t, t })() } function l(r) { return n(function () { var o = this, e = Array.prototype.slice.call(arguments, 0), n = { shim: o, method: r, args: e, ts: new Date }; window._rollbarShims[this.shimId()].messages.push(n) }) } var i = e(2), s = 0, d = e(3), c = function (r, o) { return new t(r, o) }, p = d.bind(null, c); t.prototype.loadFull = function (r, o, e, t, a) { var l = function () { var o; if (void 0 === r._rollbarDidLoad) { o = new Error("rollbar.js did not load"); for (var e, n, t, l, i = 0; e = r._rollbarShims[i++];)for (e = e.messages || []; n = e.shift();)for (t = n.args || [], i = 0; i < t.length; ++i)if (l = t[i], "function" == typeof l) { l(o); break } } "function" == typeof a && a(o) }, i = !1, s = o.createElement("script"), d = o.getElementsByTagName("script")[0], c = d.parentNode; s.crossOrigin = "", s.src = t.rollbarJsUrl, e || (s.async = !0), s.onload = s.onreadystatechange = n(function () { if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { c.removeChild(s) } catch (r) { } i = !0, l() } }), c.insertBefore(s, d) }, t.prototype.wrap = function (r, o, e) { try { var n; if (n = "function" == typeof o ? o : function () { return o || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._rollbar_wrapped && (r._rollbar_wrapped = function () { e && "function" == typeof e && e.apply(this, arguments); try { return r.apply(this, arguments) } catch (e) { var o = e; throw "string" == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o } }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]); return r._rollbar_wrapped } catch (o) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","), f = 0; f < u.length; ++f)t.prototype[u[f]] = l(u[f]); r.exports = { setupShim: a, Rollbar: p } }, function (r, o) { "use strict"; function e(r, o, e) { if (r) { var t; "function" == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t); var a = function () { var e = Array.prototype.slice.call(arguments, 0); n(r, o, t, e) }; a.belongsToShim = e, r.onerror = a } } function n(r, o, e, n) { r._rollbarWrappedError && (n[4] || (n[4] = r._rollbarWrappedError), n[5] || (n[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null), o.handleUncaughtException.apply(o, n), e && e.apply(r, n) } function t(r, o, e) { if (r) { "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH); var n = function (r) { var e = r.reason, n = r.promise, t = r.detail; !e && t && (e = t.reason, n = t.promise), o && o.handleUnhandledRejection && o.handleUnhandledRejection(e, n) }; n.belongsToShim = e, r._rollbarURH = n, r.addEventListener("unhandledrejection", n) } } function a(r, o, e) { if (r) { var n, t, a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (n = 0; n < a.length; ++n)t = a[n], r[t] && r[t].prototype && l(o, r[t].prototype, e) } } function l(r, o, e) { if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) { for (var n = o.addEventListener; n._rollbarOldAdd && n.belongsToShim;)n = n._rollbarOldAdd; var t = function (o, e, t) { n.call(this, o, r.wrap(e), t) }; t._rollbarOldAdd = n, t.belongsToShim = e, o.addEventListener = t; for (var a = o.removeEventListener; a._rollbarOldRemove && a.belongsToShim;)a = a._rollbarOldRemove; var l = function (r, o, e) { a.call(this, r, o && o._rollbar_wrapped || o, e) }; l._rollbarOldRemove = a, l.belongsToShim = e, o.removeEventListener = l } } r.exports = { captureUncaughtExceptions: e, captureUnhandledRejections: t, wrapGlobals: a } }, function (r, o) { "use strict"; function e(r, o) { this.impl = r(o, this), this.options = o, n(e.prototype) } function n(r) { for (var o = function (r) { return function () { var o = Array.prototype.slice.call(arguments, 0); if (this.impl[r]) return this.impl[r].apply(this.impl, o) } }, e = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","), n = 0; n < e.length; n++)r[e[n]] = o(e[n]) } e.prototype._swapAndProcessMessages = function (r, o) { this.impl = r(this.options); for (var e, n, t; e = o.shift();)n = e.method, t = e.args, this[n] && "function" == typeof this[n] && ("captureDomContentLoaded" === n || "captureLoad" === n ? this[n].apply(this, [t[0], e.ts]) : this[n].apply(this, t)); return this }, r.exports = e }, function (r, o) { "use strict"; r.exports = function (r) { return function (o) { if (!o && !window._rollbarInitialized) { r = r || {}; for (var e, n, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function (r) { return new a(r) }, i = 0; e = window._rollbarShims[i++];)n || (n = e.handler), e.handler._swapAndProcessMessages(l, e.messages); window[t] = n, window._rollbarInitialized = !0 } } } }]);
+    // End Rollbar Snippet
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {        
+i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)        
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-105378428-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 995933950;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+    /* ]]> */
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995933950/?guid=ON&amp;script=0"
+            />
+        </div>
+    </noscript>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1064039393"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-1064039393');
+    </script>
+
+    <script>
+        !function (f, b, e, v, n, t, s) {            
+if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)            
+}; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)        
+}(window,
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '175229079700938'); // Insert your pixel ID here.
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=175229079700938&ev=PageView&noscript=1"
+        />
+    </noscript>
+
+
+
+    <script>
+        !function (e, t, n, s, u, a) {
+        e.twq || (s = e.twq = function () {            
+s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+            a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))        
+}(window, document, 'script');
+        // Insert Twitter Pixel ID and Standard Event data below
+        twq('init', 'nyhv6');
+        twq('track', 'PageView');
+    </script>
+
+
+    <script>
+        (function (h, o, t, j, a, r) {
+            h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+            h._hjSettings = { hjid: 691132, hjsv: 6 };
+            a = o.getElementsByTagName('head')[0];
+            r = o.createElement('script'); r.async = 1;
+            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+
+    <script type="text/javascript">
+        window.heap = window.heap || [], heap.load = function (e, t) { window.heap.appid = e, window.heap.config = t = t || {}; var r = t.forceSSL || "https:" === document.location.protocol, a = document.createElement("script"); a.type = "text/javascript", a.async = !0, a.src = (r ? "https:" : "http:") + "//cdn.heapanalytics.com/js/heap-" + e + ".js"; var n = document.getElementsByTagName("script")[0]; n.parentNode.insertBefore(a, n); for (var o = function (e) { return function () { heap.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++)heap[p[c]] = o(p[c]) };
+        heap.load("3291221357");
+    </script>
+
+    <script type='text/javascript'>
+        var _vwo_code = (function () {
+            var account_id = 323413,
+                settings_tolerance = 2000,
+                library_tolerance = 2500,
+                use_existing_jquery = false,
+                /* DO NOT EDIT BELOW THIS LINE */
+                f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); return settings_timer; } };        
+}()); _vwo_settings_timer = _vwo_code.init();
+    </script>
+
+    <script src="/landing/js/core.min.js"></script>
+    <script src="/assets/js/ahoy.js"></script>
+    <script>ahoy.trackAll();</script>
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+    <script>
+        var OneSignal = window.OneSignal || [];
+        OneSignal.push(["init", {
+            appId: "91b756ae-dfc8-45ab-b96e-93aa1bf9d474",
+            allowLocalhostAsSecureOrigin: true,
+            autoRegister: true,
+            notifyButton: {
+                enable: false /* Set to false to hide */
+            }
+        }]);
+    </script>
+    <script src="/assets/site-996ff63b62e8f5b98955aad60f9776141059f826f3142ec3ffa5dd6dc4b500a9.js"></script>
+</head>
+
+<body>
+
+    <nav class="topbar topbar-expand-md topbar-sticky">
+        <div class="container">
+            <div class="topbar-left">
+                <button class="topbar-toggler">&#9776;</button>
+                <a class="topbar-brand mr-64" href="/" style="font-size: 1.25rem">
+                    <strong>CoinFi</strong>
+                </a>
+            </div>
+            <div class="topbar-right">
+                <ul class="topbar-nav nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/prototype">Prototype</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#timeline">Timeline</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#ecosystem" data-scrollto="ecosystem">Ecosystem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#token">Token</a>
+                    </li>
+                    <li class="nav-item hidden-md-up">
+                        <a class="nav-link" href="/#contact" data-scrollto="contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://blog.coinfi.com">Blog</a>
+                    </li>
+                    <li class="nav-item hidden-sm-up">
+                        <a class="nav-link" target="_blank" href="https://docs.google.com/document/d/1p6xaFl4nPv1CuJv6F2fkZ6qBq2lBS6ePyFna8QZt1KM/edit">White Paper</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cn">中文</a>
+                    </li>
+                </ul>
+                <div class="d-inline-flex ml-30">
+                    &nbsp;
+                    <a href="https://docs.google.com/document/d/1p6xaFl4nPv1CuJv6F2fkZ6qBq2lBS6ePyFna8QZt1KM/edit" target="_blank" class="btn btn-small btn-outline btn-default hidden-sm-down">
+                        White Paper
+                    </a>
+                    &nbsp;
+                    <a class="btn btn-small btn-success" href="/register?locale=en">Join Waitlist</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container"></div>
+        <header class="header header-inverse h-fullscreen pb-80" data-overlay="8" style="background-image: url(/landing/img/andrea-reiman-250388.jpg);">
+            <div class="container text-center">
+                <div class="row h-full">
+                    <div class="col-12 col-lg-8 offset-lg-2 align-self-center">
+                        <p class="opacity-70">Case Study</p>
+                        <br />
+                        <h1 class="display-4 hidden-sm-down">Detect Coins That Are About To Moon</h1>
+                        <h1 class="hidden-md-up">Detect Coins That Are About To Moon</h1>
+                    </div>
+                    <div class="col-12 align-self-end text-center">
+                        <a class="scroll-down-1 scroll-down-inverse" data-scrollto="section-content" href="#">
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <div class="section" id="section-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-8 offset-lg-2">
+                            <p>There is no methodology available that can predict with 100% certainty that a coin is about to
+                                moon. Anyone that makes this claim will be unable to provide evidence showing that their
+                                predictive model will be correct on all occasions.</p>
+                            <p>What Wall Street professional investors do is analyze a number of factors simultaneously in a
+                                model. If multiple factors provide a positive signal, then on balance we can have higher
+                                confidence in the prediction.</p>
+                            <p>With our team of ex-Wall Street traders and technologists at CoinFI, we use the same models and
+                                apply them to the cryptocurrency space.</p>
+                            <h3>Understanding The Model</h3>
+                            <p>Going back to first principles, let’s answer a basic question: what causes a coin’s price to
+                                rapidly rise?</p>
+                            <p>It’s simple supply and demand: a sudden increase in the number of buyers over sellers in a short
+                                space of time. In this scenario, certain phenomena can be observed such as:</p>
+                            <ul>
+                                <li>An acceleration of volume within a short period of time.</li>
+                                <li>An increase in price volatility over historic averages.</li>
+                                <li>An increase in the ratio of volume traded on bid/ask versus normal.</li>
+                            </ul>
+                            <p>Each of these phenomena can be quantified by tracking the following factors:</p>
+                            <ol>
+                                <li>Volume traded over an hourly period.</li>
+                                <li>Change in price over an hourly period.</li>
+                                <li>Volume of the coin traded on the offer divided by the volume of the coin traded on the bid
+                                    over an hourly period.</li>
+                            </ol>
+                            <p>Every factor is stored by CoinFi (in this case hourly) and plotted on a normal distribution.
+                                When the latest hourly data is updated, the model reruns comparing the current factor value
+                                versus the historical factor values. The data is plotted on a normal distribution and any
+                                current factor value that is 2 standard deviations above the mean triggers an alert.</p>
+                            <p>When there are multiple factors triggering alerts, they indicate more confidence in the signal.</p>
+                            <p>For example if:</p>
+                            <ul>
+                                <li>Volume traded in the last hour was 3 standard deviations above the mean; AND</li>
+                                <li>Change in price over the last hour is 2 standard deviations above the mean; AND</li>
+                                <li>Volume ratio of offer/bid is 2 standard deviations above the mean.</li>
+                            </ul>
+                            <p>we will have greater confidence in the signal.</p>
+                            <p>The model will take in factors over multiple time periods (i.e. minute, hourly, daily, weekly)
+                                and will also compare against multiple historical time periods (i.e. volume over last 24
+                                hours, 48 hours, 72 hours)</p>
+                            <p>Furthermore CoinFi stores these factors across a selected universe of coins and the model is
+                                continuously run, outputting alerts when a factor or a series of factors has a positive signal.</p>
+                            <h3>Signals With Higher Confidence</h3>
+                            <p>We have simplified the model above for the sake of explanation, the actual production model is
+                                significantly more complex, involving statistical analysis for anomalies for earlier detection.</p>
+                            <p>In addition to the technical price and volume information, CoinFi will overlay the above inputs
+                                with additional data gathered from media sources and run through machine learning signals.
+                                Here is a simple example of how that works: if a coin is making a sharp move, there will
+                                be traders tweeting about the move and the news behind the move.</p>
+                            <p>CoinFi’s prototype currently uses real-time natural language processing of tweets and other sources
+                                of news, combined with our convolutional neural network learning algorithms, to build a confidence
+                                factor indicating whether the news is driven by fundamental news. If the model determines
+                                the news is driving the move, then it can be more confident about the predictions.</p>
+                            <p>A common scenario where a coin moons occurs after a news announcement of the coin being added
+                                to an exchange.</p>
+                            <p>Our model in detecting this news adds an additional machine learning “Tweet Factor” which:</p>
+                            <ul>
+                                <li>Measures the acceleration of tweets for a coin within a window of time</li>
+                                <li>Uses natural language processing to categorize each tweet with a confidence level, i.e. if
+                                    we identify mentions of Bitfinex, OKCoin, Bittrex etc. and our algorithms detect language
+                                    related to keywords like “exchange” or “added”, we can identify that the tweet is likely
+                                    referring to a coin getting added to an exchange.</li>
+                                <li>Scores each person tweeting with a trust score (which measures the frequency of the tweeter,
+                                    number of followers, trust of their followers, follower / following ratio)</li>
+                            </ul>
+                            <p>If there are a significant number of tweets about the coin in a short space of time AND the presence
+                                of tweets that mention the same exchange or keyword AND if the tweets are generally done
+                                by users with high trust (to strip out bots / traders gaming the signal), we can give a higher
+                                degree of confidence in the factor.</p>
+                            <p>Combining the above model which detected an acceleration in volume, price and volume traded on
+                                the offer, with this analysis of tweets providing market moving news, provides a high degree
+                                of confidence to trade the coin allowing the trader using CoinFi to catch it in its early
+                                stages of mooning.</p>
+                            <p>Additional signals layered on top of the models described above can further increase confidence.</p>
+                            <p>CoinFi has an internal process to perform rigorous testing on both in-house and crowdsourced
+                                models, analyzing the results and adjusting the models to constantly improve the signalling
+                                confidence and accuracy.</p>
+                            <h3>Signal Smoothing</h3>
+                            <p>Is is important to note that the signal needs smoothing otherwise there will be a lot of false
+                                positives (i.e. a lot of alerts, but no actual profitable trades). The factors are run through
+                                some statistical smoothing processes to trim out the false positives.</p>
+                            <p>Furthermore as the blackbox continues to run, it will use past positive signals to give it greater
+                                confidence on future predictions. I.e. coins usually moon over a few hours. So a positive
+                                moon signal in the 2nd hour of alerts when the previous hour had already alerted on a moon
+                                gives greater confidence in the signal and can guide the trader to add to their position.</p>
+                            <h3>Summary</h3>
+                            <p>Remember no signal is going to work 100%, it is about making better decisions on balance and
+                                screening out irrelevant noise and data. Research in equities markets has shown that in the
+                                long-run, even the best traders only get winning trades 60% of the time. Signals are there
+                                to help increase your probability of making profitable trades.</p>
+                            <p>It is also important to note that as the market matures, simple signals like detecting additions
+                                on exchange will be arbitraged out. CoinFi will typically keep the signals it’s working on
+                                internal to it’s own community rather than publishing them to public record.</p>
+                            <p>In the first phase before full automation, the goal of this signal is to efficiently and intelligently
+                                provide traders with early and potentially profitable abnormalities in the market. The trader
+                                can overlay this with their own experience in the coin, additional news they are seeing,
+                                historical knowledge and context of the coin’s price movements to make better trading decisions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row gap-y">
+                <div class="col-12 col-md-6">
+                    <p class="text-center text-md-left">Copyright © 2018
+                        <a class="text-dark" href="/">CoinFi</a> - All rights reserved.</p>
+                </div>
+                <div class="col-12 col-md-6">
+                    <ul class="nav nav-inline nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Terms of Use</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row gap-y">
+                <div class="col">
+                    <small>
+                        <p>Disclaimer: The findings, ratings and/or opinions expressed herein are the intellectual property
+                            of CoinFi and are subject to change without notice. They are not intended to convey any guarantees
+                            as to the future performance of the said products. Past performance does not guarantee future
+                            results. This does not contain investment advice or constitute individualized investment advice
+                            relating to your particular circumstances. No investment decision should be made based on this
+                            information without first obtaining appropriate professional advice and considering your circumstances.
+                            This does not constitute an offer or a solicitation of an offer to buy or sell securities, commodities
+                            and/or any other financial instruments or products or constitute a solicitation on behalf of
+                            any of the investment managers, their affiliates, products or strategies the information of which
+                            may be contained herein. The information contained herein may not adequately take into account
+                            the recipient’s particular investment objectives, financial situations, or needs. Prospective
+                            token contributors should consult their legal, tax and financial advisers as to the consequences
+                            of an contribution. Any manager mix and portfolio structure which may be provided herein are
+                            for illustrative purposes only and subject to change. The inclusion of any contribution herein
+                            does not represent a recommendation of that contribution. All contributions experience gain or
+                            loss. An contributor may lose all or a substantial part of its contribution.
+                            <a href="https://icons8.com">Icon pack by Icons8</a>
+                        </p>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+    <script src="/landing/js/thesaas.js"></script>
+    <script src="/landing/js/script.js"></script>
+    <script src="/landing/js/jquery.ui.widget.js"></script>
+    <script src="/landing/js/jquery.fileupload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script type="text/javascript">
+        window._mfq = window._mfq || [];
+        (function () {
+            var mf = document.createElement("script");
+            mf.type = "text/javascript"; mf.async = true;
+            mf.src = "//cdn.mouseflow.com/projects/62f7b1d8-2d67-46db-9db5-d396e360d36b.js";
+            document.getElementsByTagName("head")[0].appendChild(mf);
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script type="text/javascript">var _rollbarConfig = { "accessToken": "e096d72e2c6442ac924a369ae40065c0", "captureUncaught": true, "hostWhiteList": ["staging.coinfi.com", "www.coinfi.com", "sale.coinfi.com"], "payload": { "environment": "production", "person": { "id": 43130, "username": null, "email": "rm.moreira0@gmail.com" } } };</script>
+  <script type="text/javascript">!function (r) { function o(e) { if (n[e]) return n[e].exports; var t = n[e] = { exports: {}, id: e, loaded: !1 }; return r[e].call(t.exports, t, t.exports, o), t.loaded = !0, t.exports } var n = {}; return o.m = r, o.c = n, o.p = "", o(0) }([function (r, o, n) { "use strict"; var e = n(1), t = n(4); _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.0.4/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async; var a = e.setupShim(window, _rollbarConfig), l = t(_rollbarConfig); window.rollbar = e.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l) }, function (r, o, n) { "use strict"; function e(r) { return function () { try { return r.apply(this, arguments) } catch (r) { try { console.error("[Rollbar]: Internal error", r) } catch (r) { } } } } function t(r, o) { this.options = r, this._rollbarOldOnError = null; var n = s++; this.shimId = function () { return n }, window && window._rollbarShims && (window._rollbarShims[n] = { handler: o, messages: [] }) } function a(r, o) { var n = o.globalAlias || "Rollbar"; if ("object" == typeof r[n]) return r[n]; r._rollbarShims = {}, r._rollbarWrappedError = null; var t = new d(o); return e(function () { return o.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), o.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0), r[n] = t, t })() } function l(r) { return e(function () { var o = this, n = Array.prototype.slice.call(arguments, 0), e = { shim: o, method: r, args: n, ts: new Date }; window._rollbarShims[this.shimId()].messages.push(e) }) } var i = n(2), s = 0, c = n(3), p = function (r, o) { return new t(r, o) }, d = c.bind(null, p); t.prototype.loadFull = function (r, o, n, t, a) { var l = function () { var o; if (void 0 === r._rollbarDidLoad) { o = new Error("rollbar.js did not load"); for (var n, e, t, l, i = 0; n = r._rollbarShims[i++];)for (n = n.messages || []; e = n.shift();)for (t = e.args || [], i = 0; i < t.length; ++i)if (l = t[i], "function" == typeof l) { l(o); break } } "function" == typeof a && a(o) }, i = !1, s = o.createElement("script"), c = o.getElementsByTagName("script")[0], p = c.parentNode; s.crossOrigin = "", s.src = t.rollbarJsUrl, n || (s.async = !0), s.onload = s.onreadystatechange = e(function () { if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { p.removeChild(s) } catch (r) { } i = !0, l() } }), p.insertBefore(s, c) }, t.prototype.wrap = function (r, o) { try { var n; if (n = "function" == typeof o ? o : function () { return o || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._wrapped && (r._wrapped = function () { try { return r.apply(this, arguments) } catch (e) { var o = e; throw "string" == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o } }, r._wrapped._isWrap = !0, r.hasOwnProperty)) for (var e in r) r.hasOwnProperty(e) && (r._wrapped[e] = r[e]); return r._wrapped } catch (o) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection".split(","), f = 0; f < u.length; ++f)t.prototype[u[f]] = l(u[f]); r.exports = { setupShim: a, Rollbar: d } }, function (r, o) { "use strict"; function n(r, o, n) { if (r) { var t; "function" == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t); var a = function () { var n = Array.prototype.slice.call(arguments, 0); e(r, o, t, n) }; a.belongsToShim = n, r.onerror = a } } function e(r, o, n, e) { r._rollbarWrappedError && (e[4] || (e[4] = r._rollbarWrappedError), e[5] || (e[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null), o.handleUncaughtException.apply(o, e), n && n.apply(r, e) } function t(r, o, n) { if (r) { "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH); var e = function (r) { var n = r.reason, e = r.promise, t = r.detail; !n && t && (n = t.reason, e = t.promise), o && o.handleUnhandledRejection && o.handleUnhandledRejection(n, e) }; e.belongsToShim = n, r._rollbarURH = e, r.addEventListener("unhandledrejection", e) } } function a(r, o, n) { if (r) { var e, t, a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (e = 0; e < a.length; ++e)t = a[e], r[t] && r[t].prototype && l(o, r[t].prototype, n) } } function l(r, o, n) { if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) { for (var e = o.addEventListener; e._rollbarOldAdd && e.belongsToShim;)e = e._rollbarOldAdd; var t = function (o, n, t) { e.call(this, o, r.wrap(n), t) }; t._rollbarOldAdd = e, t.belongsToShim = n, o.addEventListener = t; for (var a = o.removeEventListener; a._rollbarOldRemove && a.belongsToShim;)a = a._rollbarOldRemove; var l = function (r, o, n) { a.call(this, r, o && o._wrapped || o, n) }; l._rollbarOldRemove = a, l.belongsToShim = n, o.removeEventListener = l } } r.exports = { captureUncaughtExceptions: n, captureUnhandledRejections: t, wrapGlobals: a } }, function (r, o) { "use strict"; function n(r, o) { this.impl = r(o, this), this.options = o, e(n.prototype) } function e(r) { for (var o = function (r) { return function () { var o = Array.prototype.slice.call(arguments, 0); if (this.impl[r]) return this.impl[r].apply(this.impl, o) } }, n = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId".split(","), e = 0; e < n.length; e++)r[n[e]] = o(n[e]) } n.prototype._swapAndProcessMessages = function (r, o) { this.impl = r(this.options); for (var n, e, t; n = o.shift();)e = n.method, t = n.args, this[e] && "function" == typeof this[e] && this[e].apply(this, t); return this }, r.exports = n }, function (r, o) { "use strict"; r.exports = function (r) { return function (o) { if (!o && !window._rollbarInitialized) { r = r || {}; for (var n, e, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function (r) { return new a(r) }, i = 0; n = window._rollbarShims[i++];)e || (e = n.handler), n.handler._swapAndProcessMessages(l, n.messages); window[t] = e, window._rollbarInitialized = !0 } } } }]);</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <title>CoinFi</title>
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/landing/css/thesaas.css" rel="stylesheet">
+  <link href="/landing/css/style.css" rel="stylesheet">
+
+  <link rel="apple-touch-icon" href="/landing/img/apple-touch-icon.png">
+  <link rel="icon" href="/landing/img/favicon.png">
+
+  <meta property="og:title" content="CoinFi">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+  <meta name="twitter:card" content="">
+  <script>
+    var _rollbarConfig = {
+      accessToken: "e096d72e2c6442ac924a369ae40065c0",
+      captureUncaught: true,
+      captureUnhandledRejections: true,
+      payload: {
+        environment: "production"
+      }
+    };
+    // Rollbar Snippet
+    !function (r) { function o(n) { if (e[n]) return e[n].exports; var t = e[n] = { exports: {}, id: n, loaded: !1 }; return r[n].call(t.exports, t, t.exports, o), t.loaded = !0, t.exports } var e = {}; return o.m = r, o.c = e, o.p = "", o(0) }([function (r, o, e) { "use strict"; var n = e(1), t = e(4); _rollbarConfig = _rollbarConfig || {}, _rollbarConfig.rollbarJsUrl = _rollbarConfig.rollbarJsUrl || "https://cdnjs.cloudflare.com/ajax/libs/rollbar.js/2.2.10/rollbar.min.js", _rollbarConfig.async = void 0 === _rollbarConfig.async || _rollbarConfig.async; var a = n.setupShim(window, _rollbarConfig), l = t(_rollbarConfig); window.rollbar = n.Rollbar, a.loadFull(window, document, !_rollbarConfig.async, _rollbarConfig, l) }, function (r, o, e) { "use strict"; function n(r) { return function () { try { return r.apply(this, arguments) } catch (r) { try { console.error("[Rollbar]: Internal error", r) } catch (r) { } } } } function t(r, o) { this.options = r, this._rollbarOldOnError = null; var e = s++; this.shimId = function () { return e }, window && window._rollbarShims && (window._rollbarShims[e] = { handler: o, messages: [] }) } function a(r, o) { var e = o.globalAlias || "Rollbar"; if ("object" == typeof r[e]) return r[e]; r._rollbarShims = {}, r._rollbarWrappedError = null; var t = new p(o); return n(function () { o.captureUncaught && (t._rollbarOldOnError = r.onerror, i.captureUncaughtExceptions(r, t, !0), i.wrapGlobals(r, t, !0)), o.captureUnhandledRejections && i.captureUnhandledRejections(r, t, !0); var n = o.autoInstrument; return o.enabled !== !1 && (void 0 === n || n === !0 || "object" == typeof n && n.network) && r.addEventListener && (r.addEventListener("load", t.captureLoad.bind(t)), r.addEventListener("DOMContentLoaded", t.captureDomContentLoaded.bind(t))), r[e] = t, t })() } function l(r) { return n(function () { var o = this, e = Array.prototype.slice.call(arguments, 0), n = { shim: o, method: r, args: e, ts: new Date }; window._rollbarShims[this.shimId()].messages.push(n) }) } var i = e(2), s = 0, d = e(3), c = function (r, o) { return new t(r, o) }, p = d.bind(null, c); t.prototype.loadFull = function (r, o, e, t, a) { var l = function () { var o; if (void 0 === r._rollbarDidLoad) { o = new Error("rollbar.js did not load"); for (var e, n, t, l, i = 0; e = r._rollbarShims[i++];)for (e = e.messages || []; n = e.shift();)for (t = n.args || [], i = 0; i < t.length; ++i)if (l = t[i], "function" == typeof l) { l(o); break } } "function" == typeof a && a(o) }, i = !1, s = o.createElement("script"), d = o.getElementsByTagName("script")[0], c = d.parentNode; s.crossOrigin = "", s.src = t.rollbarJsUrl, e || (s.async = !0), s.onload = s.onreadystatechange = n(function () { if (!(i || this.readyState && "loaded" !== this.readyState && "complete" !== this.readyState)) { s.onload = s.onreadystatechange = null; try { c.removeChild(s) } catch (r) { } i = !0, l() } }), c.insertBefore(s, d) }, t.prototype.wrap = function (r, o, e) { try { var n; if (n = "function" == typeof o ? o : function () { return o || {} }, "function" != typeof r) return r; if (r._isWrap) return r; if (!r._rollbar_wrapped && (r._rollbar_wrapped = function () { e && "function" == typeof e && e.apply(this, arguments); try { return r.apply(this, arguments) } catch (e) { var o = e; throw "string" == typeof o && (o = new String(o)), o._rollbarContext = n() || {}, o._rollbarContext._wrappedSource = r.toString(), window._rollbarWrappedError = o, o } }, r._rollbar_wrapped._isWrap = !0, r.hasOwnProperty)) for (var t in r) r.hasOwnProperty(t) && (r._rollbar_wrapped[t] = r[t]); return r._rollbar_wrapped } catch (o) { return r } }; for (var u = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,captureEvent,captureDomContentLoaded,captureLoad".split(","), f = 0; f < u.length; ++f)t.prototype[u[f]] = l(u[f]); r.exports = { setupShim: a, Rollbar: p } }, function (r, o) { "use strict"; function e(r, o, e) { if (r) { var t; "function" == typeof o._rollbarOldOnError ? t = o._rollbarOldOnError : r.onerror && !r.onerror.belongsToShim && (t = r.onerror, o._rollbarOldOnError = t); var a = function () { var e = Array.prototype.slice.call(arguments, 0); n(r, o, t, e) }; a.belongsToShim = e, r.onerror = a } } function n(r, o, e, n) { r._rollbarWrappedError && (n[4] || (n[4] = r._rollbarWrappedError), n[5] || (n[5] = r._rollbarWrappedError._rollbarContext), r._rollbarWrappedError = null), o.handleUncaughtException.apply(o, n), e && e.apply(r, n) } function t(r, o, e) { if (r) { "function" == typeof r._rollbarURH && r._rollbarURH.belongsToShim && r.removeEventListener("unhandledrejection", r._rollbarURH); var n = function (r) { var e = r.reason, n = r.promise, t = r.detail; !e && t && (e = t.reason, n = t.promise), o && o.handleUnhandledRejection && o.handleUnhandledRejection(e, n) }; n.belongsToShim = e, r._rollbarURH = n, r.addEventListener("unhandledrejection", n) } } function a(r, o, e) { if (r) { var n, t, a = "EventTarget,Window,Node,ApplicationCache,AudioTrackList,ChannelMergerNode,CryptoOperation,EventSource,FileReader,HTMLUnknownElement,IDBDatabase,IDBRequest,IDBTransaction,KeyOperation,MediaController,MessagePort,ModalWindow,Notification,SVGElementInstance,Screen,TextTrack,TextTrackCue,TextTrackList,WebSocket,WebSocketWorker,Worker,XMLHttpRequest,XMLHttpRequestEventTarget,XMLHttpRequestUpload".split(","); for (n = 0; n < a.length; ++n)t = a[n], r[t] && r[t].prototype && l(o, r[t].prototype, e) } } function l(r, o, e) { if (o.hasOwnProperty && o.hasOwnProperty("addEventListener")) { for (var n = o.addEventListener; n._rollbarOldAdd && n.belongsToShim;)n = n._rollbarOldAdd; var t = function (o, e, t) { n.call(this, o, r.wrap(e), t) }; t._rollbarOldAdd = n, t.belongsToShim = e, o.addEventListener = t; for (var a = o.removeEventListener; a._rollbarOldRemove && a.belongsToShim;)a = a._rollbarOldRemove; var l = function (r, o, e) { a.call(this, r, o && o._rollbar_wrapped || o, e) }; l._rollbarOldRemove = a, l.belongsToShim = e, o.removeEventListener = l } } r.exports = { captureUncaughtExceptions: e, captureUnhandledRejections: t, wrapGlobals: a } }, function (r, o) { "use strict"; function e(r, o) { this.impl = r(o, this), this.options = o, n(e.prototype) } function n(r) { for (var o = function (r) { return function () { var o = Array.prototype.slice.call(arguments, 0); if (this.impl[r]) return this.impl[r].apply(this.impl, o) } }, e = "log,debug,info,warn,warning,error,critical,global,configure,handleUncaughtException,handleUnhandledRejection,_createItem,wrap,loadFull,shimId,captureEvent,captureDomContentLoaded,captureLoad".split(","), n = 0; n < e.length; n++)r[e[n]] = o(e[n]) } e.prototype._swapAndProcessMessages = function (r, o) { this.impl = r(this.options); for (var e, n, t; e = o.shift();)n = e.method, t = e.args, this[n] && "function" == typeof this[n] && ("captureDomContentLoaded" === n || "captureLoad" === n ? this[n].apply(this, [t[0], e.ts]) : this[n].apply(this, t)); return this }, r.exports = e }, function (r, o) { "use strict"; r.exports = function (r) { return function (o) { if (!o && !window._rollbarInitialized) { r = r || {}; for (var e, n, t = r.globalAlias || "Rollbar", a = window.rollbar, l = function (r) { return new a(r) }, i = 0; e = window._rollbarShims[i++];)n || (n = e.handler), e.handler._swapAndProcessMessages(l, e.messages); window[t] = n, window._rollbarInitialized = !0 } } } }]);
+    // End Rollbar Snippet
+  </script>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)    
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-105378428-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 995933950;
+    var google_custom_params = window.google_tag_params;
+    var google_remarketing_only = true;
+    /* ]]> */
+  </script>
+  <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+  </script>
+  <noscript>
+    <div style="display:inline;">
+      <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/995933950/?guid=ON&amp;script=0"
+      />
+    </div>
+  </noscript>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1064039393"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-1064039393');
+  </script>
+
+  <script>
+    !function (f, b, e, v, n, t, s) {      
+if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      }; if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+    }(window,
+      document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '175229079700938'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=175229079700938&ev=PageView&noscript=1"
+    />
+  </noscript>
+
+
+
+  <script>
+    !function (e, t, n, s, u, a) {    
+e.twq || (s = e.twq = function () {
+      s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+    }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+      a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'nyhv6');
+    twq('track', 'PageView');
+  </script>
+
+
+  <script>
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+      h._hjSettings = { hjid: 691132, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+  </script>
+
+  <script type="text/javascript">
+    window.heap = window.heap || [], heap.load = function (e, t) { window.heap.appid = e, window.heap.config = t = t || {}; var r = t.forceSSL || "https:" === document.location.protocol, a = document.createElement("script"); a.type = "text/javascript", a.async = !0, a.src = (r ? "https:" : "http:") + "//cdn.heapanalytics.com/js/heap-" + e + ".js"; var n = document.getElementsByTagName("script")[0]; n.parentNode.insertBefore(a, n); for (var o = function (e) { return function () { heap.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], c = 0; c < p.length; c++)heap[p[c]] = o(p[c]) };
+    heap.load("3291221357");
+  </script>
+
+  <script type='text/javascript'>
+    var _vwo_code = (function () {
+      var account_id = 323413,
+        settings_tolerance = 2000,
+        library_tolerance = 2500,
+        use_existing_jquery = false,
+        /* DO NOT EDIT BELOW THIS LINE */
+        f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); return settings_timer; } };    
+}()); _vwo_settings_timer = _vwo_code.init();
+  </script>
+
+  <script src="/landing/js/core.min.js"></script>
+  <script src="/assets/js/ahoy.js"></script>
+  <script>ahoy.trackAll();</script>
+  <link rel="manifest" href="/manifest.json">
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+      appId: "91b756ae-dfc8-45ab-b96e-93aa1bf9d474",
+      allowLocalhostAsSecureOrigin: true,
+      autoRegister: true,
+      notifyButton: {
+        enable: false /* Set to false to hide */
+      }
+    }]);
+  </script>
+  <script src="/assets/site-996ff63b62e8f5b98955aad60f9776141059f826f3142ec3ffa5dd6dc4b500a9.js"></script>
+</head>
+
+<body>
+
+  <nav class="topbar topbar-expand-md topbar-sticky">
+    <div class="container">
+      <div class="topbar-left">
+        <button class="topbar-toggler">&#9776;</button>
+        <a class="topbar-brand mr-64" href="/" style="font-size: 1.25rem">
+          <strong>CoinFi</strong>
+        </a>
+      </div>
+      <div class="topbar-right">
+        <ul class="topbar-nav nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/prototype">Prototype</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#timeline" data-scrollto=timeline>Timeline</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ecosystem" data-scrollto="ecosystem">Ecosystem</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#team" data-scrollto=team>Team</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#token" data-scrollto=token>Token</a>
+          </li>
+          <li class="nav-item hidden-md-up">
+            <a class="nav-link" href="#contact" data-scrollto="contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://blog.coinfi.com">Blog</a>
+          </li>
+          <li class="nav-item hidden-sm-up">
+            <a class="nav-link" target="_blank" href="https://docs.google.com/document/d/1p6xaFl4nPv1CuJv6F2fkZ6qBq2lBS6ePyFna8QZt1KM/edit">White Paper</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cn">中文</a>
+          </li>
+        </ul>
+        <div class="d-inline-flex ml-30">
+          &nbsp;
+          <a href="https://docs.google.com/document/d/1p6xaFl4nPv1CuJv6F2fkZ6qBq2lBS6ePyFna8QZt1KM/edit" target="_blank" class="btn btn-small btn-outline btn-default hidden-sm-down">
+            White Paper
+          </a>
+          &nbsp;
+          <a class="btn btn-small btn-success" href="/register?locale=en">Join Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container"></div>
+
+    <hr class="p-0 m-0">
+    <section class="section p-24" style="background: #eee">
+      <div class="container">
+        <h1 class="fs-48 fw-600 lh-15 hidden-sm-down">
+          CoinFi is available on
+          <span class="text-primary">Kucoin</span>!
+        </h1>
+        <h1 class="fs-35 fw-600 lh-15 hidden-md-up">
+          CoinFi available on
+          <span class="text-primary">Kucoin</span>!
+        </h1>
+        <p class="fs-20 hidden-sm-down">CoinFi is available for purchase on the
+          <a href="https://www.kucoin.com/">Kucoin</a> exchange starting January 29, 2018; more information is available
+          <a href="https://blog.coinfi.com/update-on-coinfi-tokensale-airdrop-and-exchange-listing">here</a>.</p>
+        <p class="fs-16 hidden-md-up">CoinFi is available for purchase on the
+          <a href="https://www.kucoin.com/">Kucoin</a> exchange starting January 29, 2018; more information is available
+          <a href="https://blog.coinfi.com/update-on-coinfi-tokensale-airdrop-and-exchange-listing">here</a>.</p>
+      </div>
+    </section>
+    <header class="header fadeout header-inverse pb-0 h-fullscreen" style="background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);">
+      <canvas class="constellation"></canvas>
+      <div class="container">
+        <div class="row h-full">
+          <div class="col-12 text-center align-self-center">
+            <h1 class="fs-48 fw-600 lh-15 hidden-sm-down">The
+              <span class="text-primary" data-type="1st Decentralized Market Intelligence Platform,Democratization Of Wall Street,Most Powerful Crypto Trading Analysis Tool"></span>
+            </h1>
+            <h1 class="fs-35 fw-600 lh-15 hidden-md-up">The
+              <span class="text-primary" data-type="1st Decentralized Market Intelligence Platform,Democratization Of Wall Street,Most Powerful Crypto Trading Analysis Tool"></span>
+            </h1>
+            <br>
+            <p class="fs-20 hidden-sm-down">CoinFi offers crowdsourced and professionally curated research, analysis, trading signals, trading algorithms,
+              and market-moving news to give cryptocurrency traders the real-time market intelligence needed to gain an edge.</p>
+            <p class="fs-16 hidden-md-up">CoinFi offers crowdsourced and professionally curated research, analysis, trading signals, trading algorithms,
+              and market-moving news to give cryptocurrency traders the real-time market intelligence needed to gain an edge.</p>
+            <p class="fs-16 text-warning">
+              <strong>Sign up for early access when the public beta launches.</strong>
+            </p>
+            <a class="btn btn-xl btn-round btn-warning fs-20 fw-500 shadow-3 hidden-sm-down" style="color: #000; text-transform: none"
+              href="/register?locale=en">Join Waitlist</a>
+            <a class="btn btn-lg btn-round btn-warning shadow-3 hidden-md-up" style="color: #000; text-transform: none" href="/register?locale=en">Join Waitlist</a>
+            <br>
+            <br>
+            <br>
+
+          </div>
+          <div class="col-12 align-self-end text-center pb-70">
+            <a class="scroll-down-2 scroll-down-inverse" href="#overview" data-scrollto="overview">
+              <span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <main class="main-content">
+      <a id="press" name="press"></a>
+      <div class="container">
+        <br />
+        <br />
+        <div class="row text-center">
+          <div class="col-lg-4 pb-12">
+            <div class="social social-color-brand">
+              <a class="social-telegram text-info" href="https://t.me/coinfi" target="_blank">
+                <div class="fs-30">
+                  <i class="fa fa-telegram"></i>&nbsp;Telegram</div>
+              </a>
+            </div>
+            <h3>20172+
+              <small>members</small>
+            </h3>
+          </div>
+          <div class="col-lg-4 pb-12">
+            <div class="social social-color-brand">
+              <a class="social-facebook" href="https://www.facebook.com/CoinFiProject/" target="_blank">
+                <div class="fs-30">
+                  <i class="fa fa-facebook"></i>&nbsp;Facebook</div>
+              </a>
+            </div>
+            <h3>14023+
+              <small>followers</small>
+            </h3>
+          </div>
+          <div class="col-lg-4 pb-12">
+            <div class="social social-color-brand">
+              <a class="social-reddit" href="https://www.reddit.com/r/CoinFi/" target="_blank">
+                <div class="fs-30">
+                  <i class="fa fa-reddit"></i>&nbsp;Reddit</div>
+              </a>
+            </div>
+            <h3>1681+
+              <small>subscribers</small>
+            </h3>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-lg-6">
+            <p class="lead">ICO Bench Rating: &nbsp;
+              <a href="https://icobench.com/ico/coinfi" target="_blank" rel="nofollow" title="CoinFi on ICObench">
+                <img border="0" src="https://icobench.com/rated/coinfi?shape=horizontal&size=s" height="60px" alt="CoinFi ICO rating"
+                />
+              </a>
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <p class="lead">Track ICO Rating: &nbsp;
+              <a href="https://www.trackico.io/ico/coinfi/" target="_blank" rel="nofollow" title="CoinFi on TrackICO">
+                <img border="0" src="https://www.trackico.io/widget/horizontal/coinfi/500.png" height="60px" alt="CoinFi TrackICO rating">
+              </a>
+            </p>
+          </div>
+        </div>
+        <br />
+        <br />
+      </div>
+
+      <a id="press" name="press"></a>
+      <section class="section bg-gray">
+        <div class="container">
+          <header class="section-header">
+            <small>Media Newsroom</small>
+            <h2>Press Mentions</h2>
+          </header>
+          <div class="row text-center gap-y">
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://venturebeat.com/2017/12/14/how-bots-are-manipulating-cryptocurrency-prices/" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/venturebeat.png" alt="VentureBeat">
+                    <h5 class="card-title mt-12">How Bots Are Manipulating Cryptocurrency Prices</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://www.buzzfeed.com/rabbiyitziweiner/9-bitcoin-more-experts-predict-what-will-happen-wi-37p3h" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top p-12 h-50" src="/landing/img/buzzfeed.png" alt="Buzzfeed">
+                    <h5 class="card-title mt-12">9 Bitcoin Experts Predict What Will Happen</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://www.bloomberg.com/gadfly/articles/2017-12-12/bitcoin-bulls-should-focus-on-futures-exit-not-entrance" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/bloomberg.png" alt="Bloomberg">
+                    <h5 class="card-title mt-12">Bitcoin Bulls Should Focus On Futures Exit, Not Entrance</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://www.pymnts.com/news/2017/bitcoin-tracker-wild-west-indeed/" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/pymnts.png" alt="Pymnts">
+                    <h5 class="card-title mt-12">CoinFi Aims To Smooth Crypto Swings</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://thebitcoinpodcast.com/announcements-coinfi/" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/bitcoinpodcast.png" alt="BitcoinPodcast">
+                    <h5 class="card-title mt-12">The Bitcoin Podcast Announcements: CoinFi</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://www.huffingtonpost.com/entry/4-must-have-cryptocurrency-tools-for-2018_us_5a1cfb2ae4b05df68936cfe0" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/huffpost.png" alt="HuffPost">
+                    <h5 class="card-title mt-12">Four Must Have Cryptocurrency Tools For 2018</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="http://thehill.com/blogs/pundits-blog/technology/347746-before-slapping-regulations-on-bitcoin-congress-should-learn"
+                target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/thehill.png" alt="TheHill">
+                    <h5 class="card-title mt-12">Before Regulating Bitcoin, Congress Should Learn More</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-12 col-lg-3 py-10">
+              <a href="https://www.business.com/articles/why-you-should-consider-accepting-cryptocurrency/" target="_blank">
+                <div class="card card-bordered card-hover-shadow">
+                  <div class="card-block">
+                    <img class="card-img-top py-12 h-50" src="/landing/img/business-com.png" alt="Business.com">
+                    <h5 class="card-title mt-12">Why You Should Consider Accepting Cryptocurrency</h5>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <a id="timeline" name="timeline"></a>
+      <section class="section">
+        <div class="container">
+          <header class="section-header">
+            <small>Project</small>
+            <h2>Information</h2>
+          </header>
+          <div class="row gap-y">
+            <div class="col-12 col-md-5">
+              <br />
+              <ul class="timeline">
+                <li class="event" data-date="Jan 27">Airdrop</li>
+                <li class="event" data-date="Jan 28">Token Unlock</li>
+                <li class="event" data-date="Jan 29">Kucoin Listing</li>
+                <li class="event" data-date="Apr 6">Public Beta Launch</li>
+              </ul>
+            </div>
+            <div class="col-12 col-md-7">
+              <table class="table">
+                <tr>
+                  <th>Total Token Supply</th>
+                  <td class="text-right">
+                    <span class="text-info fs-40">~300,000,000</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Ticker Symbol</th>
+                  <td class="text-right">
+                    <span class="text-info fs-40">COFI</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Hard Cap On Raise</th>
+                  <td class="text-right">
+                    <span class="text-info fs-40">$15M
+                      <small class="text-info">USD</small>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Airdrop Amount</th>
+                  <td class="text-right">
+                    <span class="text-info fs-40">500
+                      <small class="text-info">COFI</small>
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+        </div>
+      </section>
+      <a id="ecosystem" name="ecosystem"></a>
+      <section class="section section-inverse overflow-hidden" style="background-color: #293e50">
+        <div class="container">
+          <header class="section-header">
+            <small>Platform Mechanics</small>
+            <h2>How The CoinFi Ecosystem Works</h2>
+            <p class="lead">Bringing Wall Street Level Trading Intelligence To The Blockchain</p>
+            <hr />
+          </header>
+          <div class="row">
+            <div class="col text-center">
+              <p>
+                <img src="/landing/img/coinfi-ecosystem-transparent.png" />
+              </p>
+              <blockquote class="blockquote" style="color: #ffffff">CoinFi is the first decentralized market intelligence platform for crypto. It all starts with the CoinFi token.
+                <br
+                />
+                <br />Being a CoinFi token holder gives you access to CoinFi's cutting edge crypto financial intelligence through
+                two primary channels: 1)
+                <strong>financial media</strong> and 2)
+                <strong>trading technology</strong>.</blockquote>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="row gap-y">
+            <div class="col-md-8">
+              <h4>Cryptocurrency Financial Media
+                <br />
+                <small>Research, Analysis, &amp; Market Moving News</small>
+              </h4>
+              <p>The media side of CoinFi's platform offers crypto research, analysis, and market moving news, overlaid on top
+                of real-time price charts.</p>
+              <p>While crypto research, analysis, and news already exists on the internet, there is still no single canonical
+                source that surfaces all of the relevant market intelligence a crypto trader needs to stay on top of the
+                markets, the same way a Bloomberg Terminal does for equities traders.</p>
+              <p>Fundamental value exists in digging below the surface. Not every investor has the time to scroll through Twitter,
+                Reddit, forums, Slack/Telegram groups, Google, etc. in order to uncover hidden threads that may be relevant
+                for trading. Diving deep often reveals valuable information to investors and traders, but is a time consuming
+                activity.</p>
+              <p>Our technology systems aggregate this information and our in-house editorial team curates and filters the incoming
+                news articles to ensure only the most important items are shown for optimum signal-to-noise ratio, saving
+                you time and energy on research.</p>
+              <p>In addition, community analysts who uncover and publish useful information vetted by CoinFi’s crowdsourced
+                fact-checking system and in-house moderation team are rewarded by the CoinFi ecosystem via tokens.</p>
+            </div>
+            <div class="col-md-4">
+              <img src="/landing/img/coinfi-price-charts.png" />
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="row gap-y">
+            <div class="col-md-4">
+              <img src="/landing/img/coinfi-subscription-tier.png" />
+            </div>
+            <div class="col-md-8">
+              <h4>Trading Technology
+                <br />
+                <small>Signals, Algorithms, &amp; Bots</small>
+              </h4>
+              <p>The technology side of CoinFi’s platform brings Wall Street caliber tools to the crypto market, and makes them
+                available to the everyday crypto investor.</p>
+              <p>At the moment there are only a very limited range of signals and tools available in the crypto market. In fact,
+                CoinFi’s very first trading signal was created when co-founder Timothy Tam started trading crypto on the
+                side and realized he didn’t have access to any of the tools he used as hedge fund manager.</p>
+              <p>CoinFi's technology platform offers trading signals, trading algorithms, automated trading bots and data feeds.
+                The platform includes in-house tools developed by ex-Wall Street technologists, as well as a marketplace
+                that provides access to crowdsourced trading signals. Users who contribute their trading signals will receive
+                CoinFi tokens commensurate to the community's assessment of their value.</p>
+              <p>Watch the videos to see some examples of trading signals that CoinFi has developed.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <p>
+                <script src="https://fast.wistia.com/embed/medias/r26oz3e5vb.jsonp" async></script>
+                <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                <div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
+                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <span class="wistia_embed wistia_async_r26oz3e5vb popover=true popoverAnimateThumbnail=true videoFoam=true"
+                      style="display:inline-block;height:100%;width:100%">&nbsp;</span>
+                  </div>
+                </div>
+                <a href="https://blog.coinfi.com/how-you-can-make-risk-free-money-by-arbitraging-crypto/" target="_blank">
+                  <strong>Detecting Arbitrage Opportunities Across Exchanges To Make Risk Free Profits</strong>
+                </a>
+              </p>
+            </div>
+            <div class="col-md-4">
+              <p>
+                <script src="https://fast.wistia.com/embed/medias/47g3uf7zbi.jsonp" async></script>
+                <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                <div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
+                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <span class="wistia_embed wistia_async_47g3uf7zbi popover=true popoverAnimateThumbnail=true videoFoam=true"
+                      style="display:inline-block;height:100%;width:100%">&nbsp;</span>
+                  </div>
+                </div>
+                <a href="https://blog.coinfi.com/detecting-abnormal-trading-volume/" target="_blank">
+                  <strong>How Abnormal Trading Volume Helps Predict Altcoin Price Movements</strong>
+                </a>
+              </p>
+            </div>
+            <div class="col-md-4">
+              <p>
+                <script src="https://fast.wistia.com/embed/medias/20ul2epoy2.jsonp" async></script>
+                <script src="https://fast.wistia.com/assets/external/e-v1.js" async></script>
+                <div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
+                  <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                    <span class="wistia_embed wistia_async_20ul2epoy2 popover=true popoveranimatethumbnail=true videofoam=true"
+                      style="display:inline-block;height:100%;width:100%">&nbsp;</span>
+                  </div>
+                </div>
+                <a href="https://blog.coinfi.com/how-you-can-make-50-profit-in-12-hours-trading-neo/" target="_blank">
+                  <strong>Real Example Of Volume Detection: 50% Gains In 12 Hours Trading NEO</strong>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <style type="text/css">
+        .section-inverse .card .card-block p,
+        .section-inverse .card .card-block span,
+        .section-inverse .card .card-block ul,
+        .section-inverse .card .card-block h2 {
+          color: #333;
+        }
+      </style>
+      <section class="section section-inverse overflow-hidden" style="background-color: #333">
+        <div class="container">
+          <header class="section-header">
+            <h2>How Does The CoinFi Token Fit In This Ecosystem?</h2>
+            <hr />
+            <p>The CoinFi token (COFI) has 2 primary utility functions – it not only unlocks access to CoinFi’s market intelligence
+              platform, it also helps reward community contributors for contributing their research, analysis, news tips,
+              and trading signals to the CoinFi ecosystem.</p>
+          </header>
+          <div class="row gap-y">
+            <div class="col-12">
+              <h4>Access to the token unlocks 3 tiers of access to the CoinFi market intelligence platform:</h4>
+            </div>
+          </div>
+          <div class="row gap-y">
+            <div class="col-12 col-lg-4 col-md-6">
+              <div class="card card-bordered">
+                <div class="card-block">
+                  <h2 class="card-title">
+                    <img src="https://png.icons8.com/color/48/heart-balloon.png" />Basic Access</h2>
+                  <div class="card-text">
+                    <p class="lead">User stakes 10k COFI tokens.
+                      <sup>*</sup>
+                    </p>
+                    <p>Requiring tokens remain staked helps reward token holders and reduces price volatility.</p>
+                    <ul>
+                      <li>Market moving news feed</li>
+                      <li>Most research &amp; analysis</li>
+                      <li>Basic trading signals</li>
+                      <li>Advanced portfolio management tools</li>
+                    </ul>
+                    <span>
+                      <small class="pull-right" style="line-height: 1.6em">* subject to change, note this minimum requirement is not applicable to token sale participants</small>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6">
+              <div class="card card-bordered">
+                <div class="card-block">
+                  <h2 class="card-title">
+                    <img src="https://png.icons8.com/color/48/party-baloons.png" />Premium Access</h2>
+                  <div class="card-text">
+                    <p class="lead" style="line-height: 1.65em">User pays subscription fee in COFI tokens and also stakes for Basic Access.</p>
+                    <span>All features in Basic, plus:</span>
+                    <ul>
+                      <li>Premium research &amp; analysis</li>
+                      <li>Real time alerts via email, SMS, and push notifications</li>
+                      <li>Algorithms (e.g. best execution price)</li>
+                      <li>Sentiment analysis</li>
+                      <li>Advanced data feeds</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4 col-md-6">
+              <div class="card card-bordered">
+                <div class="card-block">
+                  <h2 class="card-title">
+                    <img src="https://png.icons8.com/color/48/hot-air-balloon.png" />Auction
+                    <small>Exclusive Access</small>
+                  </h2>
+                  <div class="card-text">
+                    <p class="lead">Auction bids require COFI tokens.</p>
+                    <p style="line-height: 1.7em">Certain platform features have decaying value as the number of users with access increases. To preserve
+                      the value of these features, access will be granted on an auction basis to determine the market price.</p>
+                    <ul>
+                      <li>Advanced trading signals</li>
+                      <li>Arbitrage bot</li>
+                      <li>More to come!</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <p>In addition to these paid tiers, there will be a free tier.</p>
+              <div class="card card-bordered">
+                <div class="card-block">
+                  <h2 class="card-title">
+                    <img src="https://png.icons8.com/color/48/party-baloon.png" />Free Access</h2>
+                  <div class="card-text">
+                    <p class="lead">Any user can always access the basic CoinFi financial media platform.</p>
+                    <p>In order to build a following and gain traction in the space, we will always offer the basic financial
+                      media platform functionality for free to the cryptocurrency community. Similar to Google Finance or
+                      Yahoo Finance, this level of access provides news stories overlaid on top of basic interactive price
+                      charts for all the major altcoins, along with a basic portfolio management tool.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <div class="row gap-y">
+            <div class="col-sm-2">
+              <img src="https://png.icons8.com/color/96/community-grants.png" />
+            </div>
+            <div class="col-sm-10">
+              <h4>Community Contributors
+                <small>Unlocking The Wisdom Of The Crowd</small>
+              </h4>
+              <p>On the other side of the coin - no pun intended – CoinFi has a community of contributors who get rewarded for
+                their work via CoinFi tokens. These community members provide the crowdsourced intelligence that helps power
+                the CoinFi platform.</p>
+              <p>On the media side, contributors are incentivized to provide research, analysis, real time news tips, as well
+                as fact checking services.</p>
+              <p>On the technology side, contributors provide trading signals, access to which is auctioned off in the CoinFi
+                Marketplace.</p>
+            </div>
+          </div>
+          <div class="row gap-y">
+            <div class="col-sm-2">
+              <img src="https://png.icons8.com/color/96/detective.png" />
+            </div>
+            <div class="col-sm-10">
+              <h4>Quality Assurance</h4>
+              <p>How does the CoinFi platform ensure rewards are distributed fairly and quality is maintained?</p>
+              <p>Any content provided by a contributor, whether it’s research, analysis, a news tip, or a trading signal – is
+                run through several layers of filtering to ensure that users can access the wisdom of the crowds while avoiding
+                the noise.</p>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="row gap-y">
+            <div class="col-md-6">
+              <h5>Crowdsourced Fact Checking</h5>
+              <p>First, there is a crowdsourced fact checking and peer review layer to ensure that all contributor content is
+                vetted by the community.</p>
+              <h5>In-house Moderation & Editorial Team</h5>
+              <p>CoinFi’s in-house team of moderators acts as the final filtering layer in the ecosystem. They monitor the platform
+                for bad actors, fraud, and attempts to game the system for token rewards.</p>
+              <p>The end result is a platform that surfaces high level research and analysis, timely market-moving news, and
+                incentivizes the development of cutting edge trading tools that are a critical part of the workflow of every
+                trader, fund manager, and crypto investor.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Peer Review</h5>
+              <p>All users in the CoinFi ecosystem also have the ability to vote and downvote. Furthermore, each user has their
+                identity verified through the blockchain to prevent Sybil attacks (otherwise known as sock puppets); they
+                are also assigned a trust score based on their past actions on the platform.</p>
+              <p>CoinFi’s trust score algorithm processes this information to help surface quality content, while pushing down
+                and rejecting false information.</p>
+              <p>Automated quality assurance filters include:</p>
+              <ul>
+                <li>Identity verification via blockchain</li>
+                <li>Spam blacklist</li>
+                <li>Spelling and grammar checks</li>
+                <li>Machine learning spam detection algorithms</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a id="team" name="team"></a>
+      <section class="section overflow-hidden">
+        <div class="container">
+          <header class="section-header">
+            <small>Founders</small>
+            <h2>Team</h2>
+            <hr>
+          </header>
+          <div class="row gap-y">
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="/landing/img/team/timothytam.jpg" width="256" alt="Timothy Tam">
+              <h5>Timothy Tam</h5>
+              <small>Co-Founder</small>
+              <p>10+ years in equities trading and hedge funds. Started his career in Goldman Sachs Asia, before working as
+                a senior trader in two Asia hedge funds each with $1+ billion assets under management. In his last role he
+                was cofounder of an Asia Long Short Hedge Fund that specialized in event trading.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/ttam-0190212/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="/landing/img/team/hanchang.jpg" width="256" alt="Han Chang">
+              <h5>Han Chang</h5>
+              <small>Co-Founder</small>
+              <p>Master's in Computer Science from Boston University. Early Bitcoin investor, founded a Chinese Bitcoin exchange;
+                previously at MIT Lincoln Labs, OkCupidLabs, and Lime Brokerage. 8+ years of professional experience developing
+                web applications serving 10M+ users as well as writing black box equity trading algorithms.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/hanchang0/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="/landing/img/team/natetsang.jpg" width="256" alt="Nate Tsang">
+              <h5>Nate Tsang</h5>
+              <small>Co-Founder</small>
+              <p>Holds a Juris Doctor from UAlberta Law. 7+ years of experience as a growth hacker in media startups as well
+                as developing multiple web properties that have cumulatively grown from zero to 10M+ pageviews. Cofounder
+                of a keyword intelligence platform for digital marketers, acquired in 2016.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/nate-tsang-3a493a153/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row gap-y">
+            <div class="col-12 col-md-4 team-2">
+
+              <img class="w-200" src="https://media.licdn.com/media/AAMAAQDGAAwAAQAAAAAAAAzXAAAAJDEwNWM2Y2UzLWI5YTYtNDIzNS04M2ZkLTAxNTI3OGI0NjI2Ng.jpg"
+                width="256" alt="Laplie Anderson">
+              <h5>Laplie Anderson</h5>
+              <small>Lead Engineer</small>
+              <p>Bachelor of Computer Science and Electrical Engineering from MIT. Experience at IBM and Lime Brokerage; served
+                as lead developer / financial systems architect managing an engineering team that built low latency trading
+                platforms at OpenBondX and Lime Brokerage. Expert in the design and architecture of trading systems.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/laplie-anderson/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAScAAAAJGJiOTkxMWY5LTgyMzEtNGJkZi05Mzg3LTQwMjM2YmIyNDI2Ng.jpg"
+                width="256" alt="Duc Tran">
+              <h5>Duc Tran</h5>
+              <small>Research Analyst</small>
+              <p>Master's from Princeton University. Experienced research analyst who has deep consulting experience in the
+                financial services industry investigating the impact of fiscal and government policy on market movements.
+                Experienced with statistical methods using STATA, R, and Excel.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/duc-tran-05b4242a/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/jon-myers.jpg" width="256" alt="Jon Myers">
+              <h5>Jon Myers</h5>
+              <small>Product and Design</small>
+              <p>Founder of 5+ startups, combining a mix of psychology, economics, and business strategy to leverage product
+                design and turn it into economic value. Advisor for multiple successful ICOs including
+                <a href="https://www.astronaut.capital/"
+                  target="_blank">Astronaut Capital</a> and
+                <a href="https://selfkey.org" target="_blank">SelfKey</a>.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/jonmy/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/glen.jpg" width="256" alt="Glen Thomson">
+              <h5>Glen Thomson</h5>
+              <small>Director of Operations</small>
+              <p>Seasoned entrepreneur with successful exit, founder and CEO of search engine optimization agency CiteWorks,
+                avid early-stage cryptocurrency investor, award winning photographer.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/glenthom/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/dom.jpg" width="256" alt="Dominic Wells">
+              <h5>Dominic Wells</h5>
+              <small>Director of Content</small>
+              <p>Online business owner since 2012, achieved over $1 million dollars in revenue for 2017 with 20+ staff members
+                distributed globally, featured multiple times on Entrepreneur.com, conference speaker for digital entrepreneurs.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/dominic-wells-55946b91/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAF_AAAAJGFjZGJkMGMzLWYwNTItNGEzNy1hZDU5LWMyNmQyODg0ZDYzNg.jpg"
+                width="256" alt="Nav Aulakh">
+              <h5>Nav Aulakh</h5>
+              <small>Community Manager</small>
+              <p>Programmatic digital media planner who moved client side, helping tech SaaS startups with community management
+                and marketing. Experienced crypto investor with a background in Mathematical Risk Management (BSc) and Financial
+                Engineering (MSc).</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/navneet-aulakh-73161826">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://media.licdn.com/media/p/2/005/021/148/237db9a.jpg" width="256" alt="David Danzeiser">
+              <h5>David Danzeiser</h5>
+              <small>PPC Marketing Manager</small>
+              <p>Paid Marketing Manager at Thrive Themes, a leading WordPress theme development provider focused on conversion
+                optimization; regularly handles six figure pay-per-click campaigns and expert at driving Facebook community
+                engagement.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/david-danzeiser-20b0b717/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAe0AAAAJDU5MTY2NDA1LWQxYjUtNDRkYi1iOGFjLTZlOGNkZWZjZTAyNw.jpg"
+                width="256" alt="Sam Peacey">
+              <h5>Sam Peacey</h5>
+              <small>Fullstack Web Engineer</small>
+              <p>Experienced fullstack web engineer, multi-talented with Ruby on Rails and JavaScript including jQuery, Promises,
+                ES6, await/async, React, Babel; has set up continuous integration and automated testing environments as well
+                as scaled multiple production web applications.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/sam-peacey-2b016b121/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2018/02/Alex-Lascus.png" width="256" alt="Alex Lascus">
+              <h5>Alex Lascus</h5>
+              <small>Community Support</small>
+              <p>Internet marketing expert with over 5 years experience in Advertising and Community Management. Passionate
+                about anything that’s related to social media and cryptocurrencies.</p>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2018/02/Elliot-Sommers.jpg" width="256" alt="Elliot Sommers">
+              <h5>Elliot Sommers</h5>
+              <small>Community Support</small>
+              <p>Senior majoring in Management Information Systems at the University of Northwestern - St. Paul. Background
+                in corporate IT support and technical consulting. Early blockchain investor and active day trader.</p>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2018/02/Tanushree-Jain.jpg" width="256" alt="Tanushree Jain">
+              <h5>Tanushree Jain</h5>
+              <small>Community Support</small>
+              <p>Experienced Customer Relationship Manager and Researcher with an MBA in Entrepreneurship from Bentley University,
+                MA. Passionate about new technology, transitioned from a background in Biotechnology (MSc) to cryptocurrency.</p>
+            </div>
+          </div>
+          <p>
+            <br>
+          </p>
+          <header class="section-header">
+            <h3>Advisory Board</h3>
+            <hr>
+          </header>
+          <div class="row gap-y">
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/AAIABADGAAAAAQAAAAAAAApjAAAAJDYxMjhhN2ViLTU5ZTgtNGU5OS04ZDlmLTUyMTFhMjdjYjg5Yg.jpg"
+                width="256" alt="Roger Lim">
+              <h5>Roger Lim</h5>
+              <small>Advisor</small>
+              <p>Experienced angel and blockchain investor, serving as director of the Qlink Foundation. Advisor for
+                <a href="https://bluzelle.com/"
+                  target="_blank">Bluzelle</a>,
+                <a href="https://selfkey.org/" target="_blank">SelfKey</a>,
+                <a href="https://www.thekey.vip/" target="_blank">TheKey</a>. Partner of VC firm specializing in tech investments in China. Successful entrepreneur who founded
+                and grew WebVisions, a cloud hosting company, to 200+ employees and 26k+ customers.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/limroger/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/p/8/000/28f/15c/012ba94.jpg" width="256" alt="Deven Soni">
+              <h5>Deven Soni</h5>
+              <small>Advisor</small>
+              <p>Ex-Goldman Sachs, Lazard, &amp; Highland Capital investment banker; principal investor in charge of deploying
+                over $300M of capital; currently General Partner at Wired Investors in charge of the Digital Asset &amp;
+                Crypto Private Equity Strategy. Strategic advisor for many successful ICOs including
+                <a href="https://polymath.network/"
+                  target="_blank">Polymath</a> and
+                <a href="https://vyral.network/" target="_blank">Vyral</a>.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/dsoni/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/AAEAAQAAAAAAAAhbAAAAJGQ3ODVjMGE1LTc5OWYtNDQ3NS04ZWZlLWIxZTRjMjIzYWExMg.jpg"
+                width="256" alt="Tom Howard">
+              <h5>Tom Howard</h5>
+              <small>Advisor</small>
+              <p>Blockchain investor and founder of
+                <a href="http://blockrepublic.io/" target="_blank">Block Republic</a>, investing community providing research, education, tools, and industry connections for
+                cryptocurrency investors and founders, which runs one of the first crypto job boards. Previously founder
+                and CEO of Digital Engine, a rapid prototyping software development studio in San Francisco.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/thowar2/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/AAMAAQDGAAwAAQAAAAAAAAyhAAAAJDlmNjQ3YWFkLTJkNzgtNGZlOC1iNjBlLWJiODQ0ZTQxMTc4NQ.jpg"
+                width="256" alt="Lester Lim">
+              <h5>Lester Lim</h5>
+              <small>Advisor</small>
+              <p>Blockchain investor and founder of a global private syndicate investing in top ICOs. Marketing Strategy Advisor
+                for
+                <a href="https://selfkey.org/" target="_blank">SelfKey</a>. Online business owner, digital marketing strategist and Facebook ads specialist, having done
+                7-figures in revenue and over 30,000 customers from all over the world for his information and software business.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/lesterlim15/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/p/6/005/093/164/335cbfd.jpg" width="256" alt="Sandra Wu">
+              <h5>Sandra Wu</h5>
+              <small>Advisor</small>
+              <p>Committee member of the Association of Corporate Counsel's Blockchain Advisory Board. 10+ years of legal experience
+                in M&amp;A, corporate &amp; securities law and private equity fund formation. Currently Head of Legal and
+                Chief Compliance Officer for a global asset management company managing US$23B+ in the Asia Pacific region.
+                Advises ICOs on operational, structuring, legal, &amp; regulatory compliance.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/sandra-wu-7a7002a7/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/032/0ce/1b50187.jpg" width="256" alt="Erika Evasdottir">
+              <h5>Erika Evasdottir</h5>
+              <small>Advisor</small>
+              <p>Graduate of Harvard with 12+ years legal experience in New York and Asia. Advised Wall Street firms on M&amp;A,
+                US &amp; HK Corporate and Securities Law. Erika was the Head of Legal, Corporate Counsel, and Chief Compliance
+                Officer for Pine River Capital, a $11 Billion USD hedge fund.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/erikaevasdottir/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAgDuAAgAAQAAAAAAABDWAAAAJGE5ZjBiZjhlLTI3NzQtNDcwZi04ZDRhLTdjMmUwZDhlNDhlYw.bin"
+                width="256" alt="Alexander Svanevik">
+              <h5>Alexander Svanevik</h5>
+              <small>Advisor</small>
+              <p>Data Science Manager at Schibsted Media Group, 8+ years of experience currently leading a group of 7 data scientists
+                to create business value from data. Previously a management consultant at BearingPoint as well as cofounder
+                of Codeus Artificial Intelligence. Experienced crypto trader who runs
+                <a href="http://icowhitelists.com/">ICO Whitelists</a>.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/alexander-svanevik-152198a/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/AAEAAQAAAAAAAAiVAAAAJGMwY2YwNzRmLWFjNzUtNDRmZS04YWRmLWZmNGRhODcyYjE2OA.jpg"
+                width="256" alt="Nate Ginsburg">
+              <h5>Nate Ginsburg</h5>
+              <small>Advisor</small>
+              <p>Entrepreneur, investor, international speaker with successful 7 figure exits. Nate has been an early mover
+                in the crypto space, is passionate about decentralization technologies, distributed teams, finance, and yoga.
+                Nate also manages a self funded 7 figure crypto portfolio.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/nathanielginsburg/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://blog.coinfi.com/wp-content/uploads/2017/12/zachary-pardes.jpg" width="256" alt="Zachary Pardes">
+              <h5>Zachary Pardes</h5>
+              <small>Advisor</small>
+              <p>Integrated communications professional with 10 years of experience leading earned media campaigns for Virgin,
+                E*TRADE, B2R Finance, Citi, and Investing.com. Managed $1M+ digital strategies for NYC / Silicon Valley startups.
+                Master's from Northwestern University.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/zpardes/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://pbs.twimg.com/profile_images/772526598054551552/FwKV2lO3_400x400.jpg" width="256" alt="Bernard Huang">
+              <h5>Bernard Huang</h5>
+              <small>Advisor</small>
+              <p>Distribution Hacker in Residence at 500 Startups, a Silicon Valley seed fund that was an early stage investor
+                in companies like Twilio, Credit Karma, and Grab. Previously, lead growth marketer at 42Floors. Currently
+                running
+                <a href="https://www.clearscope.io">Clearscope</a>, a content performance optimization SaaS product.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/bernardjhuang">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/media/AAIA_wDGAAAAAQAAAAAAAA2QAAAAJDY4Mjg0YjBjLWQzMDYtNGUzOC05MGJkLTM2YWI0MGMyNmY3OA.jpg"
+                width="256" alt="Julia Kastner">
+              <h5>Julia Kastner</h5>
+              <small>Advisor</small>
+              <p>Graduate of Harvard Business School and has worked as a Senior Product Manager in General Assembly, an education
+                startup that has raised a total of $120M. Currently at Two Sigma, a $51 billion investment firm that makes
+                decisions based on data science.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/juliakastner/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAwDGAAwAAQAAAAAAAA3YAAAAJDIyZWNhOGYwLWM1MWYtNDMxZi1hYzZmLWYzMGQ4ODI2MjdmYg.jpg"
+                width="256" alt="Tommy Griffith">
+              <h5>Tommy Griffith</h5>
+              <small>Advisor</small>
+              <p>Previously the Search Engine Optimization (SEO) manager at Paypal and AirBnB and is the founder of
+                <a href="https://www.clickminded.com/seo-training/">ClickMinded</a>, a marketing education firm; responsible for driving exponential organic growth in online
+                traffic for several multinational corporations.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/tommygriffith/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA0hAAAAJGVhOWMwMzQ5LTU2ZGUtNDViMy04M2Q2LWYyNmUzMjQ1YTFkZQ.jpg"
+                width="256" alt="Amanda Lu">
+              <h5>Amanda Lu</h5>
+              <small>Advisor</small>
+              <p>CPA with 9+ years experience providing accounting, tax, financial management, and investment advisory services
+                to private investment vehicles and high net worth individuals. Founder of XLConsulting which specializes
+                in accounting, tax, and financial management services to established crypto companies, start-ups, and investors.
+                </p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/amandaxinlu/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section bg-gray">
+        <div class="container">
+          <header class="section-header">
+            <small>Anticipated</small>
+            <h2>Roadmap</h2>
+            <p class="text-muted" style="font-size: 12px;">The roadmap outlined below is subject to change based on user feedback, market conditions, and the competitive
+              landscape; it is merely intended as an overview to explain the features that CoinFi intends to implement on
+              the platform.</p>
+          </header>
+          <div class="accordion" id="roadmap">
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q1">2018Q1: Platform Foundations</a>
+              </h5>
+              <div class="in collapse" id="roadmap2018Q1">
+                <div class="card-block">
+                  <ul>
+                    <li>News and content aggregation overlaid on price charts per cryptocurrency</li>
+                    <li>Obtain minute-level historical price data and market data feeds for cryptocurrencies</li>
+                    <li>Develop editorial procedures, begin in-house compilation of news aggregation on existing cryptocurrencies</li>
+                    <li>Search and filter functionality</li>
+                    <li>User authentication and authorization</li>
+                    <li>Social functionality including upvote/downvote and sharing</li>
+                    <li>Prototype of machine learning algorithms for content classification, quality assurance, and fraud detection</li>
+                    <li>Public beta of platform released</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q2">2018Q2: Personalization</a>
+              </h5>
+              <div class="in collapse" id="roadmap2018Q2">
+                <div class="card-block">
+                  <ul>
+                    <li>Custom cryptocurrency portfolio dashboard</li>
+                    <li>Custom newsfeed / watchlist</li>
+                    <li>Custom email subscriptions for specific cryptocurrency newsfeeds</li>
+                    <li>Allow users to follow others’ portfolios</li>
+                    <li>Initial beta versions of trading signals (see below)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q3">2018Q3: Premium Subscriptions</a>
+              </h5>
+              <div class="in collapse" id="roadmap2018Q3">
+                <div class="card-block">
+                  <ul>
+                    <li>Accept staked tokens for advanced functionality and premium subscriptions</li>
+                    <li>Sentiment analysis of real-time news data per cryptocurrency</li>
+                    <li>Accept community content contributions</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2018Q4">2018Q4: Trading Signals</a>
+              </h5>
+              <div class="in collapse" id="roadmap2018Q4">
+                <div class="card-block">
+                  <ul>
+                    <li>Abnormal volatility detection</li>
+                    <li>Abnormal price movement detection</li>
+                    <li>Abnormal volume detection</li>
+                    <li>Increased social mention detection</li>
+                    <li>Best price exchange identification</li>
+                    <li>Best currency pair identification</li>
+                    <li>Source code release detection</li>
+                    <li>Launch premium subscription for trading signals</li>
+                    <li>Accept community contributed trading signals</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2019Q1">2019Q1: Trading Algorithms</a>
+              </h5>
+              <div class="in collapse" id="roadmap2019Q1">
+                <div class="card-block">
+                  <ul>
+                    <li>VWAP (Volume Weighted Average Price)</li>
+                    <li>TWAP (Time Weighted Average Price)</li>
+                    <li>BWAP (Block Weighted Average Price)</li>
+                    <li>Sniper</li>
+                    <li>% of Volume</li>
+                    <li>Target Close</li>
+                    <li>Implementation Shortfall</li>
+                    <li>Launch premium subscription for trading algorithms</li>
+                    <li>Accept community contributed trading algorithms</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2019Q2">2019Q2: Auction Framework</a>
+              </h5>
+              <div class="in collapse" id="roadmap2019Q2">
+                <div class="card-block">
+                  <ul>
+                    <li>Develop auction platform</li>
+                    <li>Private auctions</li>
+                    <li>Dutch auction</li>
+                    <li>Reverse auction</li>
+                    <li>Build ability to leave reviews on vendor quality</li>
+                    <li>Escrow service for auction payment</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <h5 class="card-title">
+                <a class="collapsed" data-parent="#roadmap" data-toggle="collapse" href="#roadmap2019Q3">2019Q3: Combining and Customizing Signals</a>
+              </h5>
+              <div class="in collapse" id="roadmap2019Q3">
+                <div class="card-block">
+                  <ul>
+                    <li>Platform architecture for custom signals</li>
+                    <li>UI/UX for developing custom signals</li>
+                    <li>Drag and drop functionality to combine signals</li>
+                    <li>Custom alerting</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a id="overview" name="overview"></a>
+      <section class="section section-inverse" style="background: #040707">
+        <div class="container-fluid">
+          <header class="section-header">
+            <small>Overview</small>
+            <h2>How CoinFi Brings Wall Street Level Trading Intelligence To The Blockchain</h2>
+          </header>
+          <div class="row gap-y">
+            <div class="col-12 col-md-6 feature-3">
+              <div class="feature-icon">
+                <img src="/landing/img/Trading Signals Polygon@2x.png" width="256" alt="Trading Signals">
+              </div>
+              <div class="feature-description">
+                <h5>Hedge Fund Caliber Trading Signals</h5>
+                <p>Access to both in-house proprietary and crowdsourced trading signals built using proven hedge fund models
+                  that give traders an edge in capturing alpha.</p>
+                <a class="btn btn-outline btn-primary no-shadow" href="#trading-signals" data-scrollto="trading-signals">Read More</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 feature-3">
+              <div class="feature-icon">
+                <img src="/landing/img/Real Time News Polygon@2x.png" width="256" alt="Real Time News">
+              </div>
+              <div class="feature-description">
+                <h5>Real Time Informational Advantage</h5>
+                <p>Crowdsourced real time alerts on curated, relevant, market moving news and events tailored to individual
+                  traders to help them generate better trade ideas.</p>
+                <a class="btn btn-outline btn-primary no-shadow" href="#real-time-news" data-scrollto="real-time-news">Read More</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 feature-3">
+              <div class="feature-icon">
+                <img src="/landing/img/Financial Analysis Polygon@2x.png" width="256" alt="Trading Signals">
+              </div>
+              <div class="feature-description">
+                <h5>Trading Algorithms Built With Wall Street Tech</h5>
+                <p>Algorithms designed by Wall Street professionals using statistical arbitrage modeling and other advanced
+                  techniques to
+                  <strong>guarantee</strong> that traders always get "best execution" price.</p>
+                <a class="btn btn-outline btn-primary no-shadow" href="#trading-algorithms" data-scrollto="trading-algorithms">Read More</a>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 feature-3">
+              <div class="feature-icon">
+                <img src="/landing/img/Decentralization Polygon@2x.png" width="256" alt="Trading Signals">
+              </div>
+              <div class="feature-description">
+                <h5>Decentralization of Wall Street</h5>
+                <p>Stop Wall Street centralization and join a token economy that intelligently leverages the wisdom of the crowd
+                  to provide news, research, analysis, financial models, and trading signals.</p>
+                <a class="btn btn-outline btn-primary no-shadow" href="#financial-analysis" data-scrollto="financial-analysis">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a id="platform" name="platform"></a>
+      <section class="section bg-gray">
+        <div class="container">
+          <header class="section-header">
+            <small>Capabilities</small>
+            <h2>Platform</h2>
+          </header>
+          <a id="trading-signals" name="trading-signals"></a>
+          <div class="card card-shadowed">
+            <div class="card-block">
+              <div class="row gap-y align-items-center">
+                <div class="col-12 col-md-5 text-center">
+                  <img src="/landing/img/Trading Signals Simple@2x.png" alt="Trading Signals" class="w-half">
+                </div>
+                <div class="col-12 col-md-7">
+                  <h4>Hedge Fund Caliber Trading Signals</h4>
+                  <p>
+                    Market inputs such as price, volume, social signals, and news, will be fed into in-house and user contributed models that
+                    are overlaid with machine learning algorithms to output intelligent trading signals.
+                  </p>
+                  <p>
+                    These signals can generate real-time alerts via SMS, email, push notifications, or API webhooks to notify traders about changes
+                    in market conditions.
+                  </p>
+                  <p>Traders who use these signals to detect abnormal market movements can act quickly to capitalize on the
+                    information to capture alpha with winning trades.</p>
+                </div>
+              </div>
+              <br>
+              <div class="row no-gap text-center">
+                <div class="col-12 col-md-6 p-20">
+                  <div class="card card-bordered">
+                    <div class="card-block">
+                      <p>
+                        <img src="/landing/img/price-movement.png">
+                      </p>
+                      <h6>Identify Whale Price Manipulation</h6>
+                      <p class="small">Using the same quantitative models that many high frequency hedge funds use in the equities markets,
+                        CoinFi can easily detect market manipulation and abnormal price action caused by whales.</p>
+                      <a class="btn btn-sm btn-primary" target="_blank" href="/identify-whale-price-manipulation">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 p-20">
+                  <div class="card card-bordered">
+                    <div class="card-block">
+                      <p>
+                        <img src="/landing/img/about-to-moon.jpg" style="margin-top: 10px">
+                      </p>
+                      <h6>Detect Coins That Are About To Moon</h6>
+                      <p class="small">CoinFi's algorithms take inputs such as price, volume, volatility and run them through battle tested
+                        Wall Street derived black box quantitative and statistical models that give
+                        <strong>early warning</strong> for impending abnormal price movements.</p>
+                      <a class="btn btn-sm btn-primary" target="_blank" href="/detect-coins-about-to-moon">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <a id="real-time-news" name="real-time-news"></a>
+          <div class="card card-shadowed">
+            <div class="card-block">
+              <div class="row gap-y align-items-center">
+                <div class="col-12 col-md-7">
+                  <h4>Real Time Informational Advantage</h4>
+                  <p>Right now trying to find urgent trading news, alerts and abnormal price movements is like looking for a
+                    needle in a haystack. Information is distributed on multiple channels such as Slack, Telegram, Twitter,
+                    Reddit, etc.</p>
+                  There is no quick or easy way to answer daily recurring questions from traders such as:
+                  <ul>
+                    <li>What are the coins in the last 24 hours that have abnormal price and volume?</li>
+                    <li>What is the historical market moving news for this coin so I can get up to speed?</li>
+                    <li>Where are the high quality research thought pieces on this particular coin?</li>
+                  </ul>
+                  <p>The CoinFi database will enable users to monitor and analyze real-time crypto market news in ways that
+                    are currently impossible with existing tools. Crowdsourcing and machine learning algorithms surface the
+                    highest quality and most relevant financial analysis.</p>
+                </div>
+                <div class="col-12 col-md-5 text-center">
+                  <img src="/landing/img/Real Time News Simple@2x.png" alt="Real Time News" class="w-half">
+                </div>
+              </div>
+              <br>
+              <div class="row no-gap text-center">
+                <div class="col-12 col-md-6 p-20">
+                  <div class="card card-bordered">
+                    <div class="card-block">
+                      <p>
+                        <img src="/landing/img/neo-news.png" style="padding: 16px 0">
+                      </p>
+                      <h6>Find Me All The Relevant News That Caused NEO To Moon</h6>
+                      <p class="small">Quickly get up to speed with any coin’s history with relevant news stories strategically curated via
+                        machine learning, overlaid on historical price data.</p>
+                      <a class="btn btn-sm btn-primary disabled" target="_blank" href="#">Coming Soon</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 p-20">
+                  <div class="card card-bordered">
+                    <div class="card-block">
+                      <p>
+                        <img src="/landing/img/omg-research.png">
+                      </p>
+                      <h6>Display All The In-depth Research Pieces About OmiseGo (OMG)</h6>
+                      <p class="small">Easily uncover high quality financial analysis generated by thought leaders to gain insights that allow
+                        traders to quickly get up-to-speed on a new coin.</p>
+                      <a class="btn btn-sm btn-primary disabled" target="_blank" href="#">Coming Soon</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <a id="trading-algorithms" name="trading-algorithms"></a>
+          <div class="card card-shadowed">
+            <div class="card-block">
+              <div class="row gap-y align-items-center">
+                <div class="col-12 col-md-4 text-center">
+                  <img src="/landing/img/Financial Analysis Simple@2x.png" alt="Trading Algorithms" class="w-half">
+                </div>
+                <div class="col-12 col-md-8">
+                  <h4>Trading Algorithms Built With Wall Street Technology</h4>
+                  <p>CoinFi algorithms designed by Wall Street professionals use statistical arbitrage modeling to guarantee
+                    that traders always get "best execution" price.</p>
+                  <p>"Best execution" price includes buying on the cheapest exchange and/or currency pair in addition to protective
+                    measures against other traders from placing orders ahead of you.</p>
+                  <p>CoinFi internal modeling shows an
+                    <em>average savings of 0.5% per trade</em> - for traders that place an average of 1 trade per day, that adds
+                    up to an
+                    <strong>additional ROI of 182% a year</strong>.</p>
+                </div>
+              </div>
+              <br>
+              <div class="row no-gap text-center">
+                <div class="col-12 col-md-6 p-20">
+                  <div class="card card-bordered">
+                    <div class="card-block">
+                      <p>
+                        <img src="/landing/img/markus-spiske-109588.jpg" style="width: 300px">
+                      </p>
+                      <h6>Cloak Your Trading And Minimize Frontrunning</h6>
+                      <p class="small">CoinFi is porting the same trading algorithms hedge fund managers use such as VWAP, Sniper, Iceberg,
+                        Implementation Shortfall, and Inline to
+                        <strong>cloak and enhance</strong> your trading behavior to give you order execution advantages.</p>
+
+                      <a class="btn btn-sm btn-primary disabled" target="_blank" href="#">Coming Soon</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 p-20">
+                  <div class="card card-bordered">
+                    <div class="card-block">
+                      <p>
+                        <img src="/landing/img/nasa-53884.jpg" style="width: 300px">
+                      </p>
+                      <h6>Consistently Identify The Best Priced Exchange</h6>
+                      <p class="small">Quickly and effortlessly determine which exchange can give you the "best execution" price taking into
+                        account currency pair pricing, volatility, and liquidity to squeeze out additional profits that would
+                        otherwise get left on the table.</p>
+
+                      <a class="btn btn-sm btn-primary disabled" target="_blank" href="#">Coming Soon</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <a id="financial-analysis" name="financial-analysis"></a>
+          <div class="card card-shadowed">
+            <div class="card-block">
+              <div class="row gap-y align-items-center">
+                <div class="col-12 col-md-7">
+                  <h4>Decentralizing Wall Street</h4>
+                  <p>Right now only the elites paying hundreds of thousands a year have access to Goldman Sach’s stock research
+                    reports and proprietary trading models and secret algorithms. With Wall Street rapidly moving into the
+                    cryptocurrency space, it’s more imperative than ever that a decentralized platform exists which shares
+                    news, signals, financial models, trading signals and algorithms with the entire community.</p>
+                  <p>The CoinFi token economy is a sustainable ecosystem that incentives researchers, analysts, curators, and
+                    coders to contribute. It is designed to intelligently rewards users on the quality of their contributions.</p>
+                  <p>Scientific evidence consistently proves that a crowd of intelligent investors offer more insights and make
+                    better predictions. The CoinFi token empowers these crowds.
+                    <a href="https://t.me/coinfi">Join us</a> and we can make better predictions than the Goldman Sachs analyst making $1 million USD a
+                    year.</p>
+                </div>
+                <div class="col-12 col-md-5 text-center">
+                  <img src="/landing/img/Decentralization Simple@2x.png" alt="Decentralization of Wall Street" class="w-half">
+                </div>
+              </div>
+              <br>
+              <div class="row gap-y">
+                <div class="col-12 col-md-6 feature-3">
+                  <div class="feature-icon">
+                    <i class="fa fa-search"></i>
+                  </div>
+                  <div class="feature-description">
+                    <h6>Incentivize Exposure of Bad Actors</h6>
+                    <p>Investigative members of the community can earn both financial and social rewards on CoinFi for performing
+                      due diligence into "shitcoins" and exposing bad actors within the crypto ecosystem.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 feature-3">
+                  <div class="feature-icon">
+                    <i class="fa fa-newspaper-o"></i>
+                  </div>
+                  <div class="feature-description">
+                    <h6>Deep and Wide Altcoin Coverage</h6>
+                    <p>CoinFi has the incentive structure to encourage more research and publications on up-and-coming altcoins
+                      which may not receive mainstream coverage due to the lack of market size.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 feature-3">
+                  <div class="feature-icon">
+                    <i class="fa fa-globe"></i>
+                  </div>
+                  <div class="feature-description">
+                    <h6>Diversified Opinions</h6>
+                    <p>As an independent platform, CoinFi supports a wider diversity of opinion; currently many financial journalists
+                      are incentivised to publish only positive research which disservices the industry.</p>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 feature-3">
+                  <div class="feature-icon">
+                    <i class="fa fa-group"></i>
+                  </div>
+                  <div class="feature-description">
+                    <h6>Inclusivity and the Wisdom of the Crowds</h6>
+                    <p>With a strong community, CoinFi can leverage the crowds and rally technologists to collaborate and build
+                      better trading technology than Wall Street, enabling access for everyone.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a id="token" name="token"></a>
+      <section class="section section-inverse bg-primary">
+        <div class="container">
+          <header class="section-header">
+            <small>Token</small>
+            <h2>Understanding the CoinFi Token</h2>
+            <hr>
+          </header>
+          <div class="row">
+            <div class="col-md-8 mr-auto ml-auto">
+              <p>The CoinFi token (COFI) will be a ERC-20 compatible token built on top of the Ethereum blockchain, defined
+                by an open source smart contract, and used for transactions on the CoinFi platform.</p>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <h5>Lock and Stake To Obtain Premium Functionality</h5>
+              <p>Users will have to lock and stake the CoinFi token in order to obtain access to advanced functionality on the
+                CoinFi platform such as customizable news feeds, dashboards, alerts and premium trading signals and algorithms.</p>
+              <p>Staking encourages long term holding of the token, thus reducing speculation and price volatility.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Compensation For Community Content Contributions</h5>
+              <p>Crowdsourced content providers receive COFI based on the quality of their contributed material determined by
+                metrics measuring the popularity of a piece of content. Further details are available on the white paper.</p>
+              <p>Compensation for the seeding of content from early adopters will come from the CoinFi Foundation which will
+                retain 20% of the tokens at genesis for distribution to community contributors.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Act as Unit of Value in Auctions of Exclusive Content</h5>
+              <p>Highly exclusive content whose value decays once accessed will require an auction mechanism to restrict distribution
+                and determine the market price for that content.</p>
+              <p>These auctions will only accept COFI as the unit of bidding to ensure that CoinFi community members have privileged
+                access to this type of valuable content.</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Long Term Value Accretion In The Token Ecosystem</h5>
+              <p>The cost to crowdsource the content is lower than the accumulated price users are willing to pay for the content
+                as measured in COFI. As a result, the buy-side demand for COFI (users who require COFI to access the content)
+                will exceed the sell-side demand for COFI (content contributors who receive COFI in exchange for premium
+                content), thus creating long term demand for the CoinFi token.</p>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="row gap-y align-items-center">
+            <div class="col-12 col-md-6">
+              <canvas id="tokenDistribution"></canvas>
+              <script>
+                $(function () {
+                  var ctx = document.getElementById("tokenDistribution");
+                  var tokenDistribution = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                      datasets: [{
+                        data: [16.7, 33.3, 30, 20],
+                        backgroundColor: ['#46da60', '#ffbe00', '#0facf3', '#ff4954']
+                      }],
+                      labels: [
+                        'Early Investors',
+                        'Product Development',
+                        'Shareholders',
+                        'CoinFi Foundation'
+                      ]
+                    },
+                    options: {
+                      cutoutPercentage: 50,
+                      legend: {
+                        position: 'bottom',
+                        labels: {
+                          padding: 14,
+                          fontColor: '#eee',
+                          defaultFontFamily: 'Open Sans'
+                        }
+                      }
+                    }
+                  });
+                });
+              </script>
+            </div>
+            <div class="col-12 col-md-6">
+              <h2>Token Distribution</h2>
+              <p>The distribution of CoinFi tokens will be as follows:</p>
+              <ul>
+                <li>
+                  <strong>16.7%</strong> is raised in a presale to early investors.</li>
+                <li>
+                  <strong>33.3%</strong> is raised in a public token sale with the funds raised allocated to the company for the
+                  development of the product.</li>
+                <li>
+                  <strong>30%</strong> retained by company shareholders.</li>
+                <li>
+                  <strong>20%</strong> retained by the CoinFi Foundation to incentivize partners and early adopters of the product.</li>
+              </ul>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <h2>Use Of Funds</h2>
+              <p>The following is a projected use of the funds raised:</p>
+              <ul>
+                <li>
+                  <strong>40%</strong> for the continued development of the platform.</li>
+                <li>
+                  <strong>20%</strong> for general staffing.</li>
+                <li>
+                  <strong>20%</strong> for sales and marketing costs.</li>
+                <li>
+                  <strong>10%</strong> for legal and compliance costs.</li>
+                <li>
+                  <strong>10%</strong> for operational expenses.</li>
+              </ul>
+              <br>
+            </div>
+            <div class="col-12 col-md-6">
+              <canvas id="useOfFunds"></canvas>
+              <script>
+                $(function () {
+                  var ctx = document.getElementById("useOfFunds");
+                  var useOfFunds = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                      datasets: [{
+                        data: [40, 20, 20, 10, 10],
+                        backgroundColor: ['#46da60', '#0facf3', '#ffbe00', '#ff4954', '#333333']
+                      }],
+                      labels: [
+                        'Platform Development',
+                        'General Staffing',
+                        'Sales and Marketing',
+                        'Legal and Compliance',
+                        'Operational'
+                      ]
+                    },
+                    options: {
+                      cutoutPercentage: 50,
+                      legend: {
+                        position: 'bottom',
+                        labels: {
+                          padding: 14,
+                          fontColor: '#eee',
+                          defaultFontFamily: 'Open Sans'
+                        }
+                      }
+                    }
+                  });
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <a id="contact" name="contact"></a>
+      <section class="section section-inverse" data-overlay="9">
+        <div class="container text-center">
+          <header class="section-header">
+            <small>Reach Out</small>
+            <h2>Contact CoinFi</h2>
+            <p class="lead">We'd love to hear from you!</p>
+          </header>
+          <div class="row">
+            <div class="col">
+              <p class="lead">
+                Follow us on social media to get the latest updates.
+                <div class="social-colored">
+                  <a class="btn btn-lg btn-round social-medium" href="https://medium.com/coinfi">
+                    <i class="fa fa-medium"></i> Medium</a>
+                  <a class="btn btn-lg btn-round social-twitter" href="https://twitter.com/coin_fi">
+                    <i class="fa fa-twitter"></i> Twitter</a>
+                  <a class="btn btn-lg btn-round social-reddit" href="https://www.reddit.com/u/coinfi">
+                    <i class="fa fa-reddit"></i> Reddit</a>
+                </div>
+              </p>
+            </div>
+            <div class="col">
+              <p class="lead">
+                Reach out if you have any comments or partnership opportunities.
+                <br>
+                <a href="/cdn-cgi/l/email-protection#80e3efeef4e1e3f4c0e3efe9eee6e9aee3efed" style="color: #0facf3;">
+                  <h5>
+                    <span class="__cf_email__" data-cfemail="16757978627775625675797f78707f3875797b">[email&#160;protected]</span>
+                  </h5>
+                </a>
+              </p>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <p class="lead">Join us on Telegram to chat and get your questions answered.</p>
+              <a class="btn btn-lg btn-info btn-round" href="https://t.me/coinfi" target="_blank">
+                <i class="fa fa-telegram"></i> Telegram
+              </a>
+            </div>
+            <div class="col">
+              <p class="lead">Subscribe to our ICO VIP list to receive the latest news from CoinFi.</p>
+              <div class="ck_form_container ck_inline" data-ck-version="6">
+                <div class="ck_form">
+                  <div class="ck_form_fields">
+                    <div id="ck_success_msg" style="display:none; background: #46da60; border: 0">
+                      <p>Success! Please check your email to confirm your interest in the CoinFi ICO.</p>
+                    </div>
+                    <script data-cfasync="false" src="/cdn-cgi/scripts/d07b1474/cloudflare-static/email-decode.min.js"></script>
+                    <script src="https://assets.convertkit.com/assets/CKJS4.js?v=21"></script>
+                    <form id="ck_subscribe_form" class="ck_subscribe_form form-inline form-glass justify-content-center" action="https://app.convertkit.com/landing_pages/267531/subscribe"
+                      method="post" data-remote="true">
+                      <input type="hidden" value="{&quot;form_style&quot;:&quot;naked&quot;,&quot;embed_style&quot;:&quot;inline&quot;,&quot;embed_trigger&quot;:&quot;scroll_percentage&quot;,&quot;scroll_percentage&quot;:&quot;70&quot;,&quot;delay_seconds&quot;:&quot;10&quot;,&quot;display_position&quot;:&quot;br&quot;,&quot;display_devices&quot;:&quot;all&quot;,&quot;days_no_show&quot;:&quot;15&quot;,&quot;converted_behavior&quot;:&quot;show&quot;}"
+                        id="ck_form_options">
+                      <input type="hidden" name="id" value="267531" id="landing_page_id">
+                      <input type="hidden" name="ck_form_recaptcha" value="" id="ck_form_recaptcha">
+                      <div class="ck_errorArea">
+                        <div id="ck_error_msg" style="display:none">
+                          <p>There was an error submitting your subscription. Please try again.</p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group input-group-lg">
+                          <span class="input-group-addon">
+                            <i class="fa fa-envelope"></i>
+                          </span>
+                          <input type="email" name="email" class="ck_email_address form-control" id="ck_emailField" placeholder="Email Address" required>
+                        </div>
+                      </div>
+                      <button id="ck_subscribe_button" class="subscribe_button ck_subscribe_button btn fields btn btn-lg btn-success ml-12">Subscribe</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gap-y">
+        <div class="col-12 col-md-6">
+          <p class="text-center text-md-left">Copyright © 2018
+            <a class="text-dark" href="/">CoinFi</a> - All rights reserved.</p>
+        </div>
+        <div class="col-12 col-md-6">
+          <ul class="nav nav-inline nav-primary nav-dotted nav-dot-separated justify-content-center justify-content-md-end">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Terms of Use</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row gap-y">
+        <div class="col">
+          <small>
+            <p>Disclaimer: The findings, ratings and/or opinions expressed herein are the intellectual property of CoinFi and
+              are subject to change without notice. They are not intended to convey any guarantees as to the future performance
+              of the said products. Past performance does not guarantee future results. This does not contain investment
+              advice or constitute individualized investment advice relating to your particular circumstances. No investment
+              decision should be made based on this information without first obtaining appropriate professional advice and
+              considering your circumstances. This does not constitute an offer or a solicitation of an offer to buy or sell
+              securities, commodities and/or any other financial instruments or products or constitute a solicitation on
+              behalf of any of the investment managers, their affiliates, products or strategies the information of which
+              may be contained herein. The information contained herein may not adequately take into account the recipient’s
+              particular investment objectives, financial situations, or needs. Prospective token contributors should consult
+              their legal, tax and financial advisers as to the consequences of an contribution. Any manager mix and portfolio
+              structure which may be provided herein are for illustrative purposes only and subject to change. The inclusion
+              of any contribution herein does not represent a recommendation of that contribution. All contributions experience
+              gain or loss. An contributor may lose all or a substantial part of its contribution.
+              <a href="https://icons8.com">Icon pack by Icons8</a>
+            </p>
+          </small>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
+  <script src="/landing/js/thesaas.js"></script>
+  <script src="/landing/js/script.js"></script>
+  <script src="/landing/js/jquery.ui.widget.js"></script>
+  <script src="/landing/js/jquery.fileupload.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.8.2/umd/popper.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+  <script type="text/javascript">
+    window._mfq = window._mfq || [];
+    (function () {
+      var mf = document.createElement("script");
+      mf.type = "text/javascript"; mf.async = true;
+      mf.src = "//cdn.mouseflow.com/projects/62f7b1d8-2d67-46db-9db5-d396e360d36b.js";
+      document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+  </script>
+</body>
+
+</html>
