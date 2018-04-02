@@ -38,10 +38,10 @@
   </script>
   <script>
     (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)    
-}, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-105378428-1', 'auto');
@@ -74,10 +74,10 @@
   </script>
 
   <script>
-    !function (f, b, e, v, n, t, s) {      
-if (f.fbq) return; n = f.fbq = function () {
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       }; if (!f._fbq) f._fbq = n;
       n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
       t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
@@ -94,11 +94,11 @@ if (f.fbq) return; n = f.fbq = function () {
 
 
   <script>
-    !function (e, t, n, s, u, a) {    
-e.twq || (s = e.twq = function () {
-      s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-    }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-      a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    !function (e, t, n, s, u, a) {
+      e.twq || (s = e.twq = function () {
+        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
     }(window, document, 'script');
     // Insert Twitter Pixel ID and Standard Event data below
     twq('init', 'nyhv6');
@@ -129,8 +129,8 @@ e.twq || (s = e.twq = function () {
         library_tolerance = 2500,
         use_existing_jquery = false,
         /* DO NOT EDIT BELOW THIS LINE */
-        f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); return settings_timer; } };    
-}()); _vwo_settings_timer = _vwo_code.init();
+        f = false, d = document; return { use_existing_jquery: function () { return use_existing_jquery; }, library_tolerance: function () { return library_tolerance; }, finish: function () { if (!f) { f = true; var a = d.getElementById('_vis_opt_path_hides'); if (a) a.parentNode.removeChild(a); } }, finished: function () { return f; }, load: function (a) { var b = d.createElement('script'); b.src = a; b.type = 'text/javascript'; b.innerText; b.onerror = function () { _vwo_code.finish(); }; d.getElementsByTagName('head')[0].appendChild(b); }, init: function () { settings_timer = setTimeout('_vwo_code.finish()', settings_tolerance); var a = d.createElement('style'), b = 'body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}', h = d.getElementsByTagName('head')[0]; a.setAttribute('id', '_vis_opt_path_hides'); a.setAttribute('type', 'text/css'); if (a.styleSheet) a.styleSheet.cssText = b; else a.appendChild(d.createTextNode(b)); h.appendChild(a); this.load('//dev.visualwebsiteoptimizer.com/j.php?a=' + account_id + '&u=' + encodeURIComponent(d.URL) + '&r=' + Math.random()); return settings_timer; } };
+    }()); _vwo_settings_timer = _vwo_code.init();
   </script>
 
   <script src="/landing/js/core.min.js"></script>
@@ -307,8 +307,7 @@ e.twq || (s = e.twq = function () {
           <div class="col-lg-6">
             <p class="lead">ICO Bench Rating: &nbsp;
               <a href="https://icobench.com/ico/coinfi" target="_blank" rel="nofollow" title="CoinFi on ICObench">
-                <img border="0" src="https://icobench.com/rated/coinfi?shape=horizontal&size=s" height="60px" alt="CoinFi ICO rating"
-                />
+                <img border="0" src="https://icobench.com/rated/coinfi?shape=horizontal&size=s" height="60px" alt="CoinFi ICO rating" />
               </a>
             </p>
           </div>
@@ -486,8 +485,7 @@ e.twq || (s = e.twq = function () {
                 <img src="/landing/img/coinfi-ecosystem-transparent.png" />
               </p>
               <blockquote class="blockquote" style="color: #ffffff">CoinFi is the first decentralized market intelligence platform for crypto. It all starts with the CoinFi token.
-                <br
-                />
+                <br />
                 <br />Being a CoinFi token holder gives you access to CoinFi's cutting edge crypto financial intelligence through
                 two primary channels: 1)
                 <strong>financial media</strong> and 2)
@@ -510,7 +508,8 @@ e.twq || (s = e.twq = function () {
               <p>Fundamental value exists in digging below the surface. Not every investor has the time to scroll through Twitter,
                 Reddit, forums, Slack/Telegram groups, Google, etc. in order to uncover hidden threads that may be relevant
                 for trading. Diving deep often reveals valuable information to investors and traders, but is a time consuming
-                activity.</p>
+                activity.
+              </p>
               <p>Our technology systems aggregate this information and our in-house editorial team curates and filters the incoming
                 news articles to ensure only the most important items are shown for optimum signal-to-noise ratio, saving
                 you time and energy on research.</p>
@@ -551,8 +550,7 @@ e.twq || (s = e.twq = function () {
                 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
                 <div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
                   <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <span class="wistia_embed wistia_async_r26oz3e5vb popover=true popoverAnimateThumbnail=true videoFoam=true"
-                      style="display:inline-block;height:100%;width:100%">&nbsp;</span>
+                    <span class="wistia_embed wistia_async_r26oz3e5vb popover=true popoverAnimateThumbnail=true videoFoam=true" style="display:inline-block;height:100%;width:100%">&nbsp;</span>
                   </div>
                 </div>
                 <a href="https://blog.coinfi.com/how-you-can-make-risk-free-money-by-arbitraging-crypto/" target="_blank">
@@ -566,8 +564,7 @@ e.twq || (s = e.twq = function () {
                 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
                 <div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
                   <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <span class="wistia_embed wistia_async_47g3uf7zbi popover=true popoverAnimateThumbnail=true videoFoam=true"
-                      style="display:inline-block;height:100%;width:100%">&nbsp;</span>
+                    <span class="wistia_embed wistia_async_47g3uf7zbi popover=true popoverAnimateThumbnail=true videoFoam=true" style="display:inline-block;height:100%;width:100%">&nbsp;</span>
                   </div>
                 </div>
                 <a href="https://blog.coinfi.com/detecting-abnormal-trading-volume/" target="_blank">
@@ -581,8 +578,7 @@ e.twq || (s = e.twq = function () {
                 <script src="https://fast.wistia.com/assets/external/e-v1.js" async></script>
                 <div class="wistia_responsive_padding" style="padding:62.5% 0 0 0;position:relative;">
                   <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                    <span class="wistia_embed wistia_async_20ul2epoy2 popover=true popoveranimatethumbnail=true videofoam=true"
-                      style="display:inline-block;height:100%;width:100%">&nbsp;</span>
+                    <span class="wistia_embed wistia_async_20ul2epoy2 popover=true popoveranimatethumbnail=true videofoam=true" style="display:inline-block;height:100%;width:100%">&nbsp;</span>
                   </div>
                 </div>
                 <a href="https://blog.coinfi.com/how-you-can-make-50-profit-in-12-hours-trading-neo/" target="_blank">
@@ -712,7 +708,8 @@ e.twq || (s = e.twq = function () {
               <p>On the media side, contributors are incentivized to provide research, analysis, real time news tips, as well
                 as fact checking services.</p>
               <p>On the technology side, contributors provide trading signals, access to which is auctioned off in the CoinFi
-                Marketplace.</p>
+                Marketplace.
+              </p>
             </div>
           </div>
           <div class="row gap-y">
@@ -770,7 +767,8 @@ e.twq || (s = e.twq = function () {
           </header>
           <div class="row gap-y">
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="/landing/img/team/timothytam.jpg" width="256" alt="Timothy Tam">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671951/profile-photos/tim-tam.jpg" width="256"
+                alt="Timothy Tam">
               <h5>Timothy Tam</h5>
               <small>Co-Founder</small>
               <p>10+ years in equities trading and hedge funds. Started his career in Goldman Sachs Asia, before working as
@@ -783,7 +781,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="/landing/img/team/hanchang.jpg" width="256" alt="Han Chang">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671945/profile-photos/han-chang.jpg" width="256"
+                alt="Han Chang">
               <h5>Han Chang</h5>
               <small>Co-Founder</small>
               <p>Master's in Computer Science from Boston University. Early Bitcoin investor, founded a Chinese Bitcoin exchange;
@@ -796,7 +795,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="/landing/img/team/natetsang.jpg" width="256" alt="Nate Tsang">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671949/profile-photos/nate-tsang.jpg" width="256"
+                alt="Nate Tsang">
               <h5>Nate Tsang</h5>
               <small>Co-Founder</small>
               <p>Holds a Juris Doctor from UAlberta Law. 7+ years of experience as a growth hacker in media startups as well
@@ -813,8 +813,8 @@ e.twq || (s = e.twq = function () {
           <div class="row gap-y">
             <div class="col-12 col-md-4 team-2">
 
-              <img class="w-200" src="https://media.licdn.com/media/AAMAAQDGAAwAAQAAAAAAAAzXAAAAJDEwNWM2Y2UzLWI5YTYtNDIzNS04M2ZkLTAxNTI3OGI0NjI2Ng.jpg"
-                width="256" alt="Laplie Anderson">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671949/profile-photos/laplie-anderson.jpg" width="256"
+                alt="Laplie Anderson">
               <h5>Laplie Anderson</h5>
               <small>Lead Engineer</small>
               <p>Bachelor of Computer Science and Electrical Engineering from MIT. Experience at IBM and Lime Brokerage; served
@@ -827,8 +827,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAScAAAAJGJiOTkxMWY5LTgyMzEtNGJkZi05Mzg3LTQwMjM2YmIyNDI2Ng.jpg"
-                width="256" alt="Duc Tran">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671944/profile-photos/duc-tran.jpg" width="256"
+                alt="Duc Tran">
               <h5>Duc Tran</h5>
               <small>Research Analyst</small>
               <p>Master's from Princeton University. Experienced research analyst who has deep consulting experience in the
@@ -841,13 +841,13 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/jon-myers.jpg" width="256" alt="Jon Myers">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671947/profile-photos/jon-myers.jpg" width="256"
+                alt="Jon Myers">
               <h5>Jon Myers</h5>
               <small>Product and Design</small>
               <p>Founder of 5+ startups, combining a mix of psychology, economics, and business strategy to leverage product
                 design and turn it into economic value. Advisor for multiple successful ICOs including
-                <a href="https://www.astronaut.capital/"
-                  target="_blank">Astronaut Capital</a> and
+                <a href="https://www.astronaut.capital/" target="_blank">Astronaut Capital</a> and
                 <a href="https://selfkey.org" target="_blank">SelfKey</a>.</p>
               <div class="social social-boxed social-rounded social-gray">
                 <a class="social-linkedin" href="https://www.linkedin.com/in/jonmy/">
@@ -856,7 +856,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/glen.jpg" width="256" alt="Glen Thomson">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671945/profile-photos/glen-thompson.jpg" width="256"
+                alt="Glen Thomson">
               <h5>Glen Thomson</h5>
               <small>Director of Operations</small>
               <p>Seasoned entrepreneur with successful exit, founder and CEO of search engine optimization agency CiteWorks,
@@ -868,7 +869,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2017/12/dom.jpg" width="256" alt="Dominic Wells">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671943/profile-photos/dominic-wells.jpg" width="256"
+                alt="Dominic Wells">
               <h5>Dominic Wells</h5>
               <small>Director of Content</small>
               <p>Online business owner since 2012, achieved over $1 million dollars in revenue for 2017 with 20+ staff members
@@ -880,8 +882,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAF_AAAAJGFjZGJkMGMzLWYwNTItNGEzNy1hZDU5LWMyNmQyODg0ZDYzNg.jpg"
-                width="256" alt="Nav Aulakh">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671950/profile-photos/navneet-aulakh.jpg" width="256"
+                alt="Nav Aulakh">
               <h5>Nav Aulakh</h5>
               <small>Community Manager</small>
               <p>Programmatic digital media planner who moved client side, helping tech SaaS startups with community management
@@ -894,12 +896,14 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://media.licdn.com/media/p/2/005/021/148/237db9a.jpg" width="256" alt="David Danzeiser">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671943/profile-photos/david-danzeiser.jpg" width="256"
+                alt="David Danzeiser">
               <h5>David Danzeiser</h5>
               <small>PPC Marketing Manager</small>
               <p>Paid Marketing Manager at Thrive Themes, a leading WordPress theme development provider focused on conversion
                 optimization; regularly handles six figure pay-per-click campaigns and expert at driving Facebook community
-                engagement.</p>
+                engagement.
+              </p>
               <div class="social social-boxed social-rounded social-gray">
                 <a class="social-linkedin" href="https://www.linkedin.com/in/david-danzeiser-20b0b717/">
                   <i class="fa fa-linkedin"></i>
@@ -907,8 +911,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://media.licdn.com/media/AAEAAQAAAAAAAAe0AAAAJDU5MTY2NDA1LWQxYjUtNDRkYi1iOGFjLTZlOGNkZWZjZTAyNw.jpg"
-                width="256" alt="Sam Peacey">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671949/profile-photos/sam-peacey.jpg" width="256"
+                alt="Sam Peacey">
               <h5>Sam Peacey</h5>
               <small>Fullstack Web Engineer</small>
               <p>Experienced fullstack web engineer, multi-talented with Ruby on Rails and JavaScript including jQuery, Promises,
@@ -921,21 +925,24 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2018/02/Alex-Lascus.png" width="256" alt="Alex Lascus">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671946/profile-photos/alex-lascus.png" width="256"
+                alt="Alex Lascus">
               <h5>Alex Lascus</h5>
               <small>Community Support</small>
               <p>Internet marketing expert with over 5 years experience in Advertising and Community Management. Passionate
                 about anything that’s related to social media and cryptocurrencies.</p>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2018/02/Elliot-Sommers.jpg" width="256" alt="Elliot Sommers">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671947/profile-photos/elliot-sommers.jpg" width="256"
+                alt="Elliot Sommers">
               <h5>Elliot Sommers</h5>
               <small>Community Support</small>
               <p>Senior majoring in Management Information Systems at the University of Northwestern - St. Paul. Background
                 in corporate IT support and technical consulting. Early blockchain investor and active day trader.</p>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-200" src="https://blog.coinfi.com/wp-content/uploads/2018/02/Tanushree-Jain.jpg" width="256" alt="Tanushree Jain">
+              <img class="w-200" src="https://res.cloudinary.com/coinfi/image/upload/v1522671949/profile-photos/tanushree-jain.jpg" width="256"
+                alt="Tanushree Jain">
               <h5>Tanushree Jain</h5>
               <small>Community Support</small>
               <p>Experienced Customer Relationship Manager and Researcher with an MBA in Entrepreneurship from Bentley University,
@@ -951,13 +958,12 @@ e.twq || (s = e.twq = function () {
           </header>
           <div class="row gap-y">
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/AAIABADGAAAAAQAAAAAAAApjAAAAJDYxMjhhN2ViLTU5ZTgtNGU5OS04ZDlmLTUyMTFhMjdjYjg5Yg.jpg"
-                width="256" alt="Roger Lim">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671950/profile-photos/roger-lim.jpg" width="256"
+                alt="Roger Lim">
               <h5>Roger Lim</h5>
               <small>Advisor</small>
               <p>Experienced angel and blockchain investor, serving as director of the Qlink Foundation. Advisor for
-                <a href="https://bluzelle.com/"
-                  target="_blank">Bluzelle</a>,
+                <a href="https://bluzelle.com/" target="_blank">Bluzelle</a>,
                 <a href="https://selfkey.org/" target="_blank">SelfKey</a>,
                 <a href="https://www.thekey.vip/" target="_blank">TheKey</a>. Partner of VC firm specializing in tech investments in China. Successful entrepreneur who founded
                 and grew WebVisions, a cloud hosting company, to 200+ employees and 26k+ customers.</p>
@@ -968,24 +974,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/p/8/000/28f/15c/012ba94.jpg" width="256" alt="Deven Soni">
-              <h5>Deven Soni</h5>
-              <small>Advisor</small>
-              <p>Ex-Goldman Sachs, Lazard, &amp; Highland Capital investment banker; principal investor in charge of deploying
-                over $300M of capital; currently General Partner at Wired Investors in charge of the Digital Asset &amp;
-                Crypto Private Equity Strategy. Strategic advisor for many successful ICOs including
-                <a href="https://polymath.network/"
-                  target="_blank">Polymath</a> and
-                <a href="https://vyral.network/" target="_blank">Vyral</a>.</p>
-              <div class="social social-boxed social-rounded social-gray">
-                <a class="social-linkedin" href="https://www.linkedin.com/in/dsoni/">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/AAEAAQAAAAAAAAhbAAAAJGQ3ODVjMGE1LTc5OWYtNDQ3NS04ZWZlLWIxZTRjMjIzYWExMg.jpg"
-                width="256" alt="Tom Howard">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671950/profile-photos/tom-howard.jpg" width="256"
+                alt="Tom Howard">
               <h5>Tom Howard</h5>
               <small>Advisor</small>
               <p>Blockchain investor and founder of
@@ -999,8 +989,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/AAMAAQDGAAwAAQAAAAAAAAyhAAAAJDlmNjQ3YWFkLTJkNzgtNGZlOC1iNjBlLWJiODQ0ZTQxMTc4NQ.jpg"
-                width="256" alt="Lester Lim">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671948/profile-photos/lester-lim.jpg" width="256"
+                alt="Lester Lim">
               <h5>Lester Lim</h5>
               <small>Advisor</small>
               <p>Blockchain investor and founder of a global private syndicate investing in top ICOs. Marketing Strategy Advisor
@@ -1014,7 +1004,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/p/6/005/093/164/335cbfd.jpg" width="256" alt="Sandra Wu">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671950/profile-photos/sandra-wu.jpg" width="256"
+                alt="Sandra Wu">
               <h5>Sandra Wu</h5>
               <small>Advisor</small>
               <p>Committee member of the Association of Corporate Counsel's Blockchain Advisory Board. 10+ years of legal experience
@@ -1028,7 +1019,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/8/005/032/0ce/1b50187.jpg" width="256" alt="Erika Evasdottir">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671943/profile-photos/erika-evasdottir.jpg" width="256"
+                alt="Erika Evasdottir">
               <h5>Erika Evasdottir</h5>
               <small>Advisor</small>
               <p>Graduate of Harvard with 12+ years legal experience in New York and Asia. Advised Wall Street firms on M&amp;A,
@@ -1041,7 +1033,7 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAgDuAAgAAQAAAAAAABDWAAAAJGE5ZjBiZjhlLTI3NzQtNDcwZi04ZDRhLTdjMmUwZDhlNDhlYw.bin"
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671943/profile-photos/alexander-svanevik.jpg"
                 width="256" alt="Alexander Svanevik">
               <h5>Alexander Svanevik</h5>
               <small>Advisor</small>
@@ -1056,8 +1048,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/AAEAAQAAAAAAAAiVAAAAJGMwY2YwNzRmLWFjNzUtNDRmZS04YWRmLWZmNGRhODcyYjE2OA.jpg"
-                width="256" alt="Nate Ginsburg">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671948/profile-photos/nate-ginburg.jpg" width="256"
+                alt="Nate Ginsburg">
               <h5>Nate Ginsburg</h5>
               <small>Advisor</small>
               <p>Entrepreneur, investor, international speaker with successful 7 figure exits. Nate has been an early mover
@@ -1070,7 +1062,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://blog.coinfi.com/wp-content/uploads/2017/12/zachary-pardes.jpg" width="256" alt="Zachary Pardes">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671951/profile-photos/zachary-pardes.jpg" width="256"
+                alt="Zachary Pardes">
               <h5>Zachary Pardes</h5>
               <small>Advisor</small>
               <p>Integrated communications professional with 10 years of experience leading earned media campaigns for Virgin,
@@ -1083,7 +1076,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://pbs.twimg.com/profile_images/772526598054551552/FwKV2lO3_400x400.jpg" width="256" alt="Bernard Huang">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671944/profile-photos/bernard-huang.jpg" width="256"
+                alt="Bernard Huang">
               <h5>Bernard Huang</h5>
               <small>Advisor</small>
               <p>Distribution Hacker in Residence at 500 Startups, a Silicon Valley seed fund that was an early stage investor
@@ -1097,8 +1091,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/media/AAIA_wDGAAAAAQAAAAAAAA2QAAAAJDY4Mjg0YjBjLWQzMDYtNGUzOC05MGJkLTM2YWI0MGMyNmY3OA.jpg"
-                width="256" alt="Julia Kastner">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671948/profile-photos/julia-kastner.jpg" width="256"
+                alt="Julia Kastner">
               <h5>Julia Kastner</h5>
               <small>Advisor</small>
               <p>Graduate of Harvard Business School and has worked as a Senior Product Manager in General Assembly, an education
@@ -1111,8 +1105,8 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAMAAwDGAAwAAQAAAAAAAA3YAAAAJDIyZWNhOGYwLWM1MWYtNDMxZi1hYzZmLWYzMGQ4ODI2MjdmYg.jpg"
-                width="256" alt="Tommy Griffith">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671951/profile-photos/tommy-griffith.jpg" width="256"
+                alt="Tommy Griffith">
               <h5>Tommy Griffith</h5>
               <small>Advisor</small>
               <p>Previously the Search Engine Optimization (SEO) manager at Paypal and AirBnB and is the founder of
@@ -1125,16 +1119,43 @@ e.twq || (s = e.twq = function () {
               </div>
             </div>
             <div class="col-12 col-md-4 team-2">
-              <img class="w-150" src="https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAA0hAAAAJGVhOWMwMzQ5LTU2ZGUtNDViMy04M2Q2LWYyNmUzMjQ1YTFkZQ.jpg"
-                width="256" alt="Amanda Lu">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671942/profile-photos/amanda-lu.jpg" width="256"
+                alt="Amanda Lu">
               <h5>Amanda Lu</h5>
               <small>Advisor</small>
               <p>CPA with 9+ years experience providing accounting, tax, financial management, and investment advisory services
                 to private investment vehicles and high net worth individuals. Founder of XLConsulting which specializes
                 in accounting, tax, and financial management services to established crypto companies, start-ups, and investors.
-                </p>
+              </p>
               <div class="social social-boxed social-rounded social-gray">
                 <a class="social-linkedin" href="https://www.linkedin.com/in/amandaxinlu/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671946/profile-photos/grant-charge.jpg" width="256"
+                alt="Grant Charge">
+              <h5>Grant Charge</h5>
+              <small>Advisor</small>
+              <p>Seasoned veteran in Sales and Marketing, having successfully sold in industries as diverse and varied as ICT,
+                Commercial Real Estate and E-commerce. Google AdWords and Google Analytics Certified Professional.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/grantcharge/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-12 col-md-4 team-2">
+              <img class="w-150" src="https://res.cloudinary.com/coinfi/image/upload/v1522671950/profile-photos/tim-sutton.jpg" width="256"
+                alt="Tim Sutton">
+              <h5>Tim Sutton</h5>
+              <small>Advisor</small>
+              <p>Co-founder and COO of PPC Agency
+                <a href="https://launchpresso.com" target="_blank">Launchpresso</a>. Experienced Internet Marketer for 4+ years in SEO, PPC & Conversion Rate Optimization.
+                Tim is a Blockchain advocate and has backgrounds in retail stockbroking and financial markets.</p>
+              <div class="social social-boxed social-rounded social-gray">
+                <a class="social-linkedin" href="https://www.linkedin.com/in/timsutton11/">
                   <i class="fa fa-linkedin"></i>
                 </a>
               </div>
@@ -1520,7 +1541,8 @@ e.twq || (s = e.twq = function () {
                   <p>Scientific evidence consistently proves that a crowd of intelligent investors offer more insights and make
                     better predictions. The CoinFi token empowers these crowds.
                     <a href="https://t.me/coinfi">Join us</a> and we can make better predictions than the Goldman Sachs analyst making $1 million USD a
-                    year.</p>
+                    year.
+                  </p>
                 </div>
                 <div class="col-12 col-md-5 text-center">
                   <img src="/landing/img/Decentralization Simple@2x.png" alt="Decentralization of Wall Street" class="w-half">
